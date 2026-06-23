@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpSihab.Tech - Premium Logo Showcase & Interactive Previewer</title>
+    
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        space: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        slateDark: {
+                            900: '#030712',
+                            950: '#010409',
+                            800: '#0f172a',
+                            700: '#1e293b',
+                        },
+                        accent: {
+                            blue: '#2563eb',
+                            sky: '#38bdf8',
+                            purple: '#8b5cf6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #010409;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+        .glow-active {
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+            border-color: #38bdf8;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-slateDark-950 text-slate-200 font-sans custom-scrollbar min-h-screen relative overflow-x-hidden py-12 px-4 sm:px-6 lg:px-8">
+
+    <!-- Ambient glowing backgrounds -->
+    <div class="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-blue/10 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-sky/10 blur-[130px] pointer-events-none z-0"></div>
+    
+    <!-- Grid Overlay -->
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.04]" 
+         style="background-image: linear-gradient(to right, #38bdf8 1px, transparent 1px), linear-gradient(to bottom, #38bdf8 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <span class="px-3 py-1 text-xs font-semibold tracking-wider text-accent-sky bg-accent-sky/10 rounded-full uppercase border border-accent-sky/20">Branding Concepts</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white mt-4 tracking-tight font-space">
+                OpSihab<span class="text-accent-sky">.Tech</span> Logo Concepts
+            </h1>
+            <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+                I have designed 5 premium, professional logo concepts. Click on any concept to test it in the interactive website previewer below!
+            </p>
+        </header>
+
+        <!-- Main Section: Grid of Logo Concepts -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
+            
+            <!-- CONCEPT 1 -->
+            <div id="card-1" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between glow-active group" onclick="selectConcept(1)">
+                <div class="w-full text-center">
+                    <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 01</span>
+                    <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <!-- SVG 1 -->
+                        <svg class="w-full h-full filter drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g1-brackets" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#2563eb" />
+                                    <stop offset="100%" stop-color="#38bdf8" />
+                                </linearGradient>
+                                <linearGradient id="g1-bolt" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#ffffff" />
+                                    <stop offset="100%" stop-color="#bae6fd" />
+                                </linearGradient>
+                                <filter id="g1-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <path d="M35 15 L15 50 L35 85" stroke="url(#g1-brackets)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M65 15 L85 50 L65 85" stroke="url(#g1-brackets)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M60 22 L34 50 H 54 L 42 78 L 66 50 H 46 Z" fill="url(#g1-bolt)" stroke="url(#g1-bolt)" stroke-width="1.5" stroke-linejoin="round" filter="url(#g1-glow)" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-base font-bold text-white font-space">Cyber Hex-Bolt</h3>
+                    <p class="text-xs text-slate-400 mt-2">Code brackets forming a clean hexagon shell around a neon lightning 'S'. Built for speed and modernity.</p>
+                </div>
+            </div>
+
+            <!-- CONCEPT 2 -->
+            <div id="card-2" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(2)">
+                <div class="w-full text-center">
+                    <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 02</span>
+                    <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <!-- SVG 2 -->
+                        <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g2-quantum" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#3b82f6" />
+                                    <stop offset="50%" stop-color="#8b5cf6" />
+                                    <stop offset="100%" stop-color="#38bdf8" />
+                                </linearGradient>
+                                <filter id="g2-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="4" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <circle cx="50" cy="50" r="44" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4 8" />
+                            <path d="M 50 14 A 36 36 0 1 1 16 54 C 16 38 34 30 50 30 C 66 30 72 38 72 46 C 72 56 60 58 54 62 C 46 68 46 76 54 82 C 60 86 70 86 76 80" stroke="url(#g2-quantum)" stroke-width="8.5" stroke-linecap="round" fill="none" filter="url(#g2-glow)" />
+                            <circle cx="50" cy="14" r="4" fill="#ffffff" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-base font-bold text-white font-space">Quantum Loop</h3>
+                    <p class="text-xs text-slate-400 mt-2">A continuous, flowing ribbon monogram fusing 'O' and 'S' seamlessly. Highlights interconnected cloud systems.</p>
+                </div>
+            </div>
+
+            <!-- CONCEPT 3 -->
+            <div id="card-3" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(3)">
+                <div class="w-full text-center">
+                    <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 03</span>
+                    <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <!-- SVG 3 -->
+                        <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g3-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#06b6d4" />
+                                    <stop offset="100%" stop-color="#2563eb" />
+                                </linearGradient>
+                                <linearGradient id="g3-grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#2563eb" />
+                                    <stop offset="100%" stop-color="#8b5cf6" />
+                                </linearGradient>
+                                <filter id="g3-glow" x="-10%" y="-10%" width="120%" height="120%">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <circle cx="50" cy="50" r="44" stroke="#1e293b" stroke-width="2" />
+                            <path d="M 50 6 A 44 44 0 0 1 94 50" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                            <path d="M 50 94 A 44 44 0 0 1 6 50" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                            <path d="M 50 25 C 28 25 22 42 38 52 C 54 62 48 75 62 75 C 78 75 78 58 62 48 C 46 38 46 25 62 25 C 78 25 78 42 62 52" stroke="url(#g3-grad1)" stroke-width="8.5" stroke-linecap="round" fill="none" filter="url(#g3-glow)"/>
+                            <path d="M 38 52 C 54 62 48 75 62 75 C 78 75 78 58 62 48" stroke="url(#g3-grad2)" stroke-width="8.5" stroke-linecap="round" fill="none" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-base font-bold text-white font-space">DevOps Infinity</h3>
+                    <p class="text-xs text-slate-400 mt-2">Infinity loop twisted into an 'S', bound inside circular orbits. Represents endless integration and deployment.</p>
+                </div>
+            </div>
+
+            <!-- CONCEPT 4 -->
+            <div id="card-4" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(4)">
+                <div class="w-full text-center">
+                    <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 04</span>
+                    <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <!-- SVG 4 -->
+                        <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g4-top" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+                                    <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.5" />
+                                </linearGradient>
+                                <linearGradient id="g4-left" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.85" />
+                                    <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.4" />
+                                </linearGradient>
+                                <linearGradient id="g4-right" x1="100%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.85" />
+                                    <stop offset="100%" stop-color="#083344" stop-opacity="0.4" />
+                                </linearGradient>
+                            </defs>
+                            <polygon points="50,12 85,32 50,52 15,32" fill="url(#g4-top)" stroke="#38bdf8" stroke-width="1" />
+                            <polygon points="15,32 50,52 50,88 15,68" fill="url(#g4-left)" stroke="#2563eb" stroke-width="1" />
+                            <polygon points="50,52 85,32 85,68 50,88" fill="url(#g4-right)" stroke="#06b6d4" stroke-width="1" />
+                            <path d="M 50 24 L 72 37 L 50 50 L 28 37 L 28 63 L 50 76 L 72 63" stroke="#ffffff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.85));" />
+                            <circle cx="50" cy="24" r="3.5" fill="#38bdf8" />
+                            <circle cx="72" cy="63" r="3.5" fill="#06b6d4" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-base font-bold text-white font-space">3D Prism Matrix</h3>
+                    <p class="text-xs text-slate-400 mt-2">A futuristic 3D architectural cube representing complex system structure, with a glowing isometric 'S' ribbon inside.</p>
+                </div>
+            </div>
+
+            <!-- CONCEPT 5 -->
+            <div id="card-5" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(5)">
+                <div class="w-full text-center">
+                    <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 05</span>
+                    <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <!-- SVG 5 -->
+                        <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g5-border" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#3b82f6" />
+                                    <stop offset="50%" stop-color="#06b6d4" />
+                                    <stop offset="100%" stop-color="#3b82f6" />
+                                </linearGradient>
+                                <linearGradient id="g5-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#080e1a" />
+                                    <stop offset="100%" stop-color="#020617" />
+                                </linearGradient>
+                                <linearGradient id="g5-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffffff" />
+                                    <stop offset="100%" stop-color="#cbd5e1" />
+                                </linearGradient>
+                                <filter id="g5-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <path d="M 50 10 L 82 22 V 54 C 82 72 68 86 50 91 C 32 86 18 72 18 54 V 22 Z" fill="url(#g5-bg)" stroke="url(#g5-border)" stroke-width="4.5" stroke-linejoin="round" filter="url(#g5-glow)"/>
+                            <path d="M 62 34 H 44 L 38 48 H 56 L 50 66 H 32" stroke="url(#g5-gold)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="50" cy="10" r="3.5" fill="#38bdf8" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-base font-bold text-white font-space">Cyber Sentinel</h3>
+                    <p class="text-xs text-slate-400 mt-2">A cybersecurity-inspired shield containing a sleek metallic S. Conveys authority, robustness, and trust.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Live Website Preview Section -->
+        <section class="glass-panel p-8 rounded-3xl mb-12 border-slateDark-700">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 pb-6 border-b border-slateDark-700">
+                <div>
+                    <h2 class="text-2xl font-bold text-white font-space">Live Website Portfolio Mockup</h2>
+                    <p class="text-slate-400 text-sm mt-1">See how the selected logo fits in a realistic dark portfolio header and hero section in real-time!</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex gap-3">
+                    <button class="px-4 py-2 text-xs font-semibold bg-slateDark-900 border border-slateDark-700 rounded-lg hover:border-slate-500 text-slate-300 transition" onclick="toggleThemeMode()">
+                        Toggle Background Grid
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mock Workspace -->
+            <div class="rounded-2xl bg-[#010409] p-6 border border-slateDark-800 relative min-h-[400px] overflow-hidden shadow-2xl">
+                <!-- Grid background simulation inside mockup -->
+                <div id="mock-grid" class="absolute inset-0 pointer-events-none opacity-[0.08]" 
+                     style="background-image: linear-gradient(to right, #38bdf8 1px, transparent 1px), linear-gradient(to bottom, #38bdf8 1px, transparent 1px); background-size: 50px 50px;"></div>
+                
+                <!-- Glow shapes inside mockup -->
+                <div class="absolute top-0 left-0 w-80 h-80 rounded-full bg-accent-blue/5 blur-[80px] pointer-events-none"></div>
+                <div class="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-accent-sky/5 blur-[80px] pointer-events-none"></div>
+
+                <!-- MOCK WEBSITE HEADER -->
+                <header class="relative z-10 w-full glass-panel rounded-full px-5 py-3 flex items-center justify-between border-white/10 shadow-lg mb-16">
+                    <div class="flex items-center gap-2">
+                        <!-- Current selected logo container inside header -->
+                        <div id="mock-header-logo" class="w-8 h-8 transition-transform duration-300 hover:scale-110">
+                            <!-- Injected by JS -->
+                        </div>
+                        <span class="font-bold tracking-widest text-white text-xs sm:text-sm font-space uppercase">OPSIHAB<span class="text-accent-sky">.TECH</span></span>
+                    </div>
+                    <nav class="hidden sm:flex items-center gap-6 text-xs text-slate-400 font-medium">
+                        <span class="text-white">Home</span>
+                        <span class="hover:text-white cursor-pointer transition">About</span>
+                        <span class="hover:text-white cursor-pointer transition">Skills</span>
+                        <span class="hover:text-white cursor-pointer transition">Projects</span>
+                        <span class="hover:text-white cursor-pointer transition">Contact</span>
+                    </nav>
+                    <div class="flex items-center gap-3">
+                        <span class="text-[10px] uppercase font-mono tracking-wider px-2.5 py-1 bg-accent-sky/15 text-accent-sky rounded-full border border-accent-sky/20">Active Concept</span>
+                    </div>
+                </header>
+
+                <!-- MOCK HERO SECTION -->
+                <div class="relative z-10 max-w-2xl mx-auto text-center flex flex-col items-center">
+                    <div class="w-16 h-16 mb-4 p-2 bg-slateDark-900/80 border border-slateDark-700 rounded-2xl flex items-center justify-center" id="mock-hero-brand-logo">
+                        <!-- Big logo preview injected by JS -->
+                    </div>
+                    
+                    <h2 class="text-3xl font-extrabold text-white tracking-tight leading-tight">
+                        Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-accent-sky to-accent-blue">Sihab Hossen</span>
+                    </h2>
+                    <p class="text-xs font-mono text-accent-sky uppercase tracking-widest mt-2">Full-Stack Cloud Engineer & Architect</p>
+                    <p class="text-slate-400 text-sm mt-4 max-w-md">
+                        Designing robust backend infrastructures and sleek frontend experiences that scale instantly. 
+                    </p>
+                    <div class="mt-6 flex gap-4">
+                        <button class="px-5 py-2.5 bg-accent-blue hover:bg-blue-600 text-white rounded-lg text-xs font-semibold transition shadow-lg shadow-accent-blue/20">View Work</button>
+                        <button class="px-5 py-2.5 bg-slateDark-900 border border-slateDark-700 hover:border-slate-500 rounded-lg text-xs font-semibold text-slate-300 transition">Let's Connect</button>
+                    </div>
+                </div>
+
+                <!-- FAVICON PREVIEW SIMULATOR -->
+                <div class="absolute bottom-4 left-6 z-10 glass-panel p-3 rounded-xl border-slateDark-700 flex items-center gap-3 shadow-lg">
+                    <span class="text-[10px] uppercase font-mono tracking-wider text-slate-400 block">Tab Favicon Preview:</span>
+                    <div class="bg-slateDark-900 px-3 py-1.5 rounded-lg border border-slateDark-800 flex items-center gap-2">
+                        <div id="mock-favicon" class="w-4 h-4">
+                            <!-- Injected by JS -->
+                        </div>
+                        <span class="text-xs text-slate-300 font-medium truncate max-w-[80px]">Sihab Hossen | P...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Concept Code & Favicon Data URL -->
+        <section class="glass-panel p-8 rounded-3xl border-slateDark-700 mb-6">
+            <div class="flex items-center gap-3 mb-6">
+                <i data-lucide="terminal" class="w-6 h-6 text-accent-sky"></i>
+                <h2 class="text-2xl font-bold text-white font-space">Implementation Code</h2>
+            </div>
+            
+            <p class="text-slate-400 text-sm mb-6">
+                Once you select the concept you like best, you can copy the code below or simply reply to me in the chat with the concept number (e.g. <code class="text-accent-sky font-bold">"Option 3"</code> or <code class="text-accent-sky font-bold">"Concept 2"</code>). I will automatically install it in your portfolio website!
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- SVG Code -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">SVG Code (for Header)</span>
+                        <button class="text-xs text-accent-sky hover:underline" onclick="copyToClipboard('svg-code')">Copy SVG</button>
+                    </div>
+                    <textarea id="svg-code" readonly class="w-full h-48 bg-slateDark-950/80 border border-slateDark-700 rounded-xl p-3 text-xs font-mono text-slate-400 focus:outline-none focus:border-accent-sky custom-scrollbar"></textarea>
+                </div>
+                <!-- Favicon Data URL -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">Favicon Code (Data URL)</span>
+                        <button class="text-xs text-accent-sky hover:underline" onclick="copyToClipboard('favicon-code')">Copy Data URL</button>
+                    </div>
+                    <textarea id="favicon-code" readonly class="w-full h-48 bg-slateDark-950/80 border border-slateDark-700 rounded-xl p-3 text-xs font-mono text-slate-400 focus:outline-none focus:border-accent-sky custom-scrollbar"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-slate-500 text-xs">
+            <p>&copy; 2026 Sihab Hossen. Built with premium branding principles.</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Store all SVGs as string constants
+        const svgTemplates = {
+            1: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="g1-brackets" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2563eb" />
+            <stop offset="100%" stop-color="#38bdf8" />
+        </linearGradient>
+        <linearGradient id="g1-bolt" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#bae6fd" />
+        </linearGradient>
+        <filter id="g1-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <path d="M35 15 L15 50 L35 85" stroke="url(#g1-brackets)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M65 15 L85 50 L65 85" stroke="url(#g1-brackets)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M60 22 L34 50 H 54 L 42 78 L 66 50 H 46 Z" fill="url(#g1-bolt)" stroke="url(#g1-bolt)" stroke-width="1.5" stroke-linejoin="round" filter="url(#g1-glow)" />
+</svg>`,
+            2: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="g2-quantum" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3b82f6" />
+            <stop offset="50%" stop-color="#8b5cf6" />
+            <stop offset="100%" stop-color="#38bdf8" />
+        </linearGradient>
+        <filter id="g2-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <circle cx="50" cy="50" r="44" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4 8" />
+    <path d="M 50 14 A 36 36 0 1 1 16 54 C 16 38 34 30 50 30 C 66 30 72 38 72 46 C 72 56 60 58 54 62 C 46 68 46 76 54 82 C 60 86 70 86 76 80" stroke="url(#g2-quantum)" stroke-width="8.5" stroke-linecap="round" fill="none" filter="url(#g2-glow)" />
+    <circle cx="50" cy="14" r="4" fill="#ffffff" />
+</svg>`,
+            3: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="g3-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#06b6d4" />
+            <stop offset="100%" stop-color="#2563eb" />
+        </linearGradient>
+        <linearGradient id="g3-grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#2563eb" />
+            <stop offset="100%" stop-color="#8b5cf6" />
+        </linearGradient>
+        <filter id="g3-glow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <circle cx="50" cy="50" r="44" stroke="#1e293b" stroke-width="2" />
+    <path d="M 50 6 A 44 44 0 0 1 94 50" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <path d="M 50 94 A 44 44 0 0 1 6 50" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <path d="M 50 25 C 28 25 22 42 38 52 C 54 62 48 75 62 75 C 78 75 78 58 62 48 C 46 38 46 25 62 25 C 78 25 78 42 62 52" stroke="url(#g3-grad1)" stroke-width="8.5" stroke-linecap="round" fill="none" filter="url(#g3-glow)"/>
+    <path d="M 38 52 C 54 62 48 75 62 75 C 78 75 78 58 62 48" stroke="url(#g3-grad2)" stroke-width="8.5" stroke-linecap="round" fill="none" />
+</svg>`,
+            4: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="g4-top" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.5" />
+        </linearGradient>
+        <linearGradient id="g4-left" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.85" />
+            <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.4" />
+        </linearGradient>
+        <linearGradient id="g4-right" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.85" />
+            <stop offset="100%" stop-color="#083344" stop-opacity="0.4" />
+        </linearGradient>
+    </defs>
+    <polygon points="50,12 85,32 50,52 15,32" fill="url(#g4-top)" stroke="#38bdf8" stroke-width="1" />
+    <polygon points="15,32 50,52 50,88 15,68" fill="url(#g4-left)" stroke="#2563eb" stroke-width="1" />
+    <polygon points="50,52 85,32 85,68 50,88" fill="url(#g4-right)" stroke="#06b6d4" stroke-width="1" />
+    <path d="M 50 24 L 72 37 L 50 50 L 28 37 L 28 63 L 50 76 L 72 63" stroke="#ffffff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.85));" />
+    <circle cx="50" cy="24" r="3.5" fill="#38bdf8" />
+    <circle cx="72" cy="63" r="3.5" fill="#06b6d4" />
+</svg>`,
+            5: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="g5-border" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3b82f6" />
+            <stop offset="50%" stop-color="#06b6d4" />
+            <stop offset="100%" stop-color="#3b82f6" />
+        </linearGradient>
+        <linearGradient id="g5-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#080e1a" />
+            <stop offset="100%" stop-color="#020617" />
+        </linearGradient>
+        <linearGradient id="g5-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#cbd5e1" />
+        </linearGradient>
+        <filter id="g5-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <path d="M 50 10 L 82 22 V 54 C 82 72 68 86 50 91 C 32 86 18 72 18 54 V 22 Z" fill="url(#g5-bg)" stroke="url(#g5-border)" stroke-width="4.5" stroke-linejoin="round" filter="url(#g5-glow)"/>
+    <path d="M 62 34 H 44 L 38 48 H 56 L 50 66 H 32" stroke="url(#g5-gold)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="50" cy="10" r="3.5" fill="#38bdf8" />
+</svg>`
+        };
+
+        // Track active concept
+        let activeId = 1;
+
+        function selectConcept(id) {
+            // Remove glow from current active card
+            document.getElementById(`card-${activeId}`).classList.remove('glow-active');
+            document.getElementById(`card-${activeId}`).classList.add('border-slateDark-700');
+            
+            // Add glow to new card
+            document.getElementById(`card-${id}`).classList.remove('border-slateDark-700');
+            document.getElementById(`card-${id}`).classList.add('glow-active');
+            
+            activeId = id;
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const svgContent = svgTemplates[activeId];
+            
+            // Update header mock logo
+            document.getElementById('mock-header-logo').innerHTML = svgContent;
+            
+            // Update big hero mock logo
+            document.getElementById('mock-hero-brand-logo').innerHTML = svgContent;
+            
+            // Update favicon mock logo
+            document.getElementById('mock-favicon').innerHTML = svgContent;
+            
+            // Generate clean code for copying
+            document.getElementById('svg-code').value = svgContent;
+            
+            // Generate favicon data URI
+            const cleanSvg = svgContent.replace(/\s+/g, ' ').trim();
+            const dataUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(cleanSvg)}`;
+            document.getElementById('favicon-code').value = dataUrl;
+        }
+
+        function toggleThemeMode() {
+            const grid = document.getElementById('mock-grid');
+            if (grid.style.display === 'none') {
+                grid.style.display = 'block';
+            } else {
+                grid.style.display = 'none';
+            }
+        }
+
+        function copyToClipboard(id) {
+            const copyText = document.getElementById(id);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(copyText.value);
+            
+            // Show custom alert
+            alert("Copied code to clipboard!");
+        }
+
+        // Initialize lucide icons and preview
+        window.onload = () => {
+            lucide.createIcons();
+            selectConcept(1);
+        };
+    </script>
+</body>
+</html>

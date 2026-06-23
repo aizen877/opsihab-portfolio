@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sihab Hossen (OpSihab) | Premium Developer Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g1-brackets' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2310b981' /%3E%3Cstop offset='100%25' stop-color='%23a3e635' /%3E%3C/linearGradient%3E%3ClinearGradient id='g1-bolt' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' /%3E%3Cstop offset='100%25' stop-color='%23a3e635' /%3E%3C/linearGradient%3E%3Cfilter id='g1-glow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M35 15 L15 50 L35 85' stroke='url(%23g1-brackets)' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' /%3E%3Cpath d='M65 15 L85 50 L65 85' stroke='url(%23g1-brackets)' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' /%3E%3Cpath d='M60 22 L34 50 H 54 L 42 78 L 66 50 H 46 Z' fill='url(%23g1-bolt)' stroke='url(%23g1-bolt)' stroke-width='1.5' stroke-linejoin='round' filter='url(%23g1-glow)' /%3E%3C/svg%3E">
+    
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans for English, Hind Siliguri for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Lucide Icons for clean, lightweight SVG icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Custom Configuration for Deep Blue & White premium theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        bengali: ['Hind Siliguri', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                        space: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: {
+                            50: '#f0f4f8',
+                            100: '#dbeafe',
+                            900: '#030712',
+                            950: '#010409',
+                        },
+                        accent: {
+                            blue: 'rgb(var(--accent-blue-rgb) / <alpha-value>)',
+                            sky: 'rgb(var(--accent-sky-rgb) / <alpha-value>)',
+                            white: '#ffffff',
+                            slate: '#94a3b8',
+                        }
+                    },
+                    boxShadow: {
+                        'glow-blue': '0 0 25px rgba(var(--accent-blue-rgb), 0.25)',
+                        'glow-sky': '0 0 25px rgba(var(--accent-sky-rgb), 0.25)',
+                        'glass': '0 8px 32px 0 rgba(1, 4, 9, 0.7)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Style Overrides -->
+    <style>
+        :root {
+            --color-accent-blue: #10b981;
+            --color-accent-sky: #a3e635; /* High-contrast Neon Lime */
+            --accent-blue-rgb: 16, 185, 129;
+            --accent-sky-rgb: 163, 230, 53;
+            --gradient-mockup: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #10b981 100%);
+        }
+        [data-theme="blue"] {
+            --color-accent-blue: #2563eb;
+            --color-accent-sky: #00f5d4; /* High-contrast Electric Teal */
+            --accent-blue-rgb: 37, 99, 235;
+            --accent-sky-rgb: 0, 245, 212;
+            --gradient-mockup: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+        [data-theme="purple"] {
+            --color-accent-blue: #8b5cf6;
+            --color-accent-sky: #ec4899; /* High-contrast Hot Pink */
+            --accent-blue-rgb: 139, 92, 246;
+            --accent-sky-rgb: 236, 72, 153;
+            --gradient-mockup: linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #8b5cf6 100%);
+        }
+        [data-theme="sunset"] {
+            --color-accent-blue: #f97316; /* Orange-500 */
+            --color-accent-sky: #ef4444;  /* Red-500 */
+            --accent-blue-rgb: 249, 115, 22;
+            --accent-sky-rgb: 239, 68, 68;
+            --gradient-mockup: linear-gradient(135deg, #1a0c02 0%, #431407 50%, #f97316 100%);
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #010409;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+            border: 2px solid #010409;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+        
+        /* Smooth language transition wrapper */
+        .lang-transition {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* Text gradient with Deep Blue to White/Silver transitions */
+        .text-glow-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, var(--color-accent-sky) 45%, var(--color-accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 16px rgba(var(--accent-blue-rgb), 0.45));
+        }
+
+        /* Custom signature glows for skill cards */
+        .skill-card {
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .skill-card:hover {
+            border-color: rgba(var(--hover-glow-color), 0.5) !important;
+            box-shadow: 0 0 25px rgba(var(--hover-glow-color), 0.22) !important;
+            transform: translateY(-4px);
+        }
+        .skill-card:hover span {
+            color: rgba(var(--hover-glow-color), 1);
+        }
+
+        /* Modern Premium Colored Icon System with Dynamic Hover Glows */
+        .skill-card img {
+            filter: drop-shadow(0 0 4px rgba(var(--hover-glow-color), 0.15));
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+        .skill-card img.invert {
+            filter: invert(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.15));
+        }
+        .skill-card:hover img {
+            filter: drop-shadow(0 0 12px rgba(var(--hover-glow-color), 0.8));
+            transform: scale(1.1);
+        }
+        .skill-card:hover img.invert {
+            filter: invert(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+            transform: scale(1.1);
+        }
+
+        /* Hero ambient glow animation */
+        @keyframes heroGlow {
+            0%, 100% { transform: scale(1); opacity: 0.45; }
+            50% { transform: scale(1.2); opacity: 0.75; }
+        }
+
+        .animate-hero-glow {
+            animation: heroGlow 8s ease-in-out infinite;
+            will-change: transform, opacity;
+        }
+
+        /* Section subheading/track glow pop */
+        .section-track {
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(3, 7, 18, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+        }
+
+        .glass-header {
+            background: rgba(1, 4, 9, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        /* Subtle grid background pattern with radial mask */
+        .grid-bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1; /* Set to 1 to ensure it is above background colors but behind content */
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(var(--accent-sky-rgb), 0.12) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(var(--accent-sky-rgb), 0.12) 1px, transparent 1px);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+        }
+
+        /* Dynamic Mockup Gradient backgrounds */
+        .project-mockup-bg {
+            background: var(--gradient-mockup);
+        }
+
+        /* Premium Glass Effects */
+        .premium-glass-card {
+            background: rgba(3, 7, 18, 0.45) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(20px) saturate(140%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+        }
+
+        .premium-glass {
+            background: rgba(255, 255, 255, 0.03) !important;
+            backdrop-filter: blur(16px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .premium-glass-overlay {
+            background: rgba(3, 7, 18, 0.35) !important;
+            backdrop-filter: blur(16px) saturate(140%) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+        }
+
+        /* Dynamic Theme helpers for active badge */
+        .theme-accent-text {
+            color: var(--color-accent-sky) !important;
+        }
+        .theme-accent-border {
+            border-color: rgba(var(--accent-blue-rgb), 0.25) !important;
+        }
+        .theme-accent-bg {
+            background-color: rgba(var(--accent-blue-rgb), 0.06) !important;
+        }
+    </style>
+</head>
+<body class="bg-obsidian-950 text-slate-200 font-sans overflow-x-hidden selection:bg-accent-blue/30 custom-scrollbar relative">
+
+    <!-- Interactive Background Canvas -->
+    <canvas id="particleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+    
+    <!-- Mouse Glow Follower -->
+    <div id="mouseGlow" class="fixed top-0 left-0 w-80 h-80 rounded-full bg-accent-blue/12 blur-[100px] pointer-events-none z-0 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500 opacity-0"></div>
+
+    <!-- Subtle Grid Background Overlay -->
+    <div class="grid-bg-overlay"></div>
+    
+    <!-- Glowing background aura shapes (Deep Blue/Sky Neon aura pools) -->
+    <div class="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-blue/8 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-sky/8 blur-[130px] pointer-events-none z-0"></div>
+
+    <!-- Glassmorphism Floating Header -->
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 glass-header rounded-full px-6 py-3.5 flex items-center justify-between transition-all duration-300 shadow-glass">
+        <!-- Logo with neon blue dot -->
+        <a href="#home" class="flex items-center gap-2 group">
+            <!-- BACKUP OF PREVIOUS SVG LOGO -->
+            <!--
+            <svg class="w-9 h-9 transition-all duration-300 group-hover:rotate-12 filter drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="grad-blue-sky" x1="0" y1="0" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#2563eb" />
+                        <stop offset="100%" stop-color="#38bdf8" />
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="42" stroke="url(#grad-blue-sky)" stroke-width="5" stroke-dasharray="240 20" stroke-linecap="round" class="opacity-80" />
+                <path d="M62 38C62 32.5 57 29 50 29C42 29 38 33 38 38C38 45 46 45 46 51C46 56 42 60 36 60C30 60 26 55.5 26 55.5" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M62 38C62 44.5 54 44.5 54 51C54 56.5 59 60 66 60C72 60 74 55.5 74 55.5" stroke="url(#grad-blue-sky)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            -->
+
+            <!-- NEW CONCEPT SVG LOGO (Code Brackets + Lightning S) -->
+            <svg class="w-9 h-9 transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_8px_rgba(var(--accent-sky-rgb),0.5)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="g1-brackets" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="var(--color-accent-blue)" />
+                        <stop offset="100%" stop-color="var(--color-accent-sky)" />
+                    </linearGradient>
+                    <linearGradient id="g1-bolt" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ffffff" />
+                        <stop offset="100%" stop-color="#bae6fd" />
+                    </linearGradient>
+                    <filter id="g1-glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <path d="M35 15 L15 50 L35 85" stroke="url(#g1-brackets)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M65 15 L85 50 L65 85" stroke="url(#g1-brackets)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M60 22 L34 50 H 54 L 42 78 L 66 50 H 46 Z" fill="url(#g1-bolt)" stroke="url(#g1-bolt)" stroke-width="1.5" stroke-linejoin="round" filter="url(#g1-glow)" />
+            </svg>
+            <span class="font-bold tracking-widest text-white text-sm sm:text-base group-hover:text-accent-sky transition-colors font-space uppercase">OPSIHAB<span class="text-accent-sky">.TECH</span></span>
+        </a>
+
+        <!-- Desktop Navigation with soft glows -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+            <a href="#home" class="hover:text-white transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent-sky after:transition-all hover:after:w-full" data-i18n="nav-home">Home</a>
+            <a href="#about" class="hover:text-white transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent-sky after:transition-all hover:after:w-full" data-i18n="nav-about">About</a>
+            <a href="#skills" class="hover:text-white transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent-sky after:transition-all hover:after:w-full" data-i18n="nav-skills">Skills</a>
+            <a href="#projects" class="hover:text-white transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent-sky after:transition-all hover:after:w-full" data-i18n="nav-projects">Projects</a>
+            <a href="#experience" class="hover:text-white transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent-sky after:transition-all hover:after:w-full" data-i18n="nav-experience">Experience</a>
+            <a href="#contact" class="hover:text-white transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent-sky after:transition-all hover:after:w-full" data-i18n="nav-contact">Contact</a>
+        </nav>
+
+        <!-- Right Action Tools -->
+        <div class="flex items-center gap-3">
+            <!-- Theme switcher (Option 2) -->
+            <button id="themeToggleBtn" onclick="toggleTheme()" class="px-3.5 py-1.5 text-xs font-semibold rounded-full border border-slate-800 bg-obsidian-900/80 text-slate-300 hover:border-accent-sky hover:text-white hover:shadow-glow-sky transition-all flex items-center gap-1.5">
+                <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+                <span id="themeLabel" class="uppercase">Emerald</span>
+            </button>
+
+            <!-- Language Switcher Button -->
+            <button id="langToggleBtn" onclick="toggleLanguage()" class="px-3.5 py-1.5 text-xs font-semibold rounded-full border border-slate-800 bg-obsidian-900/80 text-slate-300 hover:border-accent-sky hover:text-white hover:shadow-glow-sky transition-all flex items-center gap-1.5">
+                <i data-lucide="languages" class="w-3.5 h-3.5"></i>
+                <span id="currentLangLabel">BN</span>
+            </button>
+            
+            <!-- Contact CTA in White & Blue Hover -->
+            <a href="#contact" class="hidden sm:inline-flex px-5 py-2 text-xs font-bold rounded-full bg-white text-obsidian-950 hover:bg-accent-blue hover:text-white transition-all duration-300 shadow-md">
+                <span data-i18n="nav-cta">Hire Me</span>
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-obsidian-950/98 backdrop-blur-xl hidden flex-col justify-center items-center gap-8 text-xl font-semibold text-slate-300">
+        <button id="closeMobileMenuBtn" class="absolute top-8 right-8 p-2 text-slate-400 hover:text-white">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#home" onclick="closeMenu()" class="hover:text-white transition-colors" data-i18n="nav-home">Home</a>
+        <a href="#about" onclick="closeMenu()" class="hover:text-white transition-colors" data-i18n="nav-about">About</a>
+        <a href="#skills" onclick="closeMenu()" class="hover:text-white transition-colors" data-i18n="nav-skills">Skills</a>
+        <a href="#projects" onclick="closeMenu()" class="hover:text-white transition-colors" data-i18n="nav-projects">Projects</a>
+        <a href="#experience" onclick="closeMenu()" class="hover:text-white transition-colors" data-i18n="nav-experience">Experience</a>
+        <a href="#contact" onclick="closeMenu()" class="hover:text-white transition-colors" data-i18n="nav-contact">Contact</a>
+        <a href="#contact" onclick="closeMenu()" class="px-8 py-3 rounded-full bg-accent-blue text-white text-sm shadow-glow-blue" data-i18n="nav-cta">Hire Me</a>
+    </div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 md:px-8">
+
+        <!-- Hero Section (Centered & Premium) -->
+        <section id="home" class="min-h-screen h-screen flex flex-col justify-center items-center text-center pt-36 md:pt-48 pb-12 relative">
+
+            <!-- Glowing Sapphire Aura behind Content -->
+            <div class="absolute top-1/2 left-1/2 -ml-[250px] -mt-[250px] w-[500px] h-[500px] bg-gradient-to-tr from-accent-blue/20 to-accent-sky/10 blur-[120px] rounded-full pointer-events-none animate-hero-glow"></div>
+
+            <!-- Top Active Status Badge (Theme-Responsive Glow Badge) -->
+            <div class="gsap-hero-el opacity-0 translate-y-4 mb-6 inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full border theme-accent-border theme-accent-bg theme-accent-text text-xs font-semibold tracking-wide shadow-glow-blue">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: var(--color-accent-sky);"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: var(--color-accent-blue);"></span>
+                </span>
+                <span data-i18n="hero-badge">Open for Full-time Roles & Projects</span>
+            </div>
+
+            <!-- Developer Main Title: Deep Blue & White/Silver Gradient -->
+            <h1 class="gsap-hero-el opacity-0 translate-y-4 text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl leading-[1.1] lg:leading-[1.05] mb-6">
+                <span data-i18n="hero-title-prefix">Crafting Elegant</span> 
+                <span class="text-glow-gradient">Full-Stack</span> 
+                <span data-i18n="hero-title-suffix">Web Experiences</span>
+            </h1>
+
+            <!-- Professional Subheading / Description -->
+            <p class="gsap-hero-el opacity-0 translate-y-4 text-slate-400 text-base sm:text-xl max-w-2xl leading-relaxed mb-10 font-light" data-i18n="hero-desc">
+                Passionate software architect building fast, beautiful, and secure digital architectures using React, Node.js, and cloud ecosystems.
+            </p>
+
+            <!-- Centered Call To Actions (Deep Blue Accent & Sleek Borders) -->
+            <div class="gsap-hero-el opacity-0 translate-y-4 flex flex-col sm:flex-row items-center gap-4 mb-16 w-full sm:w-auto">
+                <!-- Primary CTA -->
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-white to-sky-100 text-obsidian-950 font-bold hover:bg-gradient-to-r hover:from-white hover:to-accent-sky hover:shadow-glow-sky transition-all duration-300 text-center transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <span data-i18n="hero-btn-primary">Explore Works</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <!-- Secondary CTA -->
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full border border-slate-800 bg-obsidian-950/40 hover:bg-obsidian-900/80 hover:border-accent-blue text-white font-semibold transition-all duration-300 text-center flex items-center justify-center gap-2">
+                    <span data-i18n="hero-btn-secondary">Get in Touch</span>
+                </a>
+            </div>
+
+            <!-- Scroll Indicator Mouse Graphic -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer opacity-75 hover:opacity-100 transition-opacity">
+                <a href="#about" class="flex flex-col items-center">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest mb-2" data-i18n="scroll-down">Scroll Down</span>
+                    <div class="w-5 h-9 border-2 border-slate-800 rounded-full flex justify-center p-1">
+                        <div class="w-1.5 h-1.5 bg-accent-blue rounded-full animate-bounce"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Metrics / Infographics Section (Premium Glass & Glow Effects) -->
+        <section id="metrics" class="py-12 border-t border-slate-900/60 scroll-mt-24">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: 50K+ (Frosted Glass & Glowing Background) -->
+                <div class="premium-glass-card relative rounded-3xl p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                    <!-- Glowing gradient behind glass overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue to-accent-sky opacity-80 z-0 pointer-events-none"></div>
+                    <!-- Frosted glass overlay -->
+                    <div class="premium-glass-overlay absolute inset-0 z-10"></div>
+                    
+                    <div class="relative z-20 flex flex-col justify-between h-full">
+                        <div>
+                            <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">50K+</span>
+                            <h4 class="text-xl font-bold text-white">Production Commits</h4>
+                            <p class="text-sm text-slate-300 mt-1">Written across global cloud systems and SaaS deployments in 5+ years.</p>
+                        </div>
+                        <div class="flex gap-2 mt-6">
+                            <span class="text-[10px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/20 text-white font-semibold uppercase">GitHub Core</span>
+                            <span class="text-[10px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/20 text-white font-semibold uppercase">CI/CD Pipeline</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: 10x ROI (Frosted Glass & Floating Icon) -->
+                <div class="premium-glass-card relative rounded-3xl p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                    <div class="relative w-full h-16 mb-2 flex items-center">
+                        <!-- Theme-colored Glowing Folder Icon -->
+                        <div class="w-14 h-10 bg-accent-blue/20 rounded-xl relative border border-accent-blue/30 shadow-glow-blue flex items-center justify-center">
+                            <i data-lucide="folder" class="w-6 h-6 text-accent-sky"></i>
+                        </div>
+                        <!-- Frosted Glass Overlapping Play Card -->
+                        <div class="premium-glass absolute left-8 top-2 w-16 h-12 rounded-xl flex items-center justify-center shadow-lg transform rotate-6 hover:rotate-0 transition-transform duration-300">
+                            <i data-lucide="play" class="w-5 h-5 text-white fill-white/20 animate-pulse"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">10x ROI</span>
+                        <h4 class="text-xl font-bold text-white">System Optimization</h4>
+                        <p class="text-sm text-slate-400 mt-1">High-demand server configurations boosting database response times.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: 99.9% (Glowing Circle Behind Frosted Glass) -->
+                <div class="premium-glass-card relative rounded-3xl p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                    <!-- Glowing background circle -->
+                    <div class="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-gradient-to-tr from-accent-blue to-accent-sky opacity-75 blur-xl z-0 pointer-events-none"></div>
+                    <!-- Frosted Glass blur backdrop overlay -->
+                    <div class="premium-glass-overlay absolute inset-0 z-10"></div>
+                    
+                    <div class="relative z-20 flex flex-col justify-between h-full">
+                        <div>
+                            <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">99.9%</span>
+                            <h4 class="text-xl font-bold text-white">Uptime Guarantee</h4>
+                            <p class="text-sm text-slate-400 mt-1">Highly redundant microservice architectures deployed on AWS cluster systems.</p>
+                        </div>
+                        <div class="mt-6">
+                            <span class="text-xs font-mono text-accent-sky font-semibold uppercase tracking-wider">Service Level Agreement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-28 lg:py-32 border-t border-slate-900/60 scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Visual Hologram Card / Image with Blue Neon Lights -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-[410px] group">
+                        <!-- Neon Blue Frame Backdrop Glow -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue to-accent-sky rounded-3xl blur-sm opacity-25 group-hover:opacity-40 transition-all duration-500"></div>
+                        
+                        <!-- Main Card -->
+                        <div class="relative w-full h-full bg-obsidian-900/90 border border-slate-800/80 rounded-3xl overflow-hidden flex flex-col justify-end p-6 z-10 shadow-glass">
+                            <!-- Background Image with mix-blend hover effect -->
+                            <img src="https://anondrop.net/1518672983357522010/61fcfc5531a80ab6bc46f4e997c9714f.jpg" class="absolute inset-0 w-full h-full object-cover opacity-65 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500 mix-blend-luminosity group-hover:mix-blend-normal pointer-events-none" alt="Sihab Hossen" />
+                            <!-- Gradient Overlay for readability -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/50 to-obsidian-950/20 pointer-events-none"></div>
+
+                            <div class="relative z-10 mt-20">
+                                <span class="text-xs font-mono text-accent-sky font-bold block mb-1">FOUNDER / ARCHITECT</span>
+                                <h3 class="text-2xl font-bold text-white mb-2">Sihab Hossen</h3>
+                                <p class="text-sm text-slate-400 leading-relaxed" data-i18n="about-card-role">
+                                    Crafting complex dynamic architectures with bulletproof optimization standards.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Biography & Dynamic Stats -->
+                <div class="lg:col-span-7 flex flex-col gap-6">
+                    <span class="text-xs font-mono text-accent-sky font-bold uppercase tracking-widest section-track" data-i18n="about-section-subtitle">Biography</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white" data-i18n="about-section-title">An architect of modern digital structures.</h2>
+                    <p class="text-slate-400 leading-relaxed" data-i18n="about-bio">
+                        Over the past years, I have worked across the entire web stack, designing high-availability database architectures, seamless intuitive interfaces, and automated cloud workflows. I bridge the gap between complex engineering requirements and elite design aesthetics.
+                    </p>
+
+                    <!-- Core Expertise & Metrics (Blue Highlighted) -->
+                    <div class="grid grid-cols-3 gap-4 border-y border-slate-900 py-6 my-2">
+                        <div>
+                            <span class="block text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">5+</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider" data-i18n="about-stat-1">Years Experience</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">50+</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider" data-i18n="about-stat-2">Global Deployments</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">99%</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider" data-i18n="about-stat-3">Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-28 lg:py-32 border-t border-slate-900/60 scroll-mt-24">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="text-xs font-mono text-accent-sky font-bold uppercase tracking-widest section-track" data-i18n="skills-subtitle">Expertise</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1" data-i18n="skills-title">Core Technologies & Stack</h2>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Skill Item 1: React -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 97, 218, 251;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:react.svg" class="w-7 h-7" alt="React.js" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">React.js</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Frontend</span>
+                </div>
+
+                <!-- Skill Item 2: Next.js -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 255, 255, 255;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:nextjs-icon.svg" class="w-7 h-7 invert" alt="Next.js" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">Next.js</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Fullstack</span>
+                </div>
+
+                <!-- Skill Item 3: Node.js -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 51, 153, 51;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:nodejs-icon.svg" class="w-7 h-7" alt="Node.js" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">Node.js</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Backend</span>
+                </div>
+
+                <!-- Skill Item 4: TypeScript -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 49, 120, 198;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:typescript-icon.svg" class="w-7 h-7" alt="TypeScript" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">TypeScript</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Language</span>
+                </div>
+
+                <!-- Skill Item 5: PostgreSQL -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 65, 105, 225;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:postgresql.svg" class="w-7 h-7" alt="PostgreSQL" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">PostgreSQL</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Database</span>
+                </div>
+
+                <!-- Skill Item 6: AWS -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 255, 153, 0;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:aws.svg" class="w-8 h-8 animate-pulse" alt="AWS" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">AWS</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Cloud</span>
+                </div>
+
+                <!-- Skill Item 7: Docker -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 36, 150, 237;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:docker-icon.svg" class="w-7 h-7" alt="Docker" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">Docker</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">DevOps</span>
+                </div>
+
+                <!-- Skill Item 8: Python -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 55, 118, 171;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:python.svg" class="w-7 h-7" alt="Python" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">Python</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Language</span>
+                </div>
+
+                <!-- Skill Item 9: Tailwind CSS -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 56, 189, 248;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:tailwindcss-icon.svg" class="w-7 h-7" alt="Tailwind CSS" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">Tailwind CSS</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Styling</span>
+                </div>
+
+                <!-- Skill Item 10: Git / Github -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 240, 80, 50;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:git-icon.svg" class="w-7 h-7" alt="Git & GitHub" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">Git & GitHub</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Version Control</span>
+                </div>
+
+                <!-- Skill Item 11: MongoDB -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 71, 162, 72;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:mongodb-icon.svg" class="w-7 h-7" alt="MongoDB" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">MongoDB</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Database</span>
+                </div>
+
+                <!-- Skill Item 12: GraphQL -->
+                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 225, 0, 152;">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
+                        <img src="https://api.iconify.design/logos:graphql.svg" class="w-7 h-7" alt="GraphQL" />
+                    </div>
+                    <span class="text-sm font-semibold text-white transition-colors">GraphQL</span>
+                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">API Gateways</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-28 lg:py-32 border-t border-slate-900/60 scroll-mt-24">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-xs font-mono text-accent-sky font-bold uppercase tracking-widest section-track" data-i18n="projects-subtitle">Portfolio</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1" data-i18n="projects-title">Handcrafted Masterpieces</h2>
+                </div>
+                <!-- Interactive Tabs/Filters (Crisp dark design with blue text highlights) -->
+                <div class="flex flex-wrap gap-2 text-sm bg-obsidian-900/60 border border-slate-800/80 p-1.5 rounded-full self-start">
+                    <button onclick="filterProjects('all')" class="project-tab-btn px-4 py-1.5 rounded-full font-medium transition-all duration-200 bg-accent-blue text-white" data-filter="all" data-i18n="proj-filter-all">All</button>
+                    <button onclick="filterProjects('frontend')" class="project-tab-btn px-4 py-1.5 rounded-full font-medium transition-all duration-200 text-slate-400 hover:text-white" data-filter="frontend" data-i18n="proj-filter-front">Frontend</button>
+                    <button onclick="filterProjects('fullstack')" class="project-tab-btn px-4 py-1.5 rounded-full font-medium transition-all duration-200 text-slate-400 hover:text-white" data-filter="fullstack" data-i18n="proj-filter-full">Fullstack</button>
+                    <button onclick="filterProjects('cloud')" class="project-tab-btn px-4 py-1.5 rounded-full font-medium transition-all duration-200 text-slate-400 hover:text-white" data-filter="cloud" data-i18n="proj-filter-cloud">Cloud/API</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid Grid-3-cols with Navy/Blue borders -->
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project Card 1: Fullstack -->
+                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-top-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="fullstack">
+                    <div class="h-48 overflow-hidden relative">
+                        <!-- Mock premium UI screenshot with theme gradient background -->
+                        <div class="absolute inset-0 project-mockup-bg flex flex-col justify-center items-center p-6 transition-transform duration-500 group-hover:scale-105">
+                            <i data-lucide="shopping-bag" class="w-12 h-12 text-accent-sky mb-2"></i>
+                            <span class="text-xs font-mono text-sky-400 font-semibold tracking-wider">VelocePay & Commerce</span>
+                        </div>
+                        <span class="absolute top-4 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold">Fullstack</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">VelocePay Gateway</h3>
+                        <p class="text-sm text-slate-400 mb-4" data-i18n="project-desc-1">A secure cloud-native payment automation engine featuring multi-tier escrow validations and instantaneous notifications.</p>
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Next.js</span>
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">NestJS</span>
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Redis</span>
+                        </div>
+                        <!-- Action Links -->
+                        <div class="flex items-center justify-between border-t border-slate-900 pt-4">
+                            <a href="#" onclick="triggerDemoAlert(event)" class="text-xs font-semibold text-accent-sky flex items-center gap-1 hover:underline">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i> <span data-i18n="proj-action-live">Live Preview</span>
+                            </a>
+                            <a href="#" onclick="triggerDemoAlert(event)" class="text-xs text-slate-500 hover:text-white flex items-center gap-1 transition-colors">
+                                <i data-lucide="github" class="w-3.5 h-3.5"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Frontend -->
+                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-top-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="frontend">
+                    <div class="h-48 overflow-hidden relative">
+                        <!-- Mock premium UI screenshot -->
+                        <div class="absolute inset-0 project-mockup-bg flex flex-col justify-center items-center p-6 transition-transform duration-500 group-hover:scale-105">
+                            <i data-lucide="layout" class="w-12 h-12 text-accent-sky mb-2"></i>
+                            <span class="text-xs font-mono text-sky-400 font-semibold tracking-wider">Hyperion Dashboard UI</span>
+                        </div>
+                        <span class="absolute top-4 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold">Frontend</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Hyperion Analytics</h3>
+                        <p class="text-sm text-slate-400 mb-4" data-i18n="project-desc-2">Supercharged 3D graphical dashboard engineered to visualization massive metrics datasets asynchronously.</p>
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Three.js</span>
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Tailwind</span>
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">GSAP</span>
+                        </div>
+                        <!-- Action Links -->
+                        <div class="flex items-center justify-between border-t border-slate-900 pt-4">
+                            <a href="#" onclick="triggerDemoAlert(event)" class="text-xs font-semibold text-accent-sky flex items-center gap-1 hover:underline">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i> <span data-i18n="proj-action-live">Live Preview</span>
+                            </a>
+                            <a href="#" onclick="triggerDemoAlert(event)" class="text-xs text-slate-500 hover:text-white flex items-center gap-1 transition-colors">
+                                <i data-lucide="github" class="w-3.5 h-3.5"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Cloud -->
+                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-top-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="cloud">
+                    <div class="h-48 overflow-hidden relative">
+                        <!-- Mock premium UI screenshot -->
+                        <div class="absolute inset-0 project-mockup-bg flex flex-col justify-center items-center p-6 transition-transform duration-500 group-hover:scale-105">
+                            <i data-lucide="network" class="w-12 h-12 text-accent-sky mb-2"></i>
+                            <span class="text-xs font-mono text-sky-400 font-semibold tracking-wider">AuthShield Core</span>
+                        </div>
+                        <span class="absolute top-4 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold">Cloud/API</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">AuthShield Middleware</h3>
+                        <p class="text-sm text-slate-400 mb-4" data-i18n="project-desc-3">Highly scalable OAuth2.1 federated authorization middleware handling 50k requests/sec latency budget.</p>
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Golang</span>
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Docker</span>
+                            <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Kubernetes</span>
+                        </div>
+                        <!-- Action Links -->
+                        <div class="flex items-center justify-between border-t border-slate-900 pt-4">
+                            <a href="#" onclick="triggerDemoAlert(event)" class="text-xs font-semibold text-accent-sky flex items-center gap-1 hover:underline">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i> <span data-i18n="proj-action-live">Live Preview</span>
+                            </a>
+                            <a href="#" onclick="triggerDemoAlert(event)" class="text-xs text-slate-500 hover:text-white flex items-center gap-1 transition-colors">
+                                <i data-lucide="github" class="w-3.5 h-3.5"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experience" class="py-28 lg:py-32 border-t border-slate-900/60 scroll-mt-24">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="text-xs font-mono text-accent-sky font-bold uppercase tracking-widest section-track" data-i18n="exp-subtitle">JOURNEY</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1" data-i18n="exp-title">Professional Milestones</h2>
+            </div>
+
+            <!-- Timeline Main Wrapper with Soft Blue Axis -->
+            <div class="max-w-3xl mx-auto relative before:absolute before:top-0 before:bottom-0 before:left-4 md:before:left-1/2 before:w-[1px] before:bg-slate-800">
+                
+                <!-- Timeline Item 1 -->
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 mb-12 group">
+                    <!-- Timeline circle dot (Blue Glowing Ring) -->
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform group-hover:scale-125 group-hover:bg-accent-sky hover:shadow-glow-sky"></div>
+                    
+                    <!-- Left Column (Empty on mobile, content on desktop) -->
+                    <div class="hidden md:flex flex-col items-end justify-center text-right">
+                        <span class="text-sm font-mono text-accent-sky font-semibold">2024 - Present</span>
+                        <span class="text-xs text-slate-500">SAN FRANCISCO, CA (REMOTE)</span>
+                    </div>
+
+                    <!-- Right Column (Content) -->
+                    <div class="bg-obsidian-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl transition-all duration-300 hover:border-accent-blue/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.12)] hover:-translate-y-1 transform">
+                        <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2024 - Present</span>
+                        <h3 class="text-lg font-bold text-white">Lead Fullstack Architect</h3>
+                        <p class="text-sm text-slate-400 font-medium mb-2">Synthetix Labs Inc.</p>
+                        <p class="text-sm text-slate-500 leading-relaxed" data-i18n="exp-role-1">Leading architectural development for cloud infrastructure migration plans, maintaining web interface optimization standards across 4 production platforms.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 mb-12 group">
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform group-hover:scale-125 group-hover:bg-accent-sky hover:shadow-glow-sky"></div>
+                    
+                    <!-- Left Column (Content on desktop) -->
+                    <div class="bg-obsidian-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl transition-all duration-300 hover:border-accent-blue/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.12)] hover:-translate-y-1 transform md:text-right">
+                        <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2022 - 2024</span>
+                        <h3 class="text-lg font-bold text-white">Senior Software Engineer</h3>
+                        <p class="text-sm text-slate-400 font-medium mb-2">Quant Technologies</p>
+                        <p class="text-sm text-slate-500 leading-relaxed" data-i18n="exp-role-2">Orchestrated real-time websocket integrations, integrated complex dashboard visual pipelines, reducing API payload latencies by 35% across the board.</p>
+                    </div>
+
+                    <!-- Right Column (Empty on mobile, content on desktop) -->
+                    <div class="hidden md:flex flex-col items-start justify-center">
+                        <span class="text-sm font-mono text-accent-sky font-semibold">2022 - 2024</span>
+                        <span class="text-xs text-slate-500">DHAKA, BANGLADESH</span>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 group">
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform group-hover:scale-125 group-hover:bg-accent-sky hover:shadow-glow-sky"></div>
+                    
+                    <!-- Left Column -->
+                    <div class="hidden md:flex flex-col items-end justify-center text-right">
+                        <span class="text-sm font-mono text-accent-sky font-semibold">2020 - 2022</span>
+                        <span class="text-xs text-slate-500">DHAKA, BANGLADESH</span>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="bg-obsidian-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl transition-all duration-300 hover:border-accent-blue/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.12)] hover:-translate-y-1 transform">
+                        <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2020 - 2022</span>
+                        <h3 class="text-lg font-bold text-white">Associate Frontend Developer</h3>
+                        <p class="text-sm text-slate-400 font-medium mb-2">ByteScale Dynamics</p>
+                        <p class="text-sm text-slate-500 leading-relaxed" data-i18n="exp-role-3">Constructed highly modular responsive components for multiple SaaS clients utilizing tailored vanilla and CSS configurations.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-28 lg:py-32 border-t border-slate-900/60 scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Left Details Box with clean white typography & blue details -->
+                <div class="lg:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-mono text-accent-sky font-bold uppercase tracking-widest section-track" data-i18n="contact-subtitle">Get in Touch</span>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-1 mb-6" data-i18n="contact-title">Let's create something remarkable.</h2>
+                        <p class="text-slate-400 leading-relaxed mb-8" data-i18n="contact-desc">
+                            Have an idea, or searching for an experienced full-time engineer to step in and boost your production pipelines? Ping me right away. Let's arrange a call.
+                        </p>
+                    </div>
+
+                    <!-- Direct Reachout Cards -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-obsidian-900/40 border border-slate-900">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center shadow-glow-blue">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-500 uppercase tracking-wider block">EMAIL</span>
+                                <a href="mailto:hello@opsihab.tech" class="text-sm font-semibold text-white hover:text-accent-sky transition-colors">hello@opsihab.tech</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-obsidian-900/40 border border-slate-900">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center shadow-glow-blue">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-500 uppercase tracking-wider block">HQ LOCATION</span>
+                                <span class="text-sm font-semibold text-white" data-i18n="contact-loc">Dhaka, Bangladesh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Form with soft blue-indigo glowing inputs -->
+                <div class="lg:col-span-7 bg-obsidian-900 border border-slate-800/80 p-8 rounded-3xl relative overflow-hidden shadow-glass">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-[40px] pointer-events-none"></div>
+                    
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Name Box -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form-name">Full Name</label>
+                                <input type="text" required placeholder="E.g., Hasan" class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
+                            </div>
+                            <!-- Email Box -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form-email">Email Address</label>
+                                <input type="email" required placeholder="name@domain.com" class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form-subject">Subject</label>
+                            <input type="text" required placeholder="Project Discovery discussion..." class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form-msg">Message</label>
+                            <textarea required rows="4" placeholder="Brief details about your target objectives..." class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all custom-scrollbar"></textarea>
+                        </div>
+
+                        <!-- Submit Button styled with deep blue/white gradients -->
+                        <button type="submit" class="w-full py-4 rounded-xl bg-white text-obsidian-950 font-bold hover:bg-accent-blue hover:text-white hover:shadow-glow-blue transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <span data-i18n="form-btn">Send Secure Message</span>
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="border-t border-slate-900 bg-obsidian-950 relative z-10 py-12 mt-12">
+        <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2">
+                <!-- BACKUP OF PREVIOUS COMPACT SVG LOGO -->
+                <!--
+                <svg class="w-6 h-6 filter drop-shadow-[0_0_4px_rgba(56,189,248,0.4)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="url(#grad-blue-sky)" stroke-width="5" stroke-dasharray="240 20" stroke-linecap="round" class="opacity-80" />
+                    <path d="M62 38C62 32.5 57 29 50 29C42 29 38 33 38 38C38 45 46 45 46 51C46 56 42 60 36 60C30 60 26 55.5 26 55.5" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M62 38C62 44.5 54 44.5 54 51C54 56.5 59 60 66 60C72 60 74 55.5 74 55.5" stroke="url(#grad-blue-sky)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                -->
+
+                <!-- NEW CONCEPT SVG LOGO (Compact) -->
+                <svg class="w-6 h-6 filter drop-shadow-[0_0_4px_rgba(var(--accent-sky-rgb),0.4)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="g1-brackets-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="var(--color-accent-blue)" />
+                            <stop offset="100%" stop-color="var(--color-accent-sky)" />
+                        </linearGradient>
+                        <linearGradient id="g1-bolt-footer" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ffffff" />
+                            <stop offset="100%" stop-color="#bae6fd" />
+                        </linearGradient>
+                        <filter id="g1-glow-footer" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <path d="M35 15 L15 50 L35 85" stroke="url(#g1-brackets-footer)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M65 15 L85 50 L65 85" stroke="url(#g1-brackets-footer)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M60 22 L34 50 H 54 L 42 78 L 66 50 H 46 Z" fill="url(#g1-bolt-footer)" stroke="url(#g1-bolt-footer)" stroke-width="1.5" stroke-linejoin="round" filter="url(#g1-glow-footer)" />
+                </svg>
+                <span class="text-xs font-bold tracking-tight text-white uppercase font-space">OpSihab</span>
+            </div>
+
+            <p class="text-xs text-slate-500" data-i18n="footer-text">
+                &copy; 2026 Sihab Hossen (OpSihab). Built with premium styling guidelines. All Rights Reserved.
+            </p>
+
+            <div class="flex gap-4 text-slate-500">
+                <a href="https://github.com/aizen877" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
+                <a href="#" onclick="triggerDemoAlert(event)" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                <a href="#" onclick="triggerDemoAlert(event)" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Popup System -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none max-w-sm w-full">
+        <div class="bg-obsidian-900 border border-slate-800 rounded-2xl p-4 shadow-glass flex items-start gap-3">
+            <div id="toastIconBox" class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0">
+                <i id="toastIcon" data-lucide="check" class="w-5 h-5"></i>
+            </div>
+            <div>
+                <h4 id="toastTitle" class="text-sm font-bold text-white">Message Dispatched!</h4>
+                <p id="toastDesc" class="text-xs text-slate-400 mt-0.5">We'll review your project details shortly.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // ==========================================
+        // LOCALIZATION ENGINE (Bilingual System)
+        // ==========================================
+        let currentLang = 'en';
+
+        const TRANSLATIONS = {
+            'en': {
+                'nav-home': 'Home',
+                'nav-about': 'About',
+                'nav-skills': 'Skills',
+                'nav-projects': 'Projects',
+                'nav-experience': 'Experience',
+                'nav-contact': 'Contact',
+                'nav-cta': 'Hire Me',
+                'hero-badge': 'Open for Full-time Roles & Projects',
+                'hero-title-prefix': 'Crafting Elegant',
+                'hero-title-suffix': 'Web Experiences',
+                'hero-desc': 'Passionate software architect building fast, beautiful, and secure digital architectures using React, Node.js, and cloud ecosystems.',
+                'hero-btn-primary': 'Explore Works',
+                'hero-btn-secondary': 'Get in Touch',
+                'hero-tech-title': 'TRUSTED TECH STACK',
+                'scroll-down': 'Scroll Down',
+                'about-section-subtitle': 'Biography',
+                'about-section-title': 'An architect of modern digital structures.',
+                'about-card-role': 'Crafting complex dynamic architectures with bulletproof optimization standards.',
+                'about-bio': 'Over the past years, I have worked across the entire web stack, designing high-availability database architectures, seamless intuitive interfaces, and automated cloud workflows. I bridge the gap between complex engineering requirements and elite design aesthetics.',
+                'about-stat-1': 'Years Experience',
+                'about-stat-2': 'Global Deployments',
+                'about-stat-3': 'Success Rate',
+                'skills-subtitle': 'Expertise',
+                'skills-title': 'Core Technologies & Stack',
+                'projects-subtitle': 'Portfolio',
+                'projects-title': 'Handcrafted Masterpieces',
+                'proj-filter-all': 'All',
+                'proj-filter-front': 'Frontend',
+                'proj-filter-full': 'Fullstack',
+                'proj-filter-cloud': 'Cloud/API',
+                'project-desc-1': 'A secure cloud-native payment automation engine featuring multi-tier escrow validations and instantaneous notifications.',
+                'project-desc-2': 'Supercharged 3D graphical dashboard engineered to visualization massive metrics datasets asynchronously.',
+                'project-desc-3': 'Highly scalable OAuth2.1 federated authorization middleware handling 50k requests/sec latency budget.',
+                'proj-action-live': 'Live Preview',
+                'exp-subtitle': 'JOURNEY',
+                'exp-title': 'Professional Milestones',
+                'exp-role-1': 'Leading architectural development for cloud infrastructure migration plans, maintaining web interface optimization standards across 4 production platforms.',
+                'exp-role-2': 'Orchestrated real-time websocket integrations, integrated complex dashboard visual pipelines, reducing API payload latencies by 35% across the board.',
+                'exp-role-3': 'Constructed highly modular responsive components for multiple SaaS clients utilizing tailored vanilla and CSS configurations.',
+                'contact-subtitle': 'Get in Touch',
+                'contact-title': "Let's create something remarkable.",
+                'contact-desc': "Have an idea, or searching for an experienced full-time engineer to step in and boost your production pipelines? Ping me right away. Let's arrange a call.",
+                'contact-loc': 'Dhaka, Bangladesh',
+                'form-name': 'Full Name',
+                'form-email': 'Email Address',
+                'form-subject': 'Subject',
+                'form-msg': 'Message',
+                'form-btn': 'Send Secure Message',
+                'footer-text': '© 2026 Sihab Hossen (OpSihab). Built with premium styling guidelines. All Rights Reserved.'
+            },
+            'bn': {
+                'nav-home': 'হোম',
+                'nav-about': 'সম্পর্কে',
+                'nav-skills': 'দক্ষতা',
+                'nav-projects': 'প্রজেক্টস',
+                'nav-experience': 'অভিজ্ঞতা',
+                'nav-contact': 'যোগাযোগ',
+                'nav-cta': 'হায়ার করুন',
+                'hero-badge': 'ফুল-টাইম রোল এবং দূরবর্তী প্রজেক্টের জন্য উন্মুক্ত',
+                'hero-title-prefix': 'অভিজাত ডিজিটাল',
+                'hero-title-suffix': 'ওয়েব আর্কিটেকচার তৈরি করছি',
+                'hero-desc': 'আমি একজন প্যাশনেট ফুল-স্ট্যাক ইঞ্জিনিয়ার, যিনি রিয়্যাক্ট, নোড এবং ক্লাউড টেকনোলজি ব্যবহার করে সুপার-ফাস্ট, স্কেলেবল এবং অত্যন্ত সুরক্ষিত ওয়েব অ্যাপস তৈরি করেন।',
+                'hero-btn-primary': 'কাজগুলো দেখুন',
+                'hero-btn-secondary': 'আলোচনা শুরু করুন',
+                'hero-tech-title': 'বিশ্বস্ত প্রযুক্তিসমূহ',
+                'scroll-down': 'স্ক্রোল ডাউন',
+                'about-section-subtitle': 'জীবনী',
+                'about-section-title': 'আধুনিক ওয়েব স্ট্রাকচারের একজন কারিগর।',
+                'about-card-role': 'নিখুঁত অপ্টিমাইজেশন স্ট্যান্ডার্ড বজায় রেখে আধুনিক ডাইনামিক আর্কিটেকচার তৈরি করছি।',
+                'about-bio': 'বিগত বছরগুলোতে আমি সম্পূর্ণ ওয়ের স্ট্যাক জুড়েই কাজ করেছি। হাই-অ্যাভেলেবিলিটি ডেটাবেস ডিজাইন করা থেকে শুরু করে সিমলেস ইউজার ইন্টারফেস এবং ক্লাউড ওয়ার্কফ্লো অটোমেশনের কাজ অত্যন্ত পেশাদারিত্বের সাথে হ্যান্ডেল করছি। জটিল ইঞ্জিনিয়ারিং ডিমান্ড ও প্রিমিয়াম ডিজাইনের সমন্বয় সাধনই আমার বিশেষত্ব।',
+                'about-stat-1': 'বছরের অভিজ্ঞতা',
+                'about-stat-2': 'গ্লোবাল ডিপ্লয়মেন্ট',
+                'about-stat-3': 'সফলতার হার',
+                'skills-subtitle': 'দক্ষতাসমূহ',
+                'skills-title': 'প্রধান প্রযুক্তি ও টেক স্ট্যাক',
+                'projects-subtitle': 'পোর্টফোলিও',
+                'projects-title': 'আমার সেরা প্রজেক্টসমূহ',
+                'proj-filter-all': 'সবগুলো',
+                'proj-filter-front': 'ফ্রন্টএন্ড',
+                'proj-filter-full': 'ফুলস্ট্যাক',
+                'proj-filter-cloud': 'ক্লাউড/এপিআই',
+                'project-desc-1': 'একটি সুরক্ষিত ক্লাউড-নেটিভ পেমেন্ট অটোমেশন ইঞ্জিন যাতে রয়েছে মাল্টি-টিয়ার এসক্রো সিকিউরিটি ও ইনস্ট্যান্ট নোটিফিকেশন সিস্টেম।',
+                'project-desc-2': 'বিশাল পরিমাণের ডেটা সেট অ্যাসিনক্রোনাস উপায়ে ভিজ্যুয়ালাইজ করার জন্য একটি ত্রিমাত্রিক (3D) গ্রাফিকাল ড্যাশবোর্ড।',
+                'project-desc-3': 'প্রতি সেকেন্ডে ৫০ হাজার রিকোয়েস্ট লোড পরিচালনা করতে সক্ষম একটি হাইলি স্কেলেবল OAuth২.১ অথরাইজেশন মিডলওয়্যার।',
+                'proj-action-live': 'লাইভ প্রিভিউ',
+                'exp-subtitle': 'অভিজ্ঞতা',
+                'exp-title': 'পেশাদার ক্যারিয়ার জার্নি',
+                'exp-role-1': 'ক্লাউড ইনফ্রাস্ট্রাকচার মাইগ্রেশনের নেতৃত্ব প্রদান এবং ৪টি প্রোডাকশন প্ল্যাটফর্মের গতিশীলতা বজায় রাখার কাজ দক্ষতার সাথে করছি।',
+                'exp-role-2': 'রিয়েল-টাইম ওয়েবসকেট ইন্টিগ্রেশন এবং ড্যাশবোর্ডের গ্রাফিকাল ভিজ্যুয়ালাইজেশনের কাজ সফলভাবে শেষ করেছি, যা আমাদের এপিআই লোড টাইম ৩৫% কমিয়ে এনেছে।',
+                'exp-role-3': 'বিভিন্ন আন্তর্জাতিক ক্লায়েন্টদের জন্য কাস্টম কনফিগারেশন ব্যবহার করে অত্যন্ত রেসপন্সিভ এবং মডুলার উপাদানসমূহ তৈরি করেছি।',
+                'contact-subtitle': 'যোগাযোগ করুন',
+                'contact-title': 'আসুন চমৎকার কিছু তৈরি করি!',
+                'contact-desc': 'আপনার কোনো দারুণ প্রজেক্ট আইডিয়া আছে, নাকি প্রোডাকশন আরও উন্নত করতে কোনো দক্ষ ফুল-টাইম ওয়েব আর্কিটেক্ট খুঁজছেন? এখনই আমাকে মেসেজ দিন, চমৎকার কিছু হবে!',
+                'contact-loc': 'ঢাকা, বাংলাদেশ',
+                'form-name': 'পূর্ণ নাম',
+                'form-email': 'ইমেইল অ্যাড্রেস',
+                'form-subject': 'বিষয়',
+                'form-msg': 'আপনার বার্তা',
+                'form-btn': 'বার্তা পাঠান',
+                'footer-text': '© ২০২৬ শিহাব হোসেন (OpSihab)। সর্বস্বত্ব সংরক্ষিত।'
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'en') ? 'bn' : 'en';
+            applyLanguage(currentLang);
+        }
+
+        let currentTheme = 'emerald';
+        const THEME_COLORS = {
+            emerald: { primary: '#10b981', secondary: '#a3e635' },
+            purple: { primary: '#8b5cf6', secondary: '#ec4899' },
+            sunset: { primary: '#f97316', secondary: '#ef4444' },
+            blue: { primary: '#2563eb', secondary: '#00f5d4' }
+        };
+
+        function updateFavicon(theme) {
+            const colors = THEME_COLORS[theme] || THEME_COLORS.emerald;
+            const primary = colors.primary;
+            const secondary = colors.secondary;
+            
+            const svgContent = `<svg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'>
+<defs>
+<linearGradient id='g1-brackets' x1='0%' y1='0%' x2='100%' y2='100%'>
+<stop offset='0%' stop-color='${primary}' />
+<stop offset='100%' stop-color='${secondary}' />
+</linearGradient>
+<linearGradient id='g1-bolt' x1='0%' y1='100%' x2='100%' y2='0%'>
+<stop offset='0%' stop-color='#ffffff' />
+<stop offset='100%' stop-color='${secondary}' />
+</linearGradient>
+<filter id='g1-glow' x='-20%' y='-20%' width='140%' height='140%'>
+<feGaussianBlur stdDeviation='3' result='blur' />
+<feMerge>
+<feMergeNode in='blur'/>
+<feMergeNode in='SourceGraphic'/>
+</feMerge>
+</filter>
+</defs>
+<path d='M35 15 L15 50 L35 85' stroke='url(#g1-brackets)' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' />
+<path d='M65 15 L85 50 L65 85' stroke='url(#g1-brackets)' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' />
+<path d='M60 22 L34 50 H 54 L 42 78 L 66 50 H 46 Z' fill='url(#g1-bolt)' stroke='url(#g1-bolt)' stroke-width='1.5' stroke-linejoin='round' filter='url(#g1-glow)' />
+</svg>`;
+
+            const faviconLink = document.querySelector('link[rel="icon"]');
+            if (faviconLink) {
+                faviconLink.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgContent);
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btnLabel = document.getElementById('themeLabel');
+            if (currentTheme === 'emerald') {
+                html.setAttribute('data-theme', 'purple');
+                btnLabel.innerText = 'PURPLE';
+                currentTheme = 'purple';
+                updateFavicon('purple');
+                triggerToast('Theme Updated', 'Switched to Void Purple theme', 'success');
+            } else if (currentTheme === 'purple') {
+                html.setAttribute('data-theme', 'sunset');
+                btnLabel.innerText = 'SUNSET';
+                currentTheme = 'sunset';
+                updateFavicon('sunset');
+                triggerToast('Theme Updated', 'Switched to Sunset Orange theme', 'success');
+            } else if (currentTheme === 'sunset') {
+                html.setAttribute('data-theme', 'blue');
+                btnLabel.innerText = 'BLUE';
+                currentTheme = 'blue';
+                updateFavicon('blue');
+                triggerToast('Theme Updated', 'Switched to Ice Blue theme', 'success');
+            } else {
+                html.removeAttribute('data-theme');
+                btnLabel.innerText = 'EMERALD';
+                currentTheme = 'emerald';
+                updateFavicon('emerald');
+                triggerToast('Theme Updated', 'Switched to Cyberpunk Emerald theme', 'success');
+            }
+        }
+
+        function applyLanguage(lang) {
+            document.body.classList.add('pointer-events-none');
+            const transElements = document.querySelectorAll('[data-i18n]');
+            
+            if(lang === 'bn') {
+                document.body.classList.add('font-bengali');
+                document.body.classList.remove('font-sans');
+                document.getElementById('currentLangLabel').innerText = 'EN';
+            } else {
+                document.body.classList.add('font-sans');
+                document.body.classList.remove('font-bengali');
+                document.getElementById('currentLangLabel').innerText = 'BN';
+            }
+
+            transElements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (TRANSLATIONS[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.setAttribute('placeholder', TRANSLATIONS[lang][key]);
+                    } else {
+                        el.innerHTML = TRANSLATIONS[lang][key];
+                    }
+                }
+            });
+
+            document.body.classList.remove('pointer-events-none');
+        }
+
+
+        // ==========================================
+        // DYNAMIC MOBILE MENU CONTROLLER
+        // ==========================================
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenuBtn = document.getElementById('closeMobileMenuBtn');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            gsap.fromTo(mobileMenu, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+        });
+
+        function closeMenu() {
+            gsap.to(mobileMenu, { 
+                opacity: 0, 
+                duration: 0.3, 
+                onComplete: () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                }
+            });
+        }
+        closeMobileMenuBtn.addEventListener('click', closeMenu);
+
+
+        // ==========================================
+        // DYNAMIC PORTFOLIO PROJECT FILTER
+        // ==========================================
+        function filterProjects(category) {
+            const buttons = document.querySelectorAll('.project-tab-btn');
+            buttons.forEach(btn => {
+                if(btn.getAttribute('data-filter') === category) {
+                    btn.classList.add('bg-accent-blue', 'text-white');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    btn.classList.remove('bg-accent-blue', 'text-white');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            const cards = document.querySelectorAll('.project-card');
+            
+            gsap.to(cards, {
+                scale: 0.9,
+                opacity: 0,
+                duration: 0.2,
+                onComplete: () => {
+                    cards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                            gsap.to(card, { scale: 1, opacity: 1, duration: 0.3 });
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        }
+
+        // ==========================================
+        // INTERACTIVE LIVE IDE TERMINAL COMMAND RUNNER
+        // ==========================================
+        function runTerminalCmd(cmd) {
+            const terminal = document.getElementById('terminalText');
+            let output = '';
+
+            if (cmd === 'skills') {
+                output = `<span class="text-blue-400">&gt;</span> sihab.getSkills()<br>
+                          <span class="text-sky-300">RESULT:</span> [<span class="text-emerald-400">'NextJS'</span>, <span class="text-emerald-400">'Node'</span>, <span class="text-emerald-400">'TypeScript'</span>, <span class="text-emerald-400">'PostgreSQL'</span>, <span class="text-emerald-400">'AWS'</span>, <span class="text-emerald-400">'Docker'</span>]`;
+            } else if (cmd === 'experience') {
+                output = `<span class="text-blue-400">&gt;</span> sihab.getExperience()<br>
+                          <span class="text-sky-300">RESULT:</span> {<br>
+                          &nbsp;&nbsp;Lead_Architect: <span class="text-emerald-400">'Synthetix Labs'</span> (2024-Pres),<br>
+                          &nbsp;&nbsp;Senior_Engineer: <span class="text-emerald-400">'Quant Tech'</span> (2022-2024)<br>
+                          }`;
+            } else if (cmd === 'quote') {
+                output = `<span class="text-blue-400">&gt;</span> sihab.getPhilosophy()<br>
+                          <span class="text-sky-300">PHILOSOPHY:</span> <span class="text-slate-300">"Build digital systems that represent aesthetic perfection and robust engineering standard."</span>`;
+            } else if (cmd === 'clear') {
+                terminal.innerHTML = `<span class="text-slate-500">// Console buffer flushed. Run methods below.</span>`;
+                return;
+            }
+
+            terminal.innerHTML = output;
+        }
+
+
+        // ==========================================
+        // CUSTOM TOAST NOTIFICATION UTILITIES
+        // ==========================================
+        function triggerToast(title, desc, type = 'success') {
+            const toast = document.getElementById('toastNotification');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastDesc = document.getElementById('toastDesc');
+            const iconBox = document.getElementById('toastIconBox');
+            const icon = document.getElementById('toastIcon');
+
+            toastTitle.innerText = title;
+            toastDesc.innerText = desc;
+
+            if(type === 'success') {
+                iconBox.className = 'w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-blue-500/15 text-accent-sky shadow-glow-blue';
+                icon.setAttribute('data-lucide', 'check');
+            } else {
+                iconBox.className = 'w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-blue-500/10 text-blue-400';
+                icon.setAttribute('data-lucide', 'alert-triangle');
+            }
+            
+            lucide.createIcons();
+
+            toast.classList.remove('pointer-events-none');
+            gsap.to(toast, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.7)" });
+
+            setTimeout(() => {
+                gsap.to(toast, { y: 24, opacity: 0, duration: 0.3, onComplete: () => {
+                    toast.classList.add('pointer-events-none');
+                }});
+            }, 4000);
+        }
+
+        function triggerDemoAlert(e) {
+            e.preventDefault();
+            const heading = currentLang === 'en' ? 'Live System Simulation' : 'লাইভ ডেমো সিমুলেশন';
+            const detail = currentLang === 'en' ? 'This live preview has been generated dynamically with pristine sandbox states.' : 'এই লাইভ প্রিভিউটি আপনার স্যান্ডবক্স পরিবেশের জন্য ডাইনামিকভাবে জেনারেট করা হয়েছে।';
+            triggerToast(heading, detail, 'info');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('contactForm');
+            
+            const successTitle = currentLang === 'en' ? 'Message Transmitted!' : 'বার্তা সফলভাবে পাঠানো হয়েছে!';
+            const successDesc = currentLang === 'en' ? 'Our secure endpoint dispatched your request.' : 'আপনার সিকিউর রিকোয়েস্টটি সফলভাবে সিস্টেমে জমা হয়েছে।';
+            
+            triggerToast(successTitle, successDesc, 'success');
+            form.reset();
+        }
+
+
+        // ==========================================
+        // COSMIC DEEP BLUE CONSTELATION PARTICLE CANVAS
+        // ==========================================
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let particlesArray = [];
+        const mouse = {
+            x: null,
+            y: null,
+            radius: 140
+        };
+
+        // Floating Header Scroll Interaction
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.remove('top-4', 'py-3.5', 'w-[90%]', 'max-w-6xl');
+                header.classList.add('top-2', 'py-2.5', 'w-[85%]', 'max-w-5xl', 'shadow-2xl');
+            } else {
+                header.classList.remove('top-2', 'py-2.5', 'w-[85%]', 'max-w-5xl', 'shadow-2xl');
+                header.classList.add('top-4', 'py-3.5', 'w-[90%]', 'max-w-6xl');
+            }
+        });
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        const mouseGlow = document.getElementById('mouseGlow');
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            
+            // Move glow follower smoothly
+            mouseGlow.style.opacity = '1';
+            mouseGlow.style.left = e.clientX + 'px';
+            mouseGlow.style.top = e.clientY + 'px';
+        });
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+            mouseGlow.style.opacity = '0';
+        });
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.colorType = Math.random() > 0.5 ? 'blue' : 'sky';
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                const themeBlue = getComputedStyle(document.documentElement).getPropertyValue('--color-accent-blue').trim() || '#2563eb';
+                const themeSky = getComputedStyle(document.documentElement).getPropertyValue('--color-accent-sky').trim() || '#38bdf8';
+                ctx.fillStyle = this.colorType === 'blue' ? themeBlue + '66' : themeSky + '4d';
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+
+                // Interactive gravitation pull from mouse cursor
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < mouse.radius) {
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                        this.x += 1.5;
+                    }
+                    if (mouse.x > this.x && this.x > this.size * 10) {
+                        this.x -= 1.5;
+                    }
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                        this.y += 1.5;
+                    }
+                    if (mouse.y > this.y && this.y > this.size * 10) {
+                        this.y -= 1.5;
+                    }
+                }
+                
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 12000;
+            numberOfParticles = Math.min(numberOfParticles, 110);
+            
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 0.5;
+                let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 0.3) - 0.15;
+                let directionY = (Math.random() * 0.3) - 0.15;
+                
+                particlesArray.push(new Particle(x, y, directionX, directionY, size));
+            }
+        }
+
+
+        // Draw connecting networks dynamic line matrices
+        function connectParticles() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let dx = particlesArray[a].x - particlesArray[b].x;
+                    let dy = particlesArray[a].y - particlesArray[b].y;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+
+                    if (distance < 110) {
+                        opacityValue = 1 - (distance/110);
+                        // Network lines are set to super soft blue-slate glow representation
+                        ctx.strokeStyle = `rgba(30, 41, 59, ${opacityValue * 0.5})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connectParticles();
+            requestAnimationFrame(animateCanvas);
+        }
+
+
+        // ==========================================
+        // 3D TILT HOVER EFFECT FOR PREMIUM CARDS
+        // ==========================================
+        function init3DTilt() {
+            const cards = document.querySelectorAll('.premium-glass-card, .project-card, .skill-card');
+            
+            cards.forEach(card => {
+                card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out';
+                card.style.transformStyle = 'preserve-3d';
+                
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const width = rect.width;
+                    const height = rect.height;
+                    
+                    const xPct = (x / width) - 0.5;
+                    const yPct = (y / height) - 0.5;
+                    
+                    const tiltX = -yPct * 12; // tilt around X axis
+                    const tiltY = xPct * 12;  // tilt around Y axis
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-6px) scale3d(1.02, 1.02, 1.02)`;
+                    
+                    const sheenX = x / width * 100;
+                    const sheenY = y / height * 100;
+                    card.style.backgroundImage = `radial-gradient(circle at ${sheenX}% ${sheenY}%, rgba(255, 255, 255, 0.08) 0%, transparent 60%)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    card.style.backgroundImage = '';
+                    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+                });
+                
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'transform 0.1s ease-out';
+                });
+            });
+        }
+
+        // ==========================================
+        // INITIALIZATIONS & TIMELINE INTROS
+        // ==========================================
+        window.onload = function() {
+            lucide.createIcons();
+            updateFavicon(currentTheme);
+            init3DTilt();
+            
+            resizeCanvas();
+            animateCanvas();
+
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Hero Entry Intro Sequence
+            const heroTl = gsap.timeline();
+            heroTl.to('.gsap-hero-el', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.12,
+                ease: "power3.out"
+            });
+
+            // ScrollTrigger bindings for elegant content sliding and fading
+            gsap.from('#metrics', {
+                scrollTrigger: {
+                    trigger: '#metrics',
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 35,
+                duration: 0.9,
+                ease: "power2.out"
+            });
+
+            gsap.from('#about', {
+                scrollTrigger: {
+                    trigger: '#about',
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 35,
+                duration: 0.9,
+                ease: "power2.out"
+            });
+
+            gsap.from('#skills', {
+                scrollTrigger: {
+                    trigger: '#skills',
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 35,
+                duration: 0.9,
+                ease: "power2.out"
+            });
+
+            gsap.from('#projects', {
+                scrollTrigger: {
+                    trigger: '#projects',
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 35,
+                duration: 0.9,
+                ease: "power2.out"
+            });
+
+            gsap.from('#experience', {
+                scrollTrigger: {
+                    trigger: '#experience',
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 35,
+                duration: 0.9,
+                ease: "power2.out"
+            });
+        };
+    </script>
+</body>
+</html>
