@@ -10,37 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Compiled Static Tailwind CSS -->
+    <link rel="stylesheet" href="css/style.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        space: ['Plus Jakarta Sans', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        slateDark: {
-                            900: '#030712',
-                            950: '#010409',
-                            800: '#0f172a',
-                            700: '#1e293b',
-                        },
-                        accent: {
-                            blue: '#2563eb',
-                            sky: '#38bdf8',
-                            purple: '#8b5cf6',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     
     <style>
         .custom-scrollbar::-webkit-scrollbar {
@@ -57,21 +30,30 @@
             background: #2563eb;
         }
         .glow-active {
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
-            border-color: #38bdf8;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
+            border-color: rgba(56, 189, 248, 0.6) !important;
+            transform: translateY(-4px);
         }
         .glass-panel {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(15, 23, 42, 0.35) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-panel:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.4) !important;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
         }
     </style>
 </head>
 <body class="bg-slateDark-950 text-slate-200 font-sans custom-scrollbar min-h-screen relative overflow-x-hidden py-12 px-4 sm:px-6 lg:px-8">
 
     <!-- Ambient glowing backgrounds -->
-    <div class="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-blue/10 blur-[130px] pointer-events-none z-0"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-sky/10 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-blue/15 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-sky/15 blur-[130px] pointer-events-none z-0"></div>
     
     <!-- Grid Overlay -->
     <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.04]" 
@@ -91,10 +73,10 @@
         </header>
 
         <!-- Main Section: Grid of Logo Concepts -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mb-16">
             
             <!-- CONCEPT 1 -->
-            <div id="card-1" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between glow-active group" onclick="selectConcept(1)">
+            <div id="card-1" class="glass-panel p-4 sm:p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between glow-active group" onclick="selectConcept(1)">
                 <div class="w-full text-center">
                     <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 01</span>
                     <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
@@ -130,7 +112,7 @@
             </div>
 
             <!-- CONCEPT 2 -->
-            <div id="card-2" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(2)">
+            <div id="card-2" class="glass-panel p-4 sm:p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(2)">
                 <div class="w-full text-center">
                     <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 02</span>
                     <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
@@ -163,7 +145,7 @@
             </div>
 
             <!-- CONCEPT 3 -->
-            <div id="card-3" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(3)">
+            <div id="card-3" class="glass-panel p-4 sm:p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(3)">
                 <div class="w-full text-center">
                     <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 03</span>
                     <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
@@ -201,7 +183,7 @@
             </div>
 
             <!-- CONCEPT 4 -->
-            <div id="card-4" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(4)">
+            <div id="card-4" class="glass-panel p-4 sm:p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(4)">
                 <div class="w-full text-center">
                     <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 04</span>
                     <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
@@ -237,7 +219,7 @@
             </div>
 
             <!-- CONCEPT 5 -->
-            <div id="card-5" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(5)">
+            <div id="card-5" class="glass-panel p-4 sm:p-6 rounded-2xl cursor-pointer hover:border-accent-sky/40 transition-all duration-300 flex flex-col items-center justify-between border-slateDark-700 group" onclick="selectConcept(5)">
                 <div class="w-full text-center">
                     <span class="text-xs font-mono text-accent-sky font-bold block mb-4 uppercase tracking-widest">Concept 05</span>
                     <div class="w-28 h-28 mx-auto mb-6 bg-slateDark-900/50 p-4 rounded-xl border border-slateDark-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
@@ -280,7 +262,7 @@
         </div>
 
         <!-- Live Website Preview Section -->
-        <section class="glass-panel p-8 rounded-3xl mb-12 border-slateDark-700">
+        <section class="glass-panel p-5 sm:p-8 rounded-3xl mb-12 border-slateDark-700">
             <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 pb-6 border-b border-slateDark-700">
                 <div>
                     <h2 class="text-2xl font-bold text-white font-space">Live Website Portfolio Mockup</h2>
@@ -296,7 +278,7 @@
             <!-- Mock Workspace -->
             <div class="rounded-2xl bg-[#010409] p-6 border border-slateDark-800 relative min-h-[400px] overflow-hidden shadow-2xl">
                 <!-- Grid background simulation inside mockup -->
-                <div id="mock-grid" class="absolute inset-0 pointer-events-none opacity-[0.08]" 
+                <div id="mock-grid" class="absolute inset-0 pointer-events-none opacity-[0.04]" 
                      style="background-image: linear-gradient(to right, #38bdf8 1px, transparent 1px), linear-gradient(to bottom, #38bdf8 1px, transparent 1px); background-size: 50px 50px;"></div>
                 
                 <!-- Glow shapes inside mockup -->
@@ -344,7 +326,7 @@
                 </div>
 
                 <!-- FAVICON PREVIEW SIMULATOR -->
-                <div class="absolute bottom-4 left-6 z-10 glass-panel p-3 rounded-xl border-slateDark-700 flex items-center gap-3 shadow-lg">
+                <div class="mt-8 sm:absolute sm:bottom-4 sm:left-6 z-10 glass-panel p-3 rounded-xl border-slateDark-700 flex items-center gap-3 shadow-lg justify-center sm:justify-start w-fit mx-auto sm:mx-0">
                     <span class="text-[10px] uppercase font-mono tracking-wider text-slate-400 block">Tab Favicon Preview:</span>
                     <div class="bg-slateDark-900 px-3 py-1.5 rounded-lg border border-slateDark-800 flex items-center gap-2">
                         <div id="mock-favicon" class="w-4 h-4">

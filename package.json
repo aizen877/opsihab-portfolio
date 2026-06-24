@@ -1,0 +1,26 @@
+{
+  "name": "new-folder-(4)",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "tailwindcss -i input.css -o css/style.css --minify",
+    "watch": "tailwindcss -i input.css -o css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aizen877/opsihab-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aizen877/opsihab-portfolio/issues"
+  },
+  "homepage": "https://github.com/aizen877/opsihab-portfolio#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.1",
+    "tailwindcss": "^4.3.1"
+  }
+}

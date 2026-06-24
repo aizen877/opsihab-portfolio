@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS for modern styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Compiled Static Tailwind CSS -->
+    <link rel="stylesheet" href="css/style.css">
     
     <!-- GSAP for advanced animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -21,41 +21,6 @@
     
     <!-- Lucide Icons for clean, lightweight SVG icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Tailwind Custom Configuration for Deep Blue & White premium theme -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        bengali: ['Hind Siliguri', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                        space: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        obsidian: {
-                            50: '#f0f4f8',
-                            100: '#dbeafe',
-                            900: '#030712',
-                            950: '#010409',
-                        },
-                        accent: {
-                            blue: 'rgb(var(--accent-blue-rgb) / <alpha-value>)',
-                            sky: 'rgb(var(--accent-sky-rgb) / <alpha-value>)',
-                            white: '#ffffff',
-                            slate: '#94a3b8',
-                        }
-                    },
-                    boxShadow: {
-                        'glow-blue': '0 0 25px rgba(var(--accent-blue-rgb), 0.25)',
-                        'glow-sky': '0 0 25px rgba(var(--accent-sky-rgb), 0.25)',
-                        'glass': '0 8px 32px 0 rgba(1, 4, 9, 0.7)',
-                    }
-                }
-            }
-        }
-    </script>
 
     <!-- Custom Style Overrides -->
     <style>
@@ -101,6 +66,16 @@
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #2563eb;
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
         
         /* Smooth language transition wrapper */
@@ -164,17 +139,19 @@
         
         /* Glassmorphism utility */
         .glass-panel {
-            background: rgba(3, 7, 18, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(148, 163, 184, 0.08);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.35) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
         }
 
         .glass-header {
-            background: rgba(1, 4, 9, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(1, 4, 9, 0.45) !important;
+            backdrop-filter: blur(16px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
         }
 
         /* Subtle grid background pattern with radial mask */
@@ -188,8 +165,8 @@
             z-index: 1; /* Set to 1 to ensure it is above background colors but behind content */
             background-size: 50px 50px;
             background-image: 
-                linear-gradient(to right, rgba(var(--accent-sky-rgb), 0.12) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(var(--accent-sky-rgb), 0.12) 1px, transparent 1px);
+                linear-gradient(to right, rgba(var(--accent-sky-rgb), 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(var(--accent-sky-rgb), 0.05) 1px, transparent 1px);
             -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
             mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
         }
@@ -201,23 +178,30 @@
 
         /* Premium Glass Effects */
         .premium-glass-card {
-            background: rgba(3, 7, 18, 0.45) !important;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.3) !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            backdrop-filter: blur(20px) saturate(140%) !important;
-            -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.12) !important;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .premium-glass-card:hover {
+            border-color: rgba(var(--accent-sky-rgb), 0.3) !important;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(var(--accent-blue-rgb), 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
         }
 
         .premium-glass {
-            background: rgba(255, 255, 255, 0.03) !important;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(255, 255, 255, 0.02) !important;
             backdrop-filter: blur(16px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
         }
 
         .premium-glass-overlay {
-            background: rgba(3, 7, 18, 0.35) !important;
-            backdrop-filter: blur(16px) saturate(140%) !important;
-            -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0) 100%) !important;
+            backdrop-filter: blur(16px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
         }
 
         /* Dynamic Theme helpers for active badge */
@@ -234,6 +218,10 @@
 </head>
 <body class="bg-obsidian-950 text-slate-200 font-sans overflow-x-hidden selection:bg-accent-blue/30 custom-scrollbar relative">
 
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-accent-blue-solid to-accent-sky-solid z-[100] transition-all duration-100" style="width: 0%;"></div>
+
     <!-- Interactive Background Canvas -->
     <canvas id="particleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
     
@@ -248,7 +236,7 @@
     <div class="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-sky/8 blur-[130px] pointer-events-none z-0"></div>
 
     <!-- Glassmorphism Floating Header -->
-    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 glass-header rounded-full px-6 py-3.5 flex items-center justify-between transition-all duration-300 shadow-glass">
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 glass-header rounded-full px-4 py-2.5 sm:px-6 sm:py-3.5 flex items-center justify-between transition-all duration-300 shadow-glass">
         <!-- Logo with neon blue dot -->
         <a href="#home" class="flex items-center gap-2 group">
             <!-- BACKUP OF PREVIOUS SVG LOGO -->
@@ -305,13 +293,13 @@
         <!-- Right Action Tools -->
         <div class="flex items-center gap-3">
             <!-- Theme switcher (Option 2) -->
-            <button id="themeToggleBtn" onclick="toggleTheme()" class="px-3.5 py-1.5 text-xs font-semibold rounded-full border border-slate-800 bg-obsidian-900/80 text-slate-300 hover:border-accent-sky hover:text-white hover:shadow-glow-sky transition-all flex items-center gap-1.5">
+            <button id="themeToggleBtn" onclick="toggleTheme()" class="px-2 py-1.5 sm:px-3.5 py-1.5 text-xs font-semibold rounded-full border border-slate-800 bg-obsidian-900/80 text-slate-300 hover:border-accent-sky hover:text-white hover:shadow-glow-sky transition-all flex items-center gap-1.5">
                 <i data-lucide="palette" class="w-3.5 h-3.5"></i>
-                <span id="themeLabel" class="uppercase">Emerald</span>
+                <span id="themeLabel" class="hidden sm:inline uppercase">Emerald</span>
             </button>
 
             <!-- Language Switcher Button -->
-            <button id="langToggleBtn" onclick="toggleLanguage()" class="px-3.5 py-1.5 text-xs font-semibold rounded-full border border-slate-800 bg-obsidian-900/80 text-slate-300 hover:border-accent-sky hover:text-white hover:shadow-glow-sky transition-all flex items-center gap-1.5">
+            <button id="langToggleBtn" onclick="toggleLanguage()" class="px-2.5 py-1.5 sm:px-3.5 py-1.5 text-xs font-semibold rounded-full border border-slate-800 bg-obsidian-900/80 text-slate-300 hover:border-accent-sky hover:text-white hover:shadow-glow-sky transition-all flex items-center gap-1.5">
                 <i data-lucide="languages" class="w-3.5 h-3.5"></i>
                 <span id="currentLangLabel">BN</span>
             </button>
@@ -346,7 +334,7 @@
     <main class="relative z-10 max-w-6xl mx-auto px-4 md:px-8">
 
         <!-- Hero Section (Centered & Premium) -->
-        <section id="home" class="min-h-screen h-screen flex flex-col justify-center items-center text-center pt-36 md:pt-48 pb-12 relative">
+        <section id="home" class="min-h-screen lg:h-screen flex flex-col justify-center items-center text-center pt-28 md:pt-36 pb-12 relative">
 
             <!-- Glowing Sapphire Aura behind Content -->
             <div class="absolute top-1/2 left-1/2 -ml-[250px] -mt-[250px] w-[500px] h-[500px] bg-gradient-to-tr from-accent-blue/20 to-accent-sky/10 blur-[120px] rounded-full pointer-events-none animate-hero-glow"></div>
@@ -373,14 +361,14 @@
             </p>
 
             <!-- Centered Call To Actions (Deep Blue Accent & Sleek Borders) -->
-            <div class="gsap-hero-el opacity-0 translate-y-4 flex flex-col sm:flex-row items-center gap-4 mb-16 w-full sm:w-auto">
+            <div class="gsap-hero-el opacity-0 translate-y-4 flex flex-row items-center justify-center gap-3 sm:gap-4 mb-16 w-full">
                 <!-- Primary CTA -->
-                <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-white to-sky-100 text-obsidian-950 font-bold hover:bg-gradient-to-r hover:from-white hover:to-accent-sky hover:shadow-glow-sky transition-all duration-300 text-center transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                <a href="#projects" class="px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-white to-sky-100 text-obsidian-950 font-bold hover:bg-gradient-to-r hover:from-white hover:to-accent-sky-solid hover:shadow-glow-sky transition-all duration-300 text-center transform hover:-translate-y-0.5 flex items-center justify-center gap-1.5">
                     <span data-i18n="hero-btn-primary">Explore Works</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
                 </a>
                 <!-- Secondary CTA -->
-                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full border border-slate-800 bg-obsidian-950/40 hover:bg-obsidian-900/80 hover:border-accent-blue text-white font-semibold transition-all duration-300 text-center flex items-center justify-center gap-2">
+                <a href="#contact" class="px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm border border-slate-800 bg-obsidian-950/40 hover:bg-obsidian-900/80 hover:border-accent-blue text-white font-semibold transition-all duration-300 text-center flex items-center justify-center gap-1.5">
                     <span data-i18n="hero-btn-secondary">Get in Touch</span>
                 </a>
             </div>
@@ -400,9 +388,9 @@
         <section id="metrics" class="py-12 border-t border-slate-900/60 scroll-mt-24">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1: 50K+ (Frosted Glass & Glowing Background) -->
-                <div class="premium-glass-card relative rounded-3xl p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
-                    <!-- Glowing gradient behind glass overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue to-accent-sky opacity-80 z-0 pointer-events-none"></div>
+                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[240px] sm:min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                    <!-- Glowing background circle -->
+                    <div class="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-gradient-to-tr from-accent-blue-solid to-accent-sky-solid opacity-25 blur-xl z-0 pointer-events-none"></div>
                     <!-- Frosted glass overlay -->
                     <div class="premium-glass-overlay absolute inset-0 z-10"></div>
                     
@@ -420,28 +408,35 @@
                 </div>
 
                 <!-- Card 2: 10x ROI (Frosted Glass & Floating Icon) -->
-                <div class="premium-glass-card relative rounded-3xl p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
-                    <div class="relative w-full h-16 mb-2 flex items-center">
-                        <!-- Theme-colored Glowing Folder Icon -->
-                        <div class="w-14 h-10 bg-accent-blue/20 rounded-xl relative border border-accent-blue/30 shadow-glow-blue flex items-center justify-center">
-                            <i data-lucide="folder" class="w-6 h-6 text-accent-sky"></i>
+                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[240px] sm:min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                    <!-- Glowing gradient behind glass overlay -->
+                    <div class="absolute -top-10 -left-10 w-36 h-36 rounded-full bg-gradient-to-br from-accent-blue-solid to-accent-sky-solid opacity-20 z-0 pointer-events-none blur-xl"></div>
+                    <!-- Frosted glass overlay -->
+                    <div class="premium-glass-overlay absolute inset-0 z-10"></div>
+                    
+                    <div class="relative z-20 flex flex-col justify-between h-full">
+                        <div class="relative w-full h-16 mb-2 flex items-center">
+                            <!-- Theme-colored Glowing Folder Icon -->
+                            <div class="w-14 h-10 bg-accent-blue/20 rounded-xl relative border border-accent-blue/30 shadow-glow-blue flex items-center justify-center">
+                                <i data-lucide="folder" class="w-6 h-6 text-accent-sky"></i>
+                            </div>
+                            <!-- Frosted Glass Overlapping Play Card -->
+                            <div class="premium-glass absolute left-8 top-2 w-16 h-12 rounded-xl flex items-center justify-center shadow-lg transform rotate-6 hover:rotate-0 transition-transform duration-300">
+                                <i data-lucide="play" class="w-5 h-5 text-white fill-white/20 animate-pulse"></i>
+                            </div>
                         </div>
-                        <!-- Frosted Glass Overlapping Play Card -->
-                        <div class="premium-glass absolute left-8 top-2 w-16 h-12 rounded-xl flex items-center justify-center shadow-lg transform rotate-6 hover:rotate-0 transition-transform duration-300">
-                            <i data-lucide="play" class="w-5 h-5 text-white fill-white/20 animate-pulse"></i>
+                        <div class="mt-4">
+                            <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">10x ROI</span>
+                            <h4 class="text-xl font-bold text-white">System Optimization</h4>
+                            <p class="text-sm text-slate-300 mt-1">High-demand server configurations boosting database response times.</p>
                         </div>
-                    </div>
-                    <div class="mt-4">
-                        <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">10x ROI</span>
-                        <h4 class="text-xl font-bold text-white">System Optimization</h4>
-                        <p class="text-sm text-slate-400 mt-1">High-demand server configurations boosting database response times.</p>
                     </div>
                 </div>
 
                 <!-- Card 3: 99.9% (Glowing Circle Behind Frosted Glass) -->
-                <div class="premium-glass-card relative rounded-3xl p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[240px] sm:min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
                     <!-- Glowing background circle -->
-                    <div class="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-gradient-to-tr from-accent-blue to-accent-sky opacity-75 blur-xl z-0 pointer-events-none"></div>
+                    <div class="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-gradient-to-tr from-accent-blue-solid to-accent-sky-solid opacity-25 blur-xl z-0 pointer-events-none"></div>
                     <!-- Frosted Glass blur backdrop overlay -->
                     <div class="premium-glass-overlay absolute inset-0 z-10"></div>
                     
@@ -449,7 +444,7 @@
                         <div>
                             <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">99.9%</span>
                             <h4 class="text-xl font-bold text-white">Uptime Guarantee</h4>
-                            <p class="text-sm text-slate-400 mt-1">Highly redundant microservice architectures deployed on AWS cluster systems.</p>
+                            <p class="text-sm text-slate-300 mt-1">Highly redundant microservice architectures deployed on AWS cluster systems.</p>
                         </div>
                         <div class="mt-6">
                             <span class="text-xs font-mono text-accent-sky font-semibold uppercase tracking-wider">Service Level Agreement</span>
@@ -465,12 +460,12 @@
                 
                 <!-- Left Column: Visual Hologram Card / Image with Blue Neon Lights -->
                 <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-72 h-[410px] group">
+                    <div class="relative w-full max-w-[285px] sm:max-w-[320px] h-[380px] sm:h-[420px] group">
                         <!-- Neon Blue Frame Backdrop Glow -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue to-accent-sky rounded-3xl blur-sm opacity-25 group-hover:opacity-40 transition-all duration-500"></div>
                         
                         <!-- Main Card -->
-                        <div class="relative w-full h-full bg-obsidian-900/90 border border-slate-800/80 rounded-3xl overflow-hidden flex flex-col justify-end p-6 z-10 shadow-glass">
+                        <div class="relative w-full h-full premium-glass-card rounded-3xl overflow-hidden flex flex-col justify-end p-6 z-10 shadow-glass">
                             <!-- Background Image with mix-blend hover effect -->
                             <img src="https://anondrop.net/1518672983357522010/61fcfc5531a80ab6bc46f4e997c9714f.jpg" class="absolute inset-0 w-full h-full object-cover opacity-65 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500 mix-blend-luminosity group-hover:mix-blend-normal pointer-events-none" alt="Sihab Hossen" />
                             <!-- Gradient Overlay for readability -->
@@ -496,22 +491,61 @@
                     </p>
 
                     <!-- Core Expertise & Metrics (Blue Highlighted) -->
-                    <div class="grid grid-cols-3 gap-4 border-y border-slate-900 py-6 my-2">
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 border-y border-slate-900 py-6 my-2">
                         <div>
-                            <span class="block text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">5+</span>
-                            <span class="text-xs text-slate-500 uppercase tracking-wider" data-i18n="about-stat-1">Years Experience</span>
+                            <span class="block text-2xl sm:text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">5+</span>
+                            <span class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider leading-tight block mt-1" data-i18n="about-stat-1">Years Experience</span>
                         </div>
                         <div>
-                            <span class="block text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">50+</span>
-                            <span class="text-xs text-slate-500 uppercase tracking-wider" data-i18n="about-stat-2">Global Deployments</span>
+                            <span class="block text-2xl sm:text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">50+</span>
+                            <span class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider leading-tight block mt-1" data-i18n="about-stat-2">Global Deployments</span>
                         </div>
                         <div>
-                            <span class="block text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">99%</span>
-                            <span class="text-xs text-slate-500 uppercase tracking-wider" data-i18n="about-stat-3">Success Rate</span>
+                            <span class="block text-2xl sm:text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">99%</span>
+                            <span class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider leading-tight block mt-1" data-i18n="about-stat-3">Success Rate</span>
                         </div>
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Terminal Section -->
+        <section id="terminal-section" class="py-16 border-t border-slate-900/60 scroll-mt-24 relative overflow-hidden">
+            <!-- Glowing background accent behind terminal glass window -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-accent-blue/10 blur-[120px] pointer-events-none z-0"></div>
+
+            <div class="max-w-3xl mx-auto relative z-10">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-mono text-accent-sky font-bold uppercase tracking-widest section-track">Interactive Sandbox</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-1">Live Developer Console</h2>
+                </div>
+                
+                <!-- Terminal Window -->
+                <div class="premium-glass-card rounded-2xl overflow-hidden shadow-2xl flex flex-col relative">
+                    <!-- Window Header -->
+                    <div class="bg-white/[0.02] px-4 py-3 border-b border-white/5 flex items-center justify-between backdrop-blur-md">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                        </div>
+                        <span class="text-xs font-mono text-slate-500 select-none">opsihab@tech:~ (zsh)</span>
+                        <div class="w-12"></div>
+                    </div>
+                    <!-- Terminal Content -->
+                    <div class="bg-transparent p-5 font-mono text-sm min-h-[220px] text-slate-300 overflow-y-auto max-h-[300px] custom-scrollbar text-left flex flex-col justify-end">
+                        <div id="terminalText" class="space-y-2">
+                            <span class="text-slate-500">// Welcome to OpSihab Terminal. Type command to query developer profile.</span><br>
+                            <span class="text-slate-400">Available commands:</span> <span class="text-accent-sky-solid font-semibold">skills</span>, <span class="text-accent-sky-solid font-semibold">experience</span>, <span class="text-accent-sky-solid font-semibold">quote</span>, <span class="text-accent-sky-solid font-semibold">help</span>, <span class="text-accent-sky-solid font-semibold">clear</span>
+                        </div>
+                        <!-- Command Line Input -->
+                        <div class="flex items-center gap-2 mt-4 border-t border-white/5 pt-3">
+                            <span class="text-accent-blue-solid font-bold shrink-0">opsihab$</span>
+                            <input type="text" id="terminalInput" placeholder="type 'help'..." class="w-full bg-transparent border-none outline-none text-white focus:ring-0 p-0 font-mono text-sm" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -524,113 +558,137 @@
             </div>
 
             <!-- Skills Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6">
                 <!-- Skill Item 1: React -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 97, 218, 251;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:react.svg" class="w-7 h-7" alt="React.js" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 97, 218, 251;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:react.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="React.js" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">React.js</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Frontend</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">React.js</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Frontend</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 2: Next.js -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 255, 255, 255;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:nextjs-icon.svg" class="w-7 h-7 invert" alt="Next.js" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 255, 255, 255;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:nextjs-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7 invert" alt="Next.js" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">Next.js</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Fullstack</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">Next.js</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Fullstack</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 3: Node.js -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 51, 153, 51;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:nodejs-icon.svg" class="w-7 h-7" alt="Node.js" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 51, 153, 51;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:nodejs-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Node.js" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">Node.js</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Backend</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">Node.js</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Backend</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 4: TypeScript -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 49, 120, 198;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:typescript-icon.svg" class="w-7 h-7" alt="TypeScript" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 49, 120, 198;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:typescript-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="TypeScript" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">TypeScript</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Language</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">TypeScript</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Language</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 5: PostgreSQL -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 65, 105, 225;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:postgresql.svg" class="w-7 h-7" alt="PostgreSQL" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 65, 105, 225;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:postgresql.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="PostgreSQL" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">PostgreSQL</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Database</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">PostgreSQL</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Database</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 6: AWS -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 255, 153, 0;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:aws.svg" class="w-8 h-8 animate-pulse" alt="AWS" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 255, 153, 0;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:aws.svg" class="w-6 h-6 sm:w-8 sm:h-8 animate-pulse" alt="AWS" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">AWS</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Cloud</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">AWS</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Cloud</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 7: Docker -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 36, 150, 237;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:docker-icon.svg" class="w-7 h-7" alt="Docker" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 36, 150, 237;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:docker-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Docker" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">Docker</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">DevOps</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">Docker</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">DevOps</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 8: Python -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 55, 118, 171;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:python.svg" class="w-7 h-7" alt="Python" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 55, 118, 171;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:python.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Python" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">Python</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Language</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">Python</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Language</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 9: Tailwind CSS -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 56, 189, 248;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:tailwindcss-icon.svg" class="w-7 h-7" alt="Tailwind CSS" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 56, 189, 248;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:tailwindcss-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Tailwind CSS" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">Tailwind CSS</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Styling</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">Tailwind CSS</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Styling</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 10: Git / Github -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 240, 80, 50;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:git-icon.svg" class="w-7 h-7" alt="Git & GitHub" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 240, 80, 50;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:git-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Git & GitHub" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">Git & GitHub</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Version Control</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">Git & GitHub</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Version Control</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 11: MongoDB -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 71, 162, 72;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:mongodb-icon.svg" class="w-7 h-7" alt="MongoDB" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 71, 162, 72;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:mongodb-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="MongoDB" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">MongoDB</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">Database</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">MongoDB</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Database</span>
+                    </div>
                 </div>
 
                 <!-- Skill Item 12: GraphQL -->
-                <div class="skill-card group relative premium-glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center cursor-default" style="--hover-glow-color: 225, 0, 152;">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-md">
-                        <img src="https://api.iconify.design/logos:graphql.svg" class="w-7 h-7" alt="GraphQL" />
+                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 225, 0, 152;">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
+                        <img src="https://api.iconify.design/logos:graphql.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="GraphQL" />
                     </div>
-                    <span class="text-sm font-semibold text-white transition-colors">GraphQL</span>
-                    <span class="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-wider">API Gateways</span>
+                    <div class="flex flex-col text-left sm:text-center">
+                        <span class="text-sm font-semibold text-white transition-colors">GraphQL</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">API Gateways</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -645,7 +703,7 @@
                     <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1" data-i18n="projects-title">Handcrafted Masterpieces</h2>
                 </div>
                 <!-- Interactive Tabs/Filters (Crisp dark design with blue text highlights) -->
-                <div class="flex flex-wrap gap-2 text-sm bg-obsidian-900/60 border border-slate-800/80 p-1.5 rounded-full self-start">
+                <div class="flex overflow-x-auto no-scrollbar gap-2 text-sm bg-obsidian-900/60 border border-slate-800/80 p-1.5 rounded-full self-start max-w-full whitespace-nowrap">
                     <button onclick="filterProjects('all')" class="project-tab-btn px-4 py-1.5 rounded-full font-medium transition-all duration-200 bg-accent-blue text-white" data-filter="all" data-i18n="proj-filter-all">All</button>
                     <button onclick="filterProjects('frontend')" class="project-tab-btn px-4 py-1.5 rounded-full font-medium transition-all duration-200 text-slate-400 hover:text-white" data-filter="frontend" data-i18n="proj-filter-front">Frontend</button>
                     <button onclick="filterProjects('fullstack')" class="project-tab-btn px-4 py-1.5 rounded-full font-medium transition-all duration-200 text-slate-400 hover:text-white" data-filter="fullstack" data-i18n="proj-filter-full">Fullstack</button>
@@ -774,7 +832,7 @@
                     </div>
 
                     <!-- Right Column (Content) -->
-                    <div class="bg-obsidian-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl transition-all duration-300 hover:border-accent-blue/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.12)] hover:-translate-y-1 transform">
+                    <div class="premium-glass-card p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 transform">
                         <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2024 - Present</span>
                         <h3 class="text-lg font-bold text-white">Lead Fullstack Architect</h3>
                         <p class="text-sm text-slate-400 font-medium mb-2">Synthetix Labs Inc.</p>
@@ -787,7 +845,7 @@
                     <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform group-hover:scale-125 group-hover:bg-accent-sky hover:shadow-glow-sky"></div>
                     
                     <!-- Left Column (Content on desktop) -->
-                    <div class="bg-obsidian-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl transition-all duration-300 hover:border-accent-blue/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.12)] hover:-translate-y-1 transform md:text-right">
+                    <div class="premium-glass-card p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 transform md:text-right">
                         <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2022 - 2024</span>
                         <h3 class="text-lg font-bold text-white">Senior Software Engineer</h3>
                         <p class="text-sm text-slate-400 font-medium mb-2">Quant Technologies</p>
@@ -812,7 +870,7 @@
                     </div>
 
                     <!-- Right Column -->
-                    <div class="bg-obsidian-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl transition-all duration-300 hover:border-accent-blue/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.12)] hover:-translate-y-1 transform">
+                    <div class="premium-glass-card p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 transform">
                         <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2020 - 2022</span>
                         <h3 class="text-lg font-bold text-white">Associate Frontend Developer</h3>
                         <p class="text-sm text-slate-400 font-medium mb-2">ByteScale Dynamics</p>
@@ -839,7 +897,7 @@
 
                     <!-- Direct Reachout Cards -->
                     <div class="flex flex-col gap-4">
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-obsidian-900/40 border border-slate-900">
+                        <div class="premium-glass p-4 rounded-xl flex items-center gap-4">
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center shadow-glow-blue">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
@@ -849,7 +907,7 @@
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-obsidian-900/40 border border-slate-900">
+                        <div class="premium-glass p-4 rounded-xl flex items-center gap-4">
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center shadow-glow-blue">
                                 <i data-lucide="map-pin" class="w-5 h-5"></i>
                             </div>
@@ -862,10 +920,13 @@
                 </div>
 
                 <!-- Right Interactive Form with soft blue-indigo glowing inputs -->
-                <div class="lg:col-span-7 bg-obsidian-900 border border-slate-800/80 p-8 rounded-3xl relative overflow-hidden shadow-glass">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-[40px] pointer-events-none"></div>
+                <div class="lg:col-span-7 premium-glass-card p-5 sm:p-8 rounded-3xl relative overflow-hidden shadow-glass">
+                    <!-- Glowing accent behind glass -->
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-accent-blue/15 rounded-full blur-[60px] pointer-events-none z-0"></div>
+                    <!-- Frosted glass overlay -->
+                    <div class="premium-glass-overlay absolute inset-0 z-10"></div>
                     
-                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-10">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-20">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Name Box -->
                             <div>
@@ -968,6 +1029,20 @@
 
 
     <script>
+        // ==========================================
+        // DYNAMIC WEB UTILITIES: SCROLL PROGRESS
+        // ==========================================
+
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (scrollProgress) {
+                const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+                if (scrollTotal > 0) {
+                    const scrolled = (window.scrollY / scrollTotal) * 100;
+                    scrollProgress.style.width = scrolled + '%';
+                }
+            }
+        });
         // ==========================================
         // LOCALIZATION ENGINE (Bilingual System)
         // ==========================================
@@ -1196,6 +1271,67 @@
             mobileMenu.classList.add('flex');
             gsap.fromTo(mobileMenu, { opacity: 0 }, { opacity: 1, duration: 0.3 });
         });
+
+        // ==========================================
+        // INTERACTIVE LIVE IDE TERMINAL COMMAND RUNNER
+        // ==========================================
+        function initTerminal() {
+            const terminalInput = document.getElementById('terminalInput');
+            const terminalText = document.getElementById('terminalText');
+
+            if (terminalInput && terminalText) {
+                terminalInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        const cmd = this.value.trim().toLowerCase();
+                        this.value = '';
+                        
+                        if (!cmd) return;
+                        
+                        let output = '';
+                        if (cmd === 'help') {
+                            output = `<div><span class="text-blue-400">&gt;</span> help<br>
+                                      <span class="text-slate-400">Available commands:</span><br>
+                                      &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">skills</span> - show key tech stack<br>
+                                      &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">experience</span> - professional journey milestones<br>
+                                      &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">quote</span> - developer engineering philosophy<br>
+                                      &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">clear</span> - reset screen console buffer</div>`;
+                        } else if (cmd === 'skills') {
+                            output = `<div><span class="text-blue-400">&gt;</span> sihab.getSkills()<br>
+                                      <span class="text-sky-300">RESULT:</span> [<span class="text-emerald-400">'NextJS'</span>, <span class="text-emerald-400">'Node'</span>, <span class="text-emerald-400">'TypeScript'</span>, <span class="text-emerald-400">'PostgreSQL'</span>, <span class="text-emerald-400">'AWS'</span>, <span class="text-emerald-400">'Docker'</span>]</div>`;
+                        } else if (cmd === 'experience') {
+                            output = `<div><span class="text-blue-400">&gt;</span> sihab.getExperience()<br>
+                                      <span class="text-sky-300">RESULT:</span> {<br>
+                                      &nbsp;&nbsp;Lead_Architect: <span class="text-emerald-400">'Synthetix Labs'</span> (2024-Pres),<br>
+                                      &nbsp;&nbsp;Senior_Engineer: <span class="text-emerald-400">'Quant Tech'</span> (2022-2024)<br>
+                                      }</div>`;
+                        } else if (cmd === 'quote') {
+                            output = `<div><span class="text-blue-400">&gt;</span> sihab.getPhilosophy()<br>
+                                      <span class="text-sky-300">PHILOSOPHY:</span> <span class="text-slate-300">"Build digital systems that represent aesthetic perfection and robust engineering standard."</span></div>`;
+                        } else if (cmd === 'clear') {
+                            terminalText.innerHTML = `<span class="text-slate-500">// Console buffer flushed. Run methods below.</span>`;
+                            return;
+                        } else {
+                            output = `<div><span class="text-blue-400">&gt;</span> ${cmd}<br>
+                                      <span class="text-red-400">ERROR:</span> Command not found: "${cmd}". Type <span class="text-accent-sky-solid font-semibold">help</span> to view lists.</div>`;
+                        }
+                        
+                        const newBlock = document.createElement('div');
+                        newBlock.className = 'mt-2 border-t border-slate-900/50 pt-2';
+                        newBlock.innerHTML = output;
+                        terminalText.appendChild(newBlock);
+                        
+                        // Auto-scroll to bottom of terminal content wrapper
+                        const contentArea = terminalText.parentElement;
+                        contentArea.scrollTop = contentArea.scrollHeight;
+                    }
+                });
+                
+                // Keep focus in input when clicking inside terminal
+                terminalInput.parentElement.parentElement.addEventListener('click', () => {
+                    terminalInput.focus();
+                });
+            }
+        }
 
         function closeMenu() {
             gsap.to(mobileMenu, { 
@@ -1500,7 +1636,8 @@
                     
                     const sheenX = x / width * 100;
                     const sheenY = y / height * 100;
-                    card.style.backgroundImage = `radial-gradient(circle at ${sheenX}% ${sheenY}%, rgba(255, 255, 255, 0.08) 0%, transparent 60%)`;
+                    const themeBlue = getComputedStyle(document.documentElement).getPropertyValue('--color-accent-blue').trim() || '#2563eb';
+                    card.style.backgroundImage = `radial-gradient(circle at ${sheenX}% ${sheenY}%, ${themeBlue}17 0%, rgba(255, 255, 255, 0.06) 30%, transparent 65%)`;
                 });
                 
                 card.addEventListener('mouseleave', () => {
@@ -1522,6 +1659,7 @@
             lucide.createIcons();
             updateFavicon(currentTheme);
             init3DTilt();
+            initTerminal();
             
             resizeCanvas();
             animateCanvas();
