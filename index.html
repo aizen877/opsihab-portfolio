@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Compiled Static Tailwind CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- GSAP for advanced animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -21,6 +21,43 @@
     
     <!-- Lucide Icons for clean, lightweight SVG icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Custom Configuration for Deep Blue & White premium theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        bengali: ['Hind Siliguri', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                        space: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: {
+                            50: '#f0f4f8',
+                            100: '#dbeafe',
+                            900: '#030712',
+                            950: '#010409',
+                        },
+                        accent: {
+                            blue: 'rgb(var(--accent-blue-rgb) / <alpha-value>)',
+                            sky: 'rgb(var(--accent-sky-rgb) / <alpha-value>)',
+                            'blue-solid': 'var(--color-accent-blue)',
+                            'sky-solid': 'var(--color-accent-sky)',
+                            white: '#ffffff',
+                            slate: '#94a3b8',
+                        }
+                    },
+                    boxShadow: {
+                        'glow-blue': '0 0 25px rgba(var(--accent-blue-rgb), 0.25)',
+                        'glow-sky': '0 0 25px rgba(var(--accent-sky-rgb), 0.25)',
+                        'glass': '0 8px 32px 0 rgba(1, 4, 9, 0.7)',
+                    }
+                }
+            }
+        }
+    </script>
 
     <!-- Custom Style Overrides -->
     <style>

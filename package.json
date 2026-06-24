@@ -4,8 +4,7 @@
   "description": "",
   "main": "tailwind.config.js",
   "scripts": {
-    "build": "tailwindcss -i input.css -o css/style.css --minify",
-    "watch": "tailwindcss -i input.css -o css/style.css --watch"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
