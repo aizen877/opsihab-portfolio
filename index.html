@@ -90,19 +90,25 @@
             --gradient-mockup: linear-gradient(135deg, #1a0c02 0%, #431407 50%, #f97316 100%);
         }
         
+        /* Custom Scrollbar Styles with Theme Adaptation */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(var(--accent-blue-rgb), 0.25) #010409;
+        }
         .custom-scrollbar::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #010409;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #1e293b;
+            background: rgba(var(--accent-blue-rgb), 0.25);
             border-radius: 10px;
             border: 2px solid #010409;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #2563eb;
+            background: var(--color-accent-sky);
         }
         
         /* Hide scrollbar for Chrome, Safari and Opera */
@@ -1016,33 +1022,36 @@
                     <div class="premium-glass-overlay absolute inset-0 z-10"></div>
                     
                     <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-20">
+                        <!-- Honeypot anti-spam field -->
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Name Box -->
                             <div>
                                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form-name">Full Name</label>
-                                <input type="text" required placeholder="E.g., Hasan" class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
+                                <input type="text" name="name" required placeholder="E.g., Hasan" class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
                             </div>
                             <!-- Email Box -->
                             <div>
                                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form-email">Email Address</label>
-                                <input type="email" required placeholder="name@domain.com" class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
+                                <input type="email" name="email" required placeholder="name@domain.com" class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
                             </div>
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form-subject">Subject</label>
-                            <input type="text" required placeholder="Project Discovery discussion..." class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
+                            <input type="text" name="subject" required placeholder="Project Discovery discussion..." class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all">
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form-msg">Message</label>
-                            <textarea required rows="4" placeholder="Brief details about your target objectives..." class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all custom-scrollbar"></textarea>
+                            <textarea name="message" required rows="4" placeholder="Brief details about your target objectives..." class="w-full bg-obsidian-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-accent-sky focus:ring-1 focus:ring-accent-sky transition-all custom-scrollbar"></textarea>
                         </div>
 
                         <!-- Submit Button styled with deep blue/white gradients -->
-                        <button type="submit" class="w-full py-4 rounded-xl font-bold premium-btn-primary flex items-center justify-center gap-2">
-                            <span data-i18n="form-btn">Send Secure Message</span>
-                            <i data-lucide="send" class="w-4 h-4"></i>
+                        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl font-bold premium-btn-primary flex items-center justify-center gap-2">
+                            <span id="submitBtnText" data-i18n="form-btn">Send Secure Message</span>
+                            <i id="submitBtnIcon" data-lucide="send" class="w-4 h-4"></i>
                         </button>
                     </form>
                 </div>
@@ -1537,15 +1546,80 @@
             triggerToast(heading, detail, 'info');
         }
 
-        function handleFormSubmit(e) {
+        async function handleFormSubmit(e) {
             e.preventDefault();
             const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+            const submitBtnIcon = document.getElementById('submitBtnIcon');
+
+            // Gather inputs
+            const formData = {
+                name: form.querySelector('[name="name"]').value.trim(),
+                email: form.querySelector('[name="email"]').value.trim(),
+                subject: form.querySelector('[name="subject"]').value.trim(),
+                message: form.querySelector('[name="message"]').value.trim(),
+                _honey: form.querySelector('[name="_honey"]').value
+            };
+
+            // Transition button to loading state
+            const loadingText = currentLang === 'en' ? 'Transmitting...' : 'বার্তা পাঠানো হচ্ছে...';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.75';
+            submitBtnText.innerText = loadingText;
             
-            const successTitle = currentLang === 'en' ? 'Message Transmitted!' : 'বার্তা সফলভাবে পাঠানো হয়েছে!';
-            const successDesc = currentLang === 'en' ? 'Our secure endpoint dispatched your request.' : 'আপনার সিকিউর রিকোয়েস্টটি সফলভাবে সিস্টেমে জমা হয়েছে।';
-            
-            triggerToast(successTitle, successDesc, 'success');
-            form.reset();
+            if (submitBtnIcon) {
+                submitBtnIcon.setAttribute('data-lucide', 'loader-2');
+                submitBtnIcon.classList.add('animate-spin');
+                if (window.lucide) window.lucide.createIcons();
+            }
+
+            // Disable form inputs during transit
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => input.disabled = true);
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    const successTitle = currentLang === 'en' ? 'Message Transmitted!' : 'বার্তা সফলভাবে পাঠানো হয়েছে!';
+                    const successDesc = currentLang === 'en' ? 'Our secure endpoint dispatched your request.' : 'আপনার সিকিউর রিকোয়েস্টটি সফলভাবে সিস্টেমে জমা হয়েছে।';
+                    triggerToast(successTitle, successDesc, 'success');
+                    form.reset();
+                } else {
+                    const errorTitle = currentLang === 'en' ? 'Transmission Failed' : 'বার্তা পাঠানো ব্যর্থ হয়েছে';
+                    const errorDesc = result.error || (currentLang === 'en' ? 'An unexpected server error occurred.' : 'সার্ভারে একটি ত্রুটি ঘটেছে।');
+                    triggerToast(errorTitle, errorDesc, 'error');
+                }
+            } catch (error) {
+                console.error('Contact Form Error:', error);
+                const errorTitle = currentLang === 'en' ? 'Network Error' : 'নেটওয়ার্ক ত্রুটি';
+                const errorDesc = currentLang === 'en' ? 'Could not connect to the secure endpoint. Please check your network connection.' : 'সার্ভারের সাথে সংযোগ স্থাপন করা সম্ভব হয়নি। আপনার ইন্টারনেট কানেকশন চেক করুন।';
+                triggerToast(errorTitle, errorDesc, 'error');
+            } finally {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtnText.innerText = currentLang === 'en' ? 'Send Secure Message' : 'বার্তা পাঠান';
+                
+                if (submitBtnIcon) {
+                    submitBtnIcon.setAttribute('data-lucide', 'send');
+                    submitBtnIcon.classList.remove('animate-spin');
+                    if (window.lucide) window.lucide.createIcons();
+                }
+                
+                // Re-enable form inputs
+                inputs.forEach(input => input.disabled = false);
+            }
         }
 
 
