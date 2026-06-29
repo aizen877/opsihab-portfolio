@@ -97,9 +97,9 @@
         }
         [data-theme="sunset"] {
             --color-accent-blue: #f97316; /* Orange-500 */
-            --color-accent-sky: #ef4444;  /* Red-500 */
+            --color-accent-sky: #ff5722;  /* Bright Orange/Red-500 */
             --accent-blue-rgb: 249, 115, 22;
-            --accent-sky-rgb: 239, 68, 68;
+            --accent-sky-rgb: 255, 87, 34;
             --gradient-mockup: linear-gradient(135deg, #1a0c02 0%, #431407 50%, #f97316 100%);
         }
         
@@ -312,15 +312,15 @@
 
         /* Custom styles for Top-Left Status Badge */
         #heroBadge {
-            border-color: rgba(255, 87, 34, 0.45) !important;
-            background-color: rgba(255, 87, 34, 0.12) !important;
-            color: #ff5722 !important;
-            text-shadow: 0 0 10px rgba(255, 87, 34, 0.6);
-            box-shadow: 0 0 20px rgba(255, 87, 34, 0.25) !important;
+            border-color: rgba(var(--accent-blue-rgb), 0.45) !important;
+            background-color: rgba(var(--accent-blue-rgb), 0.12) !important;
+            color: var(--color-accent-sky) !important;
+            text-shadow: 0 0 10px rgba(var(--accent-sky-rgb), 0.5);
+            box-shadow: 0 0 20px rgba(var(--accent-blue-rgb), 0.25) !important;
         }
         #heroBadge .animate-ping,
         #heroBadge .relative.inline-flex.rounded-full {
-            background-color: #ff5722 !important;
+            background-color: var(--color-accent-sky) !important;
         }
 
         /* Bottom Tech Stack Logos Opacity & Hover */
@@ -1970,7 +1970,7 @@
         const THEME_COLORS = {
             emerald: { primary: '#10b981', secondary: '#a3e635' },
             purple: { primary: '#8b5cf6', secondary: '#ec4899' },
-            sunset: { primary: '#f97316', secondary: '#ef4444' },
+            sunset: { primary: '#f97316', secondary: '#ff5722' },
             blue: { primary: '#2563eb', secondary: '#00f5d4' }
         };
 
