@@ -309,6 +309,133 @@
             box-shadow: 0 8px 25px rgba(var(--accent-blue-rgb), 0.15) !important;
             color: #ffffff !important;
         }
+
+        /* Mobile Responsive Fixes - Prevent Overflow & Overlap */
+        @media (max-width: 768px) {
+            /* Ensure body doesn't overflow horizontally */
+            body {
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
+            }
+
+            /* Container padding for mobile */
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            /* Header adjustments */
+            header {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            /* Hero section text sizing */
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+
+            h2 {
+                font-size: 1.75rem !important;
+                line-height: 1.3 !important;
+            }
+
+            h3 {
+                font-size: 1.25rem !important;
+            }
+
+            p {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Prevent any element from exceeding viewport width */
+            img, video, canvas, svg {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            /* Fix grid layouts to single column on mobile */
+            .grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            /* Card and glass panel adjustments */
+            .premium-glass-card,
+            .glass-panel,
+            .skill-card {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Button stacking on mobile */
+            .flex.gap-4,
+            .flex.gap-3 {
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+            }
+
+            .premium-btn-primary,
+            .premium-btn-secondary {
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            /* Navigation menu fixes */
+            nav ul {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
+            /* Reduce glow aura sizes on mobile */
+            .fixed.top-\\[-10\\%\\].left-\\[-10\\%\\],
+            .fixed.bottom-\\[-10\\%\\].right-\\[-10\\%\\] {
+                width: 80vw !important;
+                height: 40vh !important;
+            }
+
+            /* Section padding reduction */
+            section {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            /* Fix any absolute positioned elements */
+            .absolute, .fixed {
+                max-width: 100vw !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small mobile devices */
+            h1 {
+                font-size: 1.75rem !important;
+            }
+
+            h2 {
+                font-size: 1.5rem !important;
+            }
+
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+
+            /* Further reduce aura sizes */
+            .fixed.top-\\[-10\\%\\].left-\\[-10\\%\\],
+            .fixed.bottom-\\[-10\\%\\].right-\\[-10\\%\\] {
+                width: 100vw !important;
+                height: 30vh !important;
+                left: 0 !important;
+                right: 0 !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-obsidian-950 text-slate-200 font-sans overflow-x-hidden selection:bg-accent-blue/30 custom-scrollbar relative">
@@ -327,11 +454,11 @@
     <div class="grid-bg-overlay"></div>
     
     <!-- Glowing background aura shapes (Deep Blue/Sky Neon aura pools) -->
-    <div class="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-blue/8 blur-[130px] pointer-events-none z-0"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-accent-sky/8 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-accent-blue/8 blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vh] rounded-full bg-accent-sky/8 blur-[120px] pointer-events-none z-0"></div>
 
     <!-- Glassmorphism Floating Header -->
-    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 glass-header rounded-full px-4 py-2.5 sm:px-6 sm:py-3.5 flex items-center justify-between transition-all duration-300 shadow-glass">
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] sm:w-[90%] max-w-6xl z-50 glass-header rounded-full px-4 py-2.5 sm:px-6 sm:py-3.5 flex items-center justify-between transition-all duration-300 shadow-glass">
         <!-- Logo with neon blue dot -->
         <a href="#home" class="flex items-center gap-2 group">
             <!-- BACKUP OF PREVIOUS SVG LOGO -->
@@ -432,7 +559,7 @@
         <section id="home" class="min-h-screen lg:h-screen flex flex-col justify-center items-center text-center pt-28 md:pt-36 pb-12 relative">
 
             <!-- Glowing Sapphire Aura behind Content -->
-            <div class="absolute top-1/2 left-1/2 -ml-[250px] -mt-[250px] w-[500px] h-[500px] bg-gradient-to-tr from-accent-blue/20 to-accent-sky/10 blur-[120px] rounded-full pointer-events-none animate-hero-glow"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[500px] max-h-[500px] bg-gradient-to-tr from-accent-blue/20 to-accent-sky/10 blur-[120px] rounded-full pointer-events-none animate-hero-glow"></div>
 
             <!-- Top Active Status Badge (Theme-Responsive Glow Badge) -->
             <div class="gsap-hero-el opacity-0 translate-y-4 mb-6 inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full border theme-accent-border theme-accent-bg theme-accent-text text-xs font-semibold tracking-wide shadow-glow-blue">
@@ -483,7 +610,7 @@
         <section id="metrics" class="py-12 border-t border-slate-900/60 scroll-mt-24">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1: 50K+ (Frosted Glass & Glowing Background) -->
-                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[240px] sm:min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[220px] sm:min-h-[260px] transition-transform duration-300 hover:-translate-y-1">
                     <!-- Glowing background circle -->
                     <div class="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-gradient-to-tr from-accent-blue-solid to-accent-sky-solid opacity-25 blur-xl z-0 pointer-events-none"></div>
                     <!-- Frosted glass overlay -->
@@ -491,7 +618,7 @@
                     
                     <div class="relative z-20 flex flex-col justify-between h-full">
                         <div>
-                            <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">50K+</span>
+                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1">50K+</span>
                             <h4 class="text-xl font-bold text-white">Production Commits</h4>
                             <p class="text-sm text-slate-300 mt-1">Written across global cloud systems and SaaS deployments in 5+ years.</p>
                         </div>
@@ -503,7 +630,7 @@
                 </div>
 
                 <!-- Card 2: 10x ROI (Frosted Glass & Floating Icon) -->
-                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[240px] sm:min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[220px] sm:min-h-[260px] transition-transform duration-300 hover:-translate-y-1">
                     <!-- Glowing gradient behind glass overlay -->
                     <div class="absolute -top-10 -left-10 w-36 h-36 rounded-full bg-gradient-to-br from-accent-blue-solid to-accent-sky-solid opacity-20 z-0 pointer-events-none blur-xl"></div>
                     <!-- Frosted glass overlay -->
@@ -521,7 +648,7 @@
                             </div>
                         </div>
                         <div class="mt-4">
-                            <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">10x ROI</span>
+                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1">10x ROI</span>
                             <h4 class="text-xl font-bold text-white">System Optimization</h4>
                             <p class="text-sm text-slate-300 mt-1">High-demand server configurations boosting database response times.</p>
                         </div>
@@ -529,7 +656,7 @@
                 </div>
 
                 <!-- Card 3: 99.9% (Glowing Circle Behind Frosted Glass) -->
-                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[240px] sm:min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+                <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[220px] sm:min-h-[260px] transition-transform duration-300 hover:-translate-y-1">
                     <!-- Glowing background circle -->
                     <div class="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-gradient-to-tr from-accent-blue-solid to-accent-sky-solid opacity-25 blur-xl z-0 pointer-events-none"></div>
                     <!-- Frosted Glass blur backdrop overlay -->
@@ -537,7 +664,7 @@
                     
                     <div class="relative z-20 flex flex-col justify-between h-full">
                         <div>
-                            <span class="text-5xl font-extrabold tracking-tight text-white block mb-1">99.9%</span>
+                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1">99.9%</span>
                             <h4 class="text-xl font-bold text-white">Uptime Guarantee</h4>
                             <p class="text-sm text-slate-300 mt-1">Highly redundant microservice architectures deployed on AWS cluster systems.</p>
                         </div>
@@ -551,11 +678,11 @@
 
         <!-- About Section -->
         <section id="about" class="py-28 lg:py-32 border-t border-slate-900/60 scroll-mt-24">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
                 <!-- Left Column: Visual Hologram Card / Image with Blue Neon Lights -->
                 <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-full max-w-[285px] sm:max-w-[320px] h-[380px] sm:h-[420px] group">
+                    <div class="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[3/4] group">
                         <!-- Neon Blue Frame Backdrop Glow -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue to-accent-sky rounded-3xl blur-sm opacity-25 group-hover:opacity-40 transition-all duration-500"></div>
                         
@@ -978,13 +1105,13 @@
 
         <!-- Contact Section -->
         <section id="contact" class="py-28 lg:py-32 border-t border-slate-900/60 scroll-mt-24">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
                 
                 <!-- Left Details Box with clean white typography & blue details -->
                 <div class="lg:col-span-5 flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-mono text-accent-sky font-bold uppercase tracking-widest section-track" data-i18n="contact-subtitle">Get in Touch</span>
-                        <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-1 mb-6" data-i18n="contact-title">Let's create something remarkable.</h2>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-1 mb-6" data-i18n="contact-title">Let's create something remarkable.</h2>
                         <p class="text-slate-400 leading-relaxed mb-8" data-i18n="contact-desc">
                             Have an idea, or searching for an experienced full-time engineer to step in and boost your production pipelines? Ping me right away. Let's arrange a call.
                         </p>
