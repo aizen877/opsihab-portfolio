@@ -1051,6 +1051,55 @@
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1" data-i18n="skills-title">Core Technologies & Stack</h2>
             </div>
 
+            <!-- Interactive DevOps / SDLC Architecture Pipeline (SVG Illustration) -->
+            <div data-nosnippet class="mb-12 max-w-4xl mx-auto premium-glass-card p-6 rounded-3xl relative overflow-hidden border border-slate-900 shadow-glass">
+                <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/5 to-accent-sky/5 opacity-30 z-0 pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div class="text-left shrink-0">
+                        <h4 class="text-sm font-bold text-white font-space uppercase tracking-wider flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent-sky animate-pulse"></span>
+                            Continuous Delivery Architecture
+                        </h4>
+                        <p class="text-[10px] font-mono text-slate-500 mt-1 uppercase">Visual workflow from local build to cloud edge nodes</p>
+                    </div>
+                    
+                    <!-- SVG Pipeline Diagram -->
+                    <svg class="w-full max-w-[550px] h-20" viewBox="0 0 550 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Horizontal backbone pipeline connection line -->
+                        <path d="M40,40 H510" stroke="rgba(255,255,255,0.06)" stroke-width="3" stroke-linecap="round" />
+                        <path d="M40,40 H510" stroke="var(--color-accent-sky)" stroke-width="1.8" stroke-dasharray="12 18" stroke-linecap="round" class="data-pipe" />
+
+                        <!-- Node 1: Code -->
+                        <g class="group/node cursor-default" transform="translate(40,40)">
+                            <circle cx="0" cy="0" r="10" fill="var(--color-accent-blue)" fill-opacity="0.2" stroke="var(--color-accent-blue)" stroke-width="1.5" />
+                            <circle cx="0" cy="0" r="4" fill="var(--color-accent-sky)" />
+                            <text x="0" y="25" fill="var(--color-accent-sky)" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" letter-spacing="1">CODE</text>
+                        </g>
+
+                        <!-- Node 2: Build -->
+                        <g class="group/node cursor-default" transform="translate(196,40)">
+                            <circle cx="0" cy="0" r="10" fill="var(--color-accent-blue)" fill-opacity="0.2" stroke="var(--color-accent-blue)" stroke-width="1.5" />
+                            <circle cx="0" cy="0" r="4" fill="var(--color-accent-sky)" />
+                            <text x="0" y="25" fill="#ffffff" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" letter-spacing="1">BUILD</text>
+                        </g>
+
+                        <!-- Node 3: Test -->
+                        <g class="group/node cursor-default" transform="translate(352,40)">
+                            <circle cx="0" cy="0" r="10" fill="var(--color-accent-blue)" fill-opacity="0.2" stroke="var(--color-accent-blue)" stroke-width="1.5" />
+                            <circle cx="0" cy="0" r="4" fill="var(--color-accent-sky)" />
+                            <text x="0" y="25" fill="#ffffff" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" letter-spacing="1">TEST</text>
+                        </g>
+
+                        <!-- Node 4: Deploy -->
+                        <g class="group/node cursor-default" transform="translate(508,40)">
+                            <circle cx="0" cy="0" r="10" fill="var(--color-accent-sky)" fill-opacity="0.2" stroke="var(--color-accent-sky)" stroke-width="1.5" />
+                            <circle cx="0" cy="0" r="4" fill="#ffffff" />
+                            <text x="0" y="25" fill="var(--color-accent-sky)" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" letter-spacing="1">DEPLOY</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
             <!-- Skills Grid -->
             <!-- Skills Grid (Restructured into 4 Stack Pillars) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
