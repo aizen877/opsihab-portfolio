@@ -43,7 +43,7 @@ export default async function handler(req, res) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                from: 'Portfolio Contact <contact@opsihab.tech>',
+                from: 'Portfolio Contact <hello@opsihab.tech>',
                 to: 'sihabhossen13@gmail.com',
                 subject: `Portfolio Contact: ${subject}`,
                 html: `
