@@ -21,7 +21,7 @@
     <meta name="twitter:description" content="Sihab Hossen (OpSihab) is a premium software architect and full-stack developer crafting high-performance, visually stunning web architectures using React, Node.js, and cloud ecosystems.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g1-brackets' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2310b981' /%3E%3Cstop offset='100%25' stop-color='%23a3e635' /%3E%3C/linearGradient%3E%3ClinearGradient id='g1-bolt' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' /%3E%3Cstop offset='100%25' stop-color='%23a3e635' /%3E%3C/linearGradient%3E%3Cfilter id='g1-glow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M35 15 L15 50 L35 85' stroke='url(%23g1-brackets)' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' /%3E%3Cpath d='M65 15 L85 50 L65 85' stroke='url(%23g1-brackets)' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' /%3E%3Cpath d='M60 22 L34 50 H 54 L 42 78 L 66 50 H 46 Z' fill='url(%23g1-bolt)' stroke='url(%23g1-bolt)' stroke-width='1.5' stroke-linejoin='round' filter='url(%23g1-glow)' /%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     
     <!-- Google Fonts: Outfit & Plus Jakarta Sans for English, Hind Siliguri for Bengali -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -145,9 +145,17 @@
         /* Text gradient with Deep Blue to White/Silver transitions */
         .text-glow-gradient {
             background: linear-gradient(135deg, #ffffff 0%, var(--color-accent-sky) 45%, var(--color-accent-blue) 100%);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 2px 16px rgba(var(--accent-blue-rgb), 0.45));
+            animation: text-gradient-sweep 6s linear infinite;
+        }
+        
+        @keyframes text-gradient-sweep {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Custom signature glows for skill cards */
@@ -214,6 +222,7 @@
         }
 
         /* Subtle grid background pattern with radial mask */
+        /* Subtle grid background pattern with mouse spotlight mask */
         .grid-bg-overlay {
             position: fixed;
             top: 0;
@@ -226,8 +235,23 @@
             background-image: 
                 linear-gradient(to right, rgba(var(--accent-sky-rgb), 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(var(--accent-sky-rgb), 0.05) 1px, transparent 1px);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+            -webkit-mask-image: radial-gradient(circle 240px at var(--mouse-grid-x, 50%) var(--mouse-grid-y, 50%), black 20%, transparent 90%);
+            mask-image: radial-gradient(circle 240px at var(--mouse-grid-x, 50%) var(--mouse-grid-y, 50%), black 20%, transparent 90%);
+            transition: mask-image 0.1s ease-out;
+        }
+
+        /* High-End Tactile Film Grain / Noise Overlay */
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            content: "";
+            opacity: 0.02;
+            z-index: 9999;
+            pointer-events: none;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* Dynamic Mockup Gradient backgrounds */
@@ -327,24 +351,138 @@
         }
 
         /* Mobile Responsive Fixes - Prevent Overflow & Overlap */
-        @media (max-width: 768px) {
-            /* Ensure body doesn't overflow horizontally */
-            body {
-                overflow-x: hidden !important;
-                max-width: 100vw !important;
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+        }
+
+        /* General Header Centering Guarantee */
+        header {
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+        }
+        
+        /* Scrolled Header Style */
+        header.scrolled {
+            top: 0.5rem !important; /* top-2 */
+            padding-top: 0.5rem !important; /* py-2 */
+            padding-bottom: 0.5rem !important;
+            width: 88% !important;
+            max-width: 1024px !important; /* max-w-5xl */
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6) !important;
+        }
+        @media (min-width: 640px) {
+            header.scrolled {
+                width: 85% !important;
+                padding-top: 0.625rem !important; /* py-2.5 */
+                padding-bottom: 0.625rem !important;
             }
         }
         
-        @media (max-width: 480px) {
-            /* Extra small mobile devices */
-            body {
-                overflow-x: hidden !important;
-                max-width: 100vw !important;
+        /* Floating Tech Icons Keyframes */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        @keyframes float-medium {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(-4deg); }
+        }
+        @keyframes float-fast {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+        
+        .animate-float-slow {
+            animation: float-slow 7s ease-in-out infinite;
+        }
+        .animate-float-medium {
+            animation: float-medium 6s ease-in-out infinite;
+        }
+        }
+        
+        /* Isometric Cloud Illustration Styling */
+        .illustration-container {
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .iso-svg {
+            transform: rotateX(10deg) rotateY(-5deg) rotateZ(2deg);
+            transform-style: preserve-3d;
+            animation: iso-float 6s ease-in-out infinite;
+            filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
+        }
+
+        /* Isometric floating server tower animation */
+        @keyframes iso-float {
+            0%, 100% { transform: translateY(0px) rotateX(10deg) rotateY(-5deg) rotateZ(2deg); }
+            50% { transform: translateY(-12px) rotateX(8deg) rotateY(-3deg) rotateZ(1deg); }
+        }
+
+        /* Flowing data pipeline animation */
+        @keyframes dash-flow {
+            to {
+                stroke-dashoffset: -40;
             }
         }
+        .data-pipe {
+            stroke-dasharray: 8 4;
+            animation: dash-flow 2.5s linear infinite;
+        }
+        .data-pipe-reverse {
+            stroke-dasharray: 8 4;
+            animation: dash-flow 2.5s linear infinite reverse;
+        }
+
+        /* Pulsing dashboard status lights */
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; filter: drop-shadow(0 0 4px var(--color-accent-sky)); }
+        }
+        .pulse-light {
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        /* Infinite Marquee Styles */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
     </style>
+    
+    <!-- JSON-LD Structured Data for Person Schema (Google Rich Results support) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sihab Hossen",
+      "alternateName": "OpSihab",
+      "url": "https://opsihab.tech",
+      "image": "https://opsihab.tech/favicon.svg",
+      "sameAs": [
+        "https://github.com/aizen877"
+      ],
+      "jobTitle": "Full-Stack Cloud Architect & Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Synthetix Labs"
+      },
+      "description": "Sihab Hossen (OpSihab) is a software architect building fast, beautiful, and secure digital architectures using React, Node.js, and cloud ecosystems."
+    }
+    </script>
 </head>
 <body class="bg-obsidian-950 text-slate-200 font-sans overflow-x-hidden selection:bg-accent-blue/30 custom-scrollbar relative">
+    
+    <!-- CSS-First Noise/Grain Backdrop Overlay -->
+    <div class="noise-bg"></div>
 
 
     <!-- Scroll Progress Bar -->
@@ -364,7 +502,7 @@
     <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vh] rounded-full bg-accent-sky/8 blur-[120px] pointer-events-none z-0"></div>
 
     <!-- Glassmorphism Floating Header -->
-    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] sm:w-[90%] max-w-6xl z-50 glass-header rounded-full px-4 py-2.5 sm:px-6 sm:py-3.5 flex items-center justify-between transition-all duration-300 shadow-glass">
+    <header data-nosnippet class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] sm:w-[90%] max-w-6xl z-50 glass-header rounded-full px-4 py-2.5 sm:px-6 sm:py-3.5 flex items-center justify-between transition-all duration-300 shadow-glass">
         <!-- Logo with neon blue dot -->
         <a href="#home" class="flex items-center gap-2 group">
             <!-- BACKUP OF PREVIOUS SVG LOGO -->
@@ -405,7 +543,7 @@
                 <path d="M65 15 L85 50 L65 85" stroke="url(#g1-brackets)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M60 22 L34 50 H 54 L 42 78 L 66 50 H 46 Z" fill="url(#g1-bolt)" stroke="url(#g1-bolt)" stroke-width="1.5" stroke-linejoin="round" filter="url(#g1-glow)" />
             </svg>
-            <span class="font-bold tracking-widest text-white text-sm sm:text-base group-hover:text-accent-sky transition-colors font-space uppercase">OPSIHAB<span class="text-accent-sky">.TECH</span></span>
+            <span class="font-bold tracking-widest text-white text-sm sm:text-base group-hover:text-accent-sky transition-colors font-space uppercase">OPSIHAB</span>
         </a>
 
         <!-- Desktop Navigation with soft glows -->
@@ -420,15 +558,15 @@
 
         <!-- Right Action Tools -->
         <div class="flex items-center gap-3">
-            <!-- Theme switcher (Option 2) -->
-            <button id="themeToggleBtn" onclick="toggleTheme()" class="px-2 py-1.5 sm:px-3.5 py-1.5 text-xs font-semibold rounded-full premium-btn-secondary flex items-center gap-1.5">
-                <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+            <!-- Theme switcher -->
+            <button id="themeToggleBtn" onclick="toggleTheme()" class="w-9 h-9 sm:w-auto sm:h-9 px-0 sm:px-3.5 text-xs font-semibold rounded-full premium-btn-secondary flex items-center justify-center gap-1.5 shrink-0">
+                <i data-lucide="palette" class="w-4 h-4"></i>
                 <span id="themeLabel" class="hidden sm:inline uppercase">Emerald</span>
             </button>
 
             <!-- Language Switcher Button -->
-            <button id="langToggleBtn" onclick="toggleLanguage()" class="px-2.5 py-1.5 sm:px-3.5 py-1.5 text-xs font-semibold rounded-full premium-btn-secondary flex items-center gap-1.5">
-                <i data-lucide="languages" class="w-3.5 h-3.5"></i>
+            <button id="langToggleBtn" onclick="toggleLanguage()" class="h-9 px-2.5 sm:px-3.5 text-xs font-semibold rounded-full premium-btn-secondary flex items-center justify-center gap-1.5 shrink-0">
+                <i data-lucide="languages" class="w-4 h-4"></i>
                 <span id="currentLangLabel">BN</span>
             </button>
             
@@ -438,14 +576,14 @@
             </a>
 
             <!-- Mobile Menu Toggle Button -->
-            <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none">
-                <i data-lucide="menu" class="w-6 h-6"></i>
+            <button id="mobileMenuBtn" class="md:hidden w-9 h-9 flex items-center justify-center text-slate-400 hover:text-white focus:outline-none shrink-0">
+                <i data-lucide="menu" class="w-5 h-5"></i>
             </button>
         </div>
     </header>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 bg-obsidian-950/98 backdrop-blur-xl hidden flex-col justify-center items-center gap-8 text-xl font-semibold text-slate-300">
+    <div id="mobileMenu" data-nosnippet class="fixed inset-0 z-40 bg-obsidian-950/98 backdrop-blur-xl hidden flex-col justify-center items-center gap-8 text-xl font-semibold text-slate-300">
         <button id="closeMobileMenuBtn" class="absolute top-8 right-8 p-2 text-slate-400 hover:text-white">
             <i data-lucide="x" class="w-8 h-8"></i>
         </button>
@@ -462,43 +600,224 @@
     <main class="relative z-10 max-w-6xl mx-auto px-4 md:px-8">
 
         <!-- Hero Section (Centered & Premium) -->
-        <section id="home" class="min-h-screen lg:h-screen flex flex-col justify-center items-center text-center pt-28 md:pt-36 pb-12 relative">
+        <section id="home" class="min-h-screen lg:h-screen flex flex-col justify-center items-center text-center pt-28 md:pt-36 pb-12 relative overflow-hidden">
 
             <!-- Glowing Sapphire Aura behind Content -->
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[500px] max-h-[500px] bg-gradient-to-tr from-accent-blue/20 to-accent-sky/10 blur-[120px] rounded-full pointer-events-none animate-hero-glow"></div>
 
-            <!-- Top Active Status Badge (Theme-Responsive Glow Badge) -->
-            <div class="gsap-hero-el opacity-0 translate-y-4 mb-6 inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full border theme-accent-border theme-accent-bg theme-accent-text text-xs font-semibold tracking-wide shadow-glow-blue">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: var(--color-accent-sky);"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: var(--color-accent-blue);"></span>
-                </span>
-                <span data-i18n="hero-badge">Open for Full-time Roles & Projects</span>
-            </div>
 
-            <!-- Developer Main Title: Deep Blue & White/Silver Gradient -->
-            <h1 class="gsap-hero-el opacity-0 translate-y-4 text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl leading-[1.1] lg:leading-[1.05] mb-6">
-                <span data-i18n="hero-title-prefix">Crafting Elegant</span> 
-                <span class="text-glow-gradient">Full-Stack</span> 
-                <span data-i18n="hero-title-suffix">Web Experiences</span>
-            </h1>
 
-            <!-- Professional Subheading / Description -->
-            <p class="gsap-hero-el opacity-0 translate-y-4 text-slate-400 text-base sm:text-xl max-w-2xl leading-relaxed mb-10 font-light" data-i18n="hero-desc">
-                Passionate software architect building fast, beautiful, and secure digital architectures using React, Node.js, and cloud ecosystems.
-            </p>
+            <!-- GRID WRAPPER (Restructured to 2-Column Grid) -->
+            <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10 relative">
+                
+                <!-- Left Column: Content (7/12 cols) -->
+                <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    
+                    <!-- Top Active Status Badge (Theme-Responsive Glow Badge) -->
+                    <div id="heroBadge" class="gsap-hero-el opacity-0 translate-y-4 mb-6 inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full border theme-accent-border theme-accent-bg theme-accent-text text-xs font-semibold tracking-wide shadow-glow-blue cursor-pointer hover:scale-105 transition-transform duration-300">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: var(--color-accent-sky);"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: var(--color-accent-blue);"></span>
+                        </span>
+                        <span data-i18n="hero-badge">Open for Full-time Roles & Projects</span>
+                    </div>
 
-            <!-- Centered Call To Actions (Deep Blue Accent & Sleek Borders) -->
-            <div class="gsap-hero-el opacity-0 translate-y-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-16 w-full max-w-xs sm:max-w-none mx-auto">
-                <!-- Primary CTA -->
-                <a href="#projects" class="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm font-bold premium-btn-primary flex items-center justify-center gap-1.5">
-                    <span data-i18n="hero-btn-primary">Explore Works</span>
-                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-                </a>
-                <!-- Secondary CTA -->
-                <a href="#contact" class="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm premium-btn-secondary flex items-center justify-center gap-1.5">
-                    <span data-i18n="hero-btn-secondary">Get in Touch</span>
-                </a>
+                    <!-- Developer Main Title: Deep Blue & White/Silver Gradient -->
+                    <h1 class="gsap-hero-el opacity-0 translate-y-4 text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl leading-[1.1] lg:leading-[1.05] mb-6">
+                        <span data-i18n="hero-title-prefix">Crafting Elegant</span> 
+                        <span class="text-glow-gradient whitespace-nowrap">Full-Stack</span> 
+                        <span data-i18n="hero-title-suffix">Web Experiences</span>
+                    </h1>
+
+                    <!-- Professional Subheading / Description -->
+                    <p class="gsap-hero-el opacity-0 translate-y-4 text-slate-400 text-base sm:text-xl max-w-2xl leading-relaxed mb-10 font-light" data-i18n="hero-desc">
+                        Passionate software architect building fast, beautiful, and secure digital architectures using React, Node.js, and cloud ecosystems.
+                    </p>
+
+                    <!-- Centered Call To Actions (Deep Blue Accent & Sleek Borders) -->
+                    <div data-nosnippet class="gsap-hero-el opacity-0 translate-y-4 flex flex-col sm:flex-row items-center justify-start gap-3 sm:gap-4 mb-8 w-full max-w-xs sm:max-w-none">
+                        <!-- Primary CTA -->
+                        <a href="#projects" class="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm font-bold premium-btn-primary flex items-center justify-center gap-1.5 shrink-0">
+                            <span data-i18n="hero-btn-primary">Explore Works</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+                        </a>
+                        <!-- Secondary CTA -->
+                        <a href="#contact" class="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm premium-btn-secondary flex items-center justify-center gap-1.5 shrink-0">
+                            <span data-i18n="hero-btn-secondary">Get in Touch</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Animated SVG Cloud Server stack Illustration (5/12 cols) -->
+                <div class="lg:col-span-5 hidden lg:flex items-center justify-center illustration-container gsap-hero-el opacity-0 translate-y-4">
+                    <svg class="iso-svg w-full max-w-[400px]" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Gradients -->
+                            <linearGradient id="server-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="var(--color-accent-blue)" stop-opacity="0.9" />
+                                <stop offset="100%" stop-color="var(--color-accent-sky)" stop-opacity="0.3" />
+                            </linearGradient>
+                            <linearGradient id="server-grad-side" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="var(--color-accent-blue)" stop-opacity="0.75" />
+                                <stop offset="100%" stop-color="var(--color-accent-blue)" stop-opacity="0.2" />
+                            </linearGradient>
+                            <linearGradient id="core-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="100%" stop-color="var(--color-accent-sky)" />
+                            </linearGradient>
+                            <!-- Drop shadow filter for floating components -->
+                            <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="6" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- Background decorative digital network nodes -->
+                        <g opacity="0.35">
+                            <line x1="200" y1="30" x2="330" y2="90" stroke="var(--color-accent-blue)" stroke-width="1" stroke-dasharray="4 4" />
+                            <line x1="200" y1="30" x2="70" y2="90" stroke="var(--color-accent-blue)" stroke-width="1" stroke-dasharray="4 4" />
+                            <circle cx="200" cy="30" r="3" fill="var(--color-accent-sky)" />
+                            <circle cx="330" cy="90" r="2.5" fill="var(--color-accent-blue)" />
+                            <circle cx="70" cy="90" r="2.5" fill="var(--color-accent-blue)" />
+                        </g>
+
+                        <!-- Vertical Data pipeline backbones (connecting plates) -->
+                        <path d="M120,170 V370" stroke="var(--color-accent-sky)" stroke-width="2" class="data-pipe" opacity="0.8" />
+                        <path d="M280,170 V370" stroke="var(--color-accent-sky)" stroke-width="2" class="data-pipe-reverse" opacity="0.8" />
+                        <path d="M200,120 V320" stroke="var(--color-accent-blue)" stroke-width="2.5" class="data-pipe" opacity="0.9" />
+
+                        <!-- ================= LAYER 3 (BOTTOM SERVER PLATE) ================= -->
+                        <g transform="translate(0, 240)">
+                            <!-- Thickness/3D Extrusion Side Left -->
+                            <polygon points="80,70 80,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
+                            <!-- Thickness/3D Extrusion Side Right -->
+                            <polygon points="320,70 320,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
+                            <!-- Top Surface Rhombus -->
+                            <polygon points="200,10 320,70 200,130 80,70" fill="url(#server-grad-primary)" stroke="var(--color-accent-sky)" stroke-width="1.8" />
+                            
+                            <!-- Inside details: server circuit elements -->
+                            <polygon points="120,65 170,40 220,65 170,90" fill="none" stroke="var(--color-accent-blue)" stroke-width="1" opacity="0.5" />
+                            <!-- Glowing server nodes -->
+                            <circle cx="140" cy="60" r="3" fill="#ffffff" class="pulse-light" />
+                            <circle cx="160" cy="70" r="3" fill="var(--color-accent-sky)" class="pulse-light" style="animation-delay: 0.5s;" />
+                            <circle cx="240" cy="60" r="3" fill="var(--color-accent-sky)" class="pulse-light" style="animation-delay: 1s;" />
+                            <circle cx="260" cy="70" r="3" fill="#ffffff" class="pulse-light" style="animation-delay: 1.5s;" />
+                        </g>
+
+                        <!-- ================= LAYER 2 (MIDDLE SERVER PLATE) ================= -->
+                        <g transform="translate(0, 140)">
+                            <!-- Thickness/3D Extrusion Side Left -->
+                            <polygon points="80,70 80,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
+                            <!-- Thickness/3D Extrusion Side Right -->
+                            <polygon points="320,70 320,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
+                            <!-- Top Surface Rhombus -->
+                            <polygon points="200,10 320,70 200,130 80,70" fill="url(#server-grad-primary)" stroke="var(--color-accent-sky)" stroke-width="1.8" />
+
+                            <!-- Database Capsules (3D Cylinders floating on plate) -->
+                            <!-- Database Left -->
+                            <g transform="translate(130, 45)">
+                                <ellipse cx="15" cy="5" rx="8" ry="4" fill="var(--color-accent-sky)" stroke="var(--color-accent-sky)" stroke-width="1" />
+                                <path d="M7,5 V20 A8,4 0 0,0 23,20 V5" fill="var(--color-accent-blue)" fill-opacity="0.7" stroke="var(--color-accent-sky)" stroke-width="1" />
+                                <ellipse cx="15" cy="12" rx="8" ry="4" fill="none" stroke="var(--color-accent-sky)" stroke-width="1" stroke-dasharray="2 2" />
+                            </g>
+                            <!-- Database Right -->
+                            <g transform="translate(225, 45)">
+                                <ellipse cx="15" cy="5" rx="8" ry="4" fill="var(--color-accent-sky)" stroke="var(--color-accent-sky)" stroke-width="1" />
+                                <path d="M7,5 V20 A8,4 0 0,0 23,20 V5" fill="var(--color-accent-blue)" fill-opacity="0.7" stroke="var(--color-accent-sky)" stroke-width="1" />
+                                <ellipse cx="15" cy="12" rx="8" ry="4" fill="none" stroke="var(--color-accent-sky)" stroke-width="1" stroke-dasharray="2 2" />
+                            </g>
+                        </g>
+
+                        <!-- ================= LAYER 1 (TOP SERVER / PROCESSOR PLATE) ================= -->
+                        <g transform="translate(0, 40)">
+                            <!-- Thickness/3D Extrusion Side Left -->
+                            <polygon points="80,70 80,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
+                            <!-- Thickness/3D Extrusion Side Right -->
+                            <polygon points="320,70 320,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
+                            <!-- Top Surface Rhombus -->
+                            <polygon points="200,10 320,70 200,130 80,70" fill="url(#server-grad-primary)" stroke="var(--color-accent-sky)" stroke-width="1.8" />
+
+                            <!-- Floating Core Processor Reactor Unit (Central Glow) -->
+                            <g filter="url(#glow-filter)" transform="translate(0,-5)">
+                                <!-- Floating Platform -->
+                                <polygon points="200,52 236,70 200,88 164,70" fill="var(--color-accent-sky)" fill-opacity="0.35" stroke="var(--color-accent-sky)" stroke-width="1.5" />
+                                <!-- Floating Glowing Core Ball -->
+                                <circle cx="200" cy="65" r="11" fill="url(#core-glow)" />
+                                <!-- Rotating/Orbit Ring -->
+                                <ellipse cx="200" cy="65" rx="22" ry="7" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="20 10" />
+                            </g>
+                            
+                            <!-- Connections emanating from core processor -->
+                            <line x1="200" y1="83" x2="140" y2="102" stroke="#ffffff" stroke-width="1.5" opacity="0.8" />
+                            <line x1="200" y1="83" x2="260" y2="102" stroke="#ffffff" stroke-width="1.5" opacity="0.8" />
+                        </g>
+                    </svg>
+                </div>
+            </div> <!-- Closes Grid Wrapper -->
+
+            <!-- Infinite Tech Marquee (Stripe/Vercel style) -->
+            <div data-nosnippet class="w-full overflow-hidden mt-12 lg:mt-16 py-4 border-y border-slate-900/60 relative z-20 backdrop-blur-sm select-none">
+                <!-- Left/Right soft fading masks -->
+                <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-obsidian-950 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-obsidian-950 to-transparent z-10 pointer-events-none"></div>
+                
+                <div class="animate-marquee flex gap-12 items-center">
+                    <div class="flex gap-12 shrink-0 items-center">
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:react.svg" class="w-4.5 h-4.5" /> REACT
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:nextjs-icon.svg" class="w-4.5 h-4.5 invert" /> NEXT.JS
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:nodejs-icon.svg" class="w-4.5 h-4.5" /> NODE.JS
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:typescript-icon.svg" class="w-4.5 h-4.5" /> TYPESCRIPT
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:postgresql.svg" class="w-4.5 h-4.5" /> POSTGRESQL
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:aws.svg" class="w-5.5 h-5.5" /> AWS
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:docker-icon.svg" class="w-4.5 h-4.5" /> DOCKER
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:graphql.svg" class="w-4.5 h-4.5" /> GRAPHQL
+                        </span>
+                    </div>
+                    <div class="flex gap-12 shrink-0 items-center">
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:react.svg" class="w-4.5 h-4.5" /> REACT
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:nextjs-icon.svg" class="w-4.5 h-4.5 invert" /> NEXT.JS
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:nodejs-icon.svg" class="w-4.5 h-4.5" /> NODE.JS
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:typescript-icon.svg" class="w-4.5 h-4.5" /> TYPESCRIPT
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:postgresql.svg" class="w-4.5 h-4.5" /> POSTGRESQL
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:aws.svg" class="w-5.5 h-5.5" /> AWS
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:docker-icon.svg" class="w-4.5 h-4.5" /> DOCKER
+                        </span>
+                        <span class="text-xs font-mono text-slate-500 flex items-center gap-2 font-semibold">
+                            <img src="https://api.iconify.design/logos:graphql.svg" class="w-4.5 h-4.5" /> GRAPHQL
+                        </span>
+                    </div>
+                </div>
             </div>
 
             <!-- Scroll Indicator Mouse Graphic -->
@@ -524,7 +843,16 @@
                     
                     <div class="relative z-20 flex flex-col justify-between h-full">
                         <div>
-                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1">50K+</span>
+                            <!-- Animated Git Graph -->
+                            <svg class="w-12 h-10 mb-2" viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5,20 H45 M5,20 Q15,20 20,10 T40,10" stroke="var(--color-accent-sky)" stroke-width="1.5" stroke-dasharray="80" stroke-dashoffset="0">
+                                    <animate attributeName="stroke-dashoffset" values="80;0" dur="3s" repeatCount="indefinite" />
+                                </path>
+                                <circle cx="5" cy="20" r="3" fill="var(--color-accent-blue)" />
+                                <circle cx="45" cy="20" r="3" fill="var(--color-accent-blue)" />
+                                <circle cx="40" cy="10" r="3" fill="var(--color-accent-sky)" />
+                            </svg>
+                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1"><span class="metric-counter" data-target="50">0</span>K+</span>
                             <h4 class="text-xl font-bold text-white">Production Commits</h4>
                             <p class="text-sm text-slate-300 mt-1">Written across global cloud systems and SaaS deployments in 5+ years.</p>
                         </div>
@@ -543,18 +871,16 @@
                     <div class="premium-glass-overlay absolute inset-0 z-10"></div>
                     
                     <div class="relative z-20 flex flex-col justify-between h-full">
-                        <div class="relative w-full h-16 mb-2 flex items-center">
-                            <!-- Theme-colored Glowing Folder Icon -->
-                            <div class="w-14 h-10 bg-accent-blue/20 rounded-xl relative border border-accent-blue/30 shadow-glow-blue flex items-center justify-center">
-                                <i data-lucide="folder" class="w-6 h-6 text-accent-sky"></i>
-                            </div>
-                            <!-- Frosted Glass Overlapping Play Card -->
-                            <div class="premium-glass absolute left-8 top-2 w-16 h-12 rounded-xl flex items-center justify-center shadow-lg transform rotate-6 hover:rotate-0 transition-transform duration-300">
-                                <i data-lucide="play" class="w-5 h-5 text-white fill-white/20 animate-pulse"></i>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1">10x ROI</span>
+                        <div>
+                            <!-- Animated Speedometer -->
+                            <svg class="w-12 h-10 mb-2" viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10,25 A15,15 0 0,1 40,25" stroke="var(--color-accent-blue)" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 3" />
+                                <path d="M25,25 L35,14" stroke="var(--color-accent-sky)" stroke-width="2.2" stroke-linecap="round">
+                                    <animateTransform attributeName="transform" type="rotate" from="-60 25 25" to="60 25 25" dur="3s" repeatCount="indefinite" transform-origin="25 25" />
+                                </path>
+                                <circle cx="25" cy="25" r="3" fill="#ffffff" />
+                            </svg>
+                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1"><span class="metric-counter" data-target="10">0</span>x ROI</span>
                             <h4 class="text-xl font-bold text-white">System Optimization</h4>
                             <p class="text-sm text-slate-300 mt-1">High-demand server configurations boosting database response times.</p>
                         </div>
@@ -570,7 +896,19 @@
                     
                     <div class="relative z-20 flex flex-col justify-between h-full">
                         <div>
-                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1">99.9%</span>
+                            <!-- Animated Pulsing Radar -->
+                            <svg class="w-12 h-10 mb-2" viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="25" cy="15" r="4" fill="var(--color-accent-sky)" />
+                                <circle cx="25" cy="15" r="9" fill="none" stroke="var(--color-accent-sky)" stroke-width="1.2">
+                                    <animate attributeName="r" values="4;14;4" dur="2s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="25" cy="15" r="14" fill="none" stroke="var(--color-accent-blue)" stroke-width="1.2">
+                                    <animate attributeName="r" values="9;18;9" dur="2.5s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="1;0;1" dur="2.5s" repeatCount="indefinite" />
+                                </circle>
+                            </svg>
+                            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white block mb-1"><span class="metric-counter" data-target="99.9">0</span>%</span>
                             <h4 class="text-xl font-bold text-white">Uptime Guarantee</h4>
                             <p class="text-sm text-slate-300 mt-1">Highly redundant microservice architectures deployed on AWS cluster systems.</p>
                         </div>
@@ -618,19 +956,47 @@
                         Over the past years, I have worked across the entire web stack, designing high-availability database architectures, seamless intuitive interfaces, and automated cloud workflows. I bridge the gap between complex engineering requirements and elite design aesthetics.
                     </p>
 
-                    <!-- Core Expertise & Metrics (Blue Highlighted) -->
-                    <div class="grid grid-cols-3 gap-2 sm:gap-4 border-y border-slate-900 py-6 my-2">
-                        <div>
-                            <span class="block text-2xl sm:text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">5+</span>
-                            <span class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider leading-tight block mt-1" data-i18n="about-stat-1">Years Experience</span>
+                    <!-- Professional Ecosystem Profile Grid (High-End standard) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                        <!-- Profile Card 1 -->
+                        <div class="premium-glass p-4 rounded-xl border border-slate-900 flex gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center shrink-0">
+                                <i data-lucide="layers" class="w-4.5 h-4.5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Full-Stack Architecture</h4>
+                                <span class="text-xs text-slate-500 block mt-0.5">Scalable React/Next frontends & asynchronous Node.js microservices.</span>
+                            </div>
                         </div>
-                        <div>
-                            <span class="block text-2xl sm:text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">50+</span>
-                            <span class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider leading-tight block mt-1" data-i18n="about-stat-2">Global Deployments</span>
+                        <!-- Profile Card 2 -->
+                        <div class="premium-glass p-4 rounded-xl border border-slate-900 flex gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center shrink-0">
+                                <i data-lucide="activity" class="w-4.5 h-4.5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Performance & Scale</h4>
+                                <span class="text-xs text-slate-500 block mt-0.5">High-speed server configs, CDN caching, & database optimization.</span>
+                            </div>
                         </div>
-                        <div>
-                            <span class="block text-2xl sm:text-3xl font-bold text-white font-mono bg-gradient-to-r from-white to-blue-400 -webkit-background-clip-text text-glow-gradient">99%</span>
-                            <span class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider leading-tight block mt-1" data-i18n="about-stat-3">Success Rate</span>
+                        <!-- Profile Card 3 -->
+                        <div class="premium-glass p-4 rounded-xl border border-slate-900 flex gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center shrink-0">
+                                <i data-lucide="cloud" class="w-4.5 h-4.5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Cloud Infrastructure</h4>
+                                <span class="text-xs text-slate-500 block mt-0.5">Containerized networks using AWS ecosystems, Docker, & Git pipelines.</span>
+                            </div>
+                        </div>
+                        <!-- Profile Card 4 -->
+                        <div class="premium-glass p-4 rounded-xl border border-slate-900 flex gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center shrink-0">
+                                <i data-lucide="palette" class="w-4.5 h-4.5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Interactive UI/UX</h4>
+                                <span class="text-xs text-slate-500 block mt-0.5">Smooth, theme-responsive layouts & fluid GSAP animations.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -665,7 +1031,7 @@
                     <div class="bg-transparent p-5 font-mono text-sm min-h-[220px] text-slate-300 overflow-y-auto max-h-[300px] custom-scrollbar text-left flex flex-col justify-end">
                         <div id="terminalText" class="space-y-2">
                             <span class="text-slate-500">// Welcome to OpSihab Terminal. Type command to query developer profile.</span><br>
-                            <span class="text-slate-400">Available commands:</span> <span class="text-accent-sky-solid font-semibold">skills</span>, <span class="text-accent-sky-solid font-semibold">experience</span>, <span class="text-accent-sky-solid font-semibold">quote</span>, <span class="text-accent-sky-solid font-semibold">help</span>, <span class="text-accent-sky-solid font-semibold">clear</span>
+                            <span class="text-slate-400">Available commands:</span> <span class="text-accent-sky-solid font-semibold">skills</span>, <span class="text-accent-sky-solid font-semibold">experience</span>, <span class="text-accent-sky-solid font-semibold">neofetch</span>, <span class="text-accent-sky-solid font-semibold">contact</span>, <span class="text-accent-sky-solid font-semibold">quote</span>, <span class="text-accent-sky-solid font-semibold">help</span>, <span class="text-accent-sky-solid font-semibold">clear</span>
                         </div>
                         <!-- Command Line Input -->
                         <div class="flex items-center gap-2 mt-4 border-t border-white/5 pt-3">
@@ -686,136 +1052,153 @@
             </div>
 
             <!-- Skills Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6">
-                <!-- Skill Item 1: React -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 97, 218, 251;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:react.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="React.js" />
+            <!-- Skills Grid (Restructured into 4 Stack Pillars) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Pillar 1: Frontend -->
+                <div class="skill-card premium-glass-card p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-accent-sky/30 shadow-glass">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 border-b border-slate-900 pb-3">
+                            <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center">
+                                <i data-lucide="layout-template" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Frontend Architecture</h3>
+                                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-wider">User Interfaces & Experience</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 mb-6">
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:react.svg" class="w-6 h-6" alt="React" />
+                                <span class="text-xs font-semibold text-slate-300">React.js</span>
+                            </div>
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:nextjs-icon.svg" class="w-6 h-6 invert" alt="Next.js" />
+                                <span class="text-xs font-semibold text-slate-300">Next.js</span>
+                            </div>
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:tailwindcss-icon.svg" class="w-6 h-6" alt="Tailwind" />
+                                <span class="text-xs font-semibold text-slate-300">Tailwind</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">React.js</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Frontend</span>
-                    </div>
-                </div>
-
-                <!-- Skill Item 2: Next.js -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 255, 255, 255;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:nextjs-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7 invert" alt="Next.js" />
-                    </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">Next.js</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Fullstack</span>
-                    </div>
-                </div>
-
-                <!-- Skill Item 3: Node.js -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 51, 153, 51;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:nodejs-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Node.js" />
-                    </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">Node.js</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Backend</span>
-                    </div>
-                </div>
-
-                <!-- Skill Item 4: TypeScript -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 49, 120, 198;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:typescript-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="TypeScript" />
-                    </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">TypeScript</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Language</span>
+                    <div class="border-t border-slate-900 pt-4">
+                        <div class="flex justify-between items-center text-xs font-mono mb-1.5">
+                            <span class="text-slate-500 uppercase">PROFICIENCY</span>
+                            <span class="text-accent-sky font-bold">95%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-900">
+                            <div class="bg-gradient-to-r from-accent-blue to-accent-sky h-full rounded-full" style="width: 95%;"></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Skill Item 5: PostgreSQL -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 65, 105, 225;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:postgresql.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="PostgreSQL" />
+                <!-- Pillar 2: Backend -->
+                <div class="skill-card premium-glass-card p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-accent-sky/30 shadow-glass">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 border-b border-slate-900 pb-3">
+                            <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center">
+                                <i data-lucide="cpu" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Backend Core Engines</h3>
+                                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-wider">APIs, Protocols & Logic</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 mb-6">
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:nodejs-icon.svg" class="w-6 h-6" alt="Node" />
+                                <span class="text-xs font-semibold text-slate-300">Node.js</span>
+                            </div>
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:graphql.svg" class="w-6 h-6" alt="GraphQL" />
+                                <span class="text-xs font-semibold text-slate-300">GraphQL</span>
+                            </div>
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:python.svg" class="w-6 h-6" alt="Python" />
+                                <span class="text-xs font-semibold text-slate-300">Python</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">PostgreSQL</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Database</span>
-                    </div>
-                </div>
-
-                <!-- Skill Item 6: AWS -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 255, 153, 0;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:aws.svg" class="w-6 h-6 sm:w-8 sm:h-8 animate-pulse" alt="AWS" />
-                    </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">AWS</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Cloud</span>
-                    </div>
-                </div>
-
-                <!-- Skill Item 7: Docker -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 36, 150, 237;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:docker-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Docker" />
-                    </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">Docker</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">DevOps</span>
-                    </div>
-                </div>
-
-                <!-- Skill Item 8: Python -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 55, 118, 171;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:python.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Python" />
-                    </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">Python</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Language</span>
+                    <div class="border-t border-slate-900 pt-4">
+                        <div class="flex justify-between items-center text-xs font-mono mb-1.5">
+                            <span class="text-slate-500 uppercase">PROFICIENCY</span>
+                            <span class="text-accent-sky font-bold">90%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-900">
+                            <div class="bg-gradient-to-r from-accent-blue to-accent-sky h-full rounded-full" style="width: 90%;"></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Skill Item 9: Tailwind CSS -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 56, 189, 248;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:tailwindcss-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Tailwind CSS" />
+                <!-- Pillar 3: Database -->
+                <div class="skill-card premium-glass-card p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-accent-sky/30 shadow-glass">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 border-b border-slate-900 pb-3">
+                            <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center">
+                                <i data-lucide="database" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Database Registry</h3>
+                                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Persistence & Clustering</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:postgresql.svg" class="w-6 h-6" alt="PostgreSQL" />
+                                <span class="text-xs font-semibold text-slate-300">PostgreSQL</span>
+                            </div>
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:mongodb-icon.svg" class="w-6 h-6" alt="MongoDB" />
+                                <span class="text-xs font-semibold text-slate-300">MongoDB</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">Tailwind CSS</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Styling</span>
+                    <div class="border-t border-slate-900 pt-4">
+                        <div class="flex justify-between items-center text-xs font-mono mb-1.5">
+                            <span class="text-slate-500 uppercase">PROFICIENCY</span>
+                            <span class="text-accent-sky font-bold">88%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-900">
+                            <div class="bg-gradient-to-r from-accent-blue to-accent-sky h-full rounded-full" style="width: 88%;"></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Skill Item 10: Git / Github -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 240, 80, 50;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:git-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="Git & GitHub" />
+                <!-- Pillar 4: DevOps -->
+                <div class="skill-card premium-glass-card p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-accent-sky/30 shadow-glass">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 border-b border-slate-900 pb-3">
+                            <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-accent-sky flex items-center justify-center">
+                                <i data-lucide="server" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">DevOps & Cloud</h3>
+                                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Pipelines & Deployment</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 mb-6">
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:aws.svg" class="w-7 h-7" alt="AWS" />
+                                <span class="text-xs font-semibold text-slate-300">AWS Cloud</span>
+                            </div>
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:docker-icon.svg" class="w-6 h-6" alt="Docker" />
+                                <span class="text-xs font-semibold text-slate-300">Docker</span>
+                            </div>
+                            <div class="bg-slate-950/80 border border-slate-900 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5 hover:border-slate-800 transition-colors">
+                                <img src="https://api.iconify.design/logos:git-icon.svg" class="w-6 h-6" alt="Git" />
+                                <span class="text-xs font-semibold text-slate-300">Git/GitHub</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">Git & GitHub</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Version Control</span>
-                    </div>
-                </div>
-
-                <!-- Skill Item 11: MongoDB -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 71, 162, 72;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:mongodb-icon.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="MongoDB" />
-                    </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">MongoDB</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">Database</span>
-                    </div>
-                </div>
-
-                <!-- Skill Item 12: GraphQL -->
-                <div class="skill-card group relative premium-glass-card p-3 sm:p-6 rounded-2xl flex flex-row sm:flex-col items-center sm:justify-center gap-3 sm:gap-0 cursor-default" style="--hover-glow-color: 225, 0, 152;">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center sm:mb-3.5 transition-transform group-hover:scale-110 shadow-md shrink-0">
-                        <img src="https://api.iconify.design/logos:graphql.svg" class="w-6 h-6 sm:w-7 sm:h-7" alt="GraphQL" />
-                    </div>
-                    <div class="flex flex-col text-left sm:text-center">
-                        <span class="text-sm font-semibold text-white transition-colors">GraphQL</span>
-                        <span class="text-[9px] sm:text-[10px] font-mono text-slate-500 sm:mt-1 uppercase tracking-wider leading-none">API Gateways</span>
+                    <div class="border-t border-slate-900 pt-4">
+                        <div class="flex justify-between items-center text-xs font-mono mb-1.5">
+                            <span class="text-slate-500 uppercase">PROFICIENCY</span>
+                            <span class="text-accent-sky font-bold">92%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-900">
+                            <div class="bg-gradient-to-r from-accent-blue to-accent-sky h-full rounded-full" style="width: 92%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -842,23 +1225,55 @@
             <!-- Projects Grid Grid-3-cols with Navy/Blue borders -->
             <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Project Card 1: Fullstack -->
-                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-top-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="fullstack">
+                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="fullstack">
                     <div class="h-48 overflow-hidden relative">
-                        <!-- Mock premium UI screenshot with theme gradient background -->
-                        <div class="absolute inset-0 project-mockup-bg flex flex-col justify-center items-center p-6 transition-transform duration-500 group-hover:scale-105">
-                            <i data-lucide="shopping-bag" class="w-12 h-12 text-accent-sky mb-2"></i>
-                            <span class="text-xs font-mono text-sky-400 font-semibold tracking-wider">VelocePay & Commerce</span>
+                        <!-- macOS Window Header & Vector Mockup -->
+                        <div class="flex items-center justify-between px-4 py-2 bg-obsidian-950/80 border-b border-slate-900">
+                            <div class="flex gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                            </div>
+                            <span class="text-[9px] font-mono text-slate-500">velocepay.io</span>
                         </div>
-                        <span class="absolute top-4 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold">Fullstack</span>
+                        <div class="absolute inset-0 top-8 project-mockup-bg flex items-center justify-center p-4 transition-transform duration-500 group-hover:scale-105">
+                            <svg class="w-full max-w-[160px] h-20" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="5" y="25" width="28" height="18" rx="3" fill="var(--color-accent-blue)" fill-opacity="0.15" stroke="var(--color-accent-blue)" stroke-width="1.5" />
+                                <line x1="5" y1="31" x2="33" y2="31" stroke="var(--color-accent-blue)" stroke-width="1" />
+                                <circle cx="27" cy="38" r="1.5" fill="var(--color-accent-sky)" />
+                                
+                                <circle cx="80" cy="34" r="9" fill="none" stroke="var(--color-accent-sky)" stroke-width="1.5" />
+                                <circle cx="80" cy="34" r="2.5" fill="var(--color-accent-sky)" />
+                                
+                                <ellipse cx="135" cy="27" rx="14" ry="5" fill="var(--color-accent-blue)" fill-opacity="0.15" stroke="var(--color-accent-blue)" stroke-width="1.5" />
+                                <path d="M121,27 V45 A14,5 0 0,0 149,45 V27" fill="var(--color-accent-blue)" fill-opacity="0.15" stroke="var(--color-accent-blue)" stroke-width="1.5" />
+                                
+                                <path d="M33,34 H71" stroke="var(--color-accent-sky)" stroke-width="1.2" stroke-dasharray="4 2" class="data-pipe" />
+                                <path d="M89,34 H121" stroke="var(--color-accent-sky)" stroke-width="1.2" stroke-dasharray="4 2" class="data-pipe" />
+                            </svg>
+                        </div>
+                        <span class="absolute top-11 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold z-10">Fullstack</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">VelocePay Gateway</h3>
                         <p class="text-sm text-slate-400 mb-4" data-i18n="project-desc-1">A secure cloud-native payment automation engine featuring multi-tier escrow validations and instantaneous notifications.</p>
                         <!-- Tech Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
+                        <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Next.js</span>
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">NestJS</span>
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Redis</span>
+                        </div>
+                        <!-- Repository Metadata -->
+                        <div class="flex items-center gap-3 mb-4 text-[10px] font-mono border-t border-slate-900/60 pt-3">
+                            <span class="text-slate-500 flex items-center gap-1">
+                                <i data-lucide="git-branch" class="w-3.5 h-3.5 text-accent-sky"></i> main
+                            </span>
+                            <span class="text-emerald-400/90 flex items-center gap-1">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> passing
+                            </span>
+                            <span class="text-slate-500 flex items-center gap-1">
+                                <i data-lucide="percent" class="w-3.5 h-3.5 text-accent-sky"></i> 98% cov
+                            </span>
                         </div>
                         <!-- Action Links -->
                         <div class="flex items-center justify-between border-t border-slate-900 pt-4">
@@ -873,23 +1288,54 @@
                 </div>
 
                 <!-- Project Card 2: Frontend -->
-                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-top-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="frontend">
+                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="frontend">
                     <div class="h-48 overflow-hidden relative">
-                        <!-- Mock premium UI screenshot -->
-                        <div class="absolute inset-0 project-mockup-bg flex flex-col justify-center items-center p-6 transition-transform duration-500 group-hover:scale-105">
-                            <i data-lucide="layout" class="w-12 h-12 text-accent-sky mb-2"></i>
-                            <span class="text-xs font-mono text-sky-400 font-semibold tracking-wider">Hyperion Dashboard UI</span>
+                        <!-- macOS Window Header & Vector Mockup -->
+                        <div class="flex items-center justify-between px-4 py-2 bg-obsidian-950/80 border-b border-slate-900">
+                            <div class="flex gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                            </div>
+                            <span class="text-[9px] font-mono text-slate-500">hyperion.stats</span>
                         </div>
-                        <span class="absolute top-4 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold">Frontend</span>
+                        <div class="absolute inset-0 top-8 project-mockup-bg flex items-center justify-center p-4 transition-transform duration-500 group-hover:scale-105">
+                            <svg class="w-full max-w-[160px] h-20" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="5" y1="20" x2="155" y2="20" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                                <line x1="5" y1="40" x2="155" y2="40" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                                <line x1="5" y1="60" x2="155" y2="60" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                                
+                                <rect x="15" y="35" width="8" height="25" rx="1.5" fill="var(--color-accent-blue)" fill-opacity="0.2" stroke="var(--color-accent-blue)" stroke-width="1" />
+                                <rect x="30" y="20" width="8" height="40" rx="1.5" fill="var(--color-accent-sky)" fill-opacity="0.3" stroke="var(--color-accent-sky)" stroke-width="1" />
+                                <rect x="45" y="45" width="8" height="15" rx="1.5" fill="var(--color-accent-blue)" fill-opacity="0.2" stroke="var(--color-accent-blue)" stroke-width="1" />
+                                
+                                <path d="M62,50 Q85,20 102,45 T142,30" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+                                <circle cx="102" cy="45" r="3" fill="var(--color-accent-sky)" stroke="#ffffff" stroke-width="1" />
+                                <circle cx="142" cy="30" r="3" fill="var(--color-accent-sky)" stroke="#ffffff" stroke-width="1" />
+                            </svg>
+                        </div>
+                        <span class="absolute top-11 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold z-10">Frontend</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Hyperion Analytics</h3>
                         <p class="text-sm text-slate-400 mb-4" data-i18n="project-desc-2">Supercharged 3D graphical dashboard engineered to visualization massive metrics datasets asynchronously.</p>
                         <!-- Tech Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
+                        <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Three.js</span>
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Tailwind</span>
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">GSAP</span>
+                        </div>
+                        <!-- Repository Metadata -->
+                        <div class="flex items-center gap-3 mb-4 text-[10px] font-mono border-t border-slate-900/60 pt-3">
+                            <span class="text-slate-500 flex items-center gap-1">
+                                <i data-lucide="git-branch" class="w-3.5 h-3.5 text-accent-sky"></i> main
+                            </span>
+                            <span class="text-emerald-400/90 flex items-center gap-1">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> passing
+                            </span>
+                            <span class="text-slate-500 flex items-center gap-1">
+                                <i data-lucide="percent" class="w-3.5 h-3.5 text-accent-sky"></i> 95% cov
+                            </span>
                         </div>
                         <!-- Action Links -->
                         <div class="flex items-center justify-between border-t border-slate-900 pt-4">
@@ -904,23 +1350,49 @@
                 </div>
 
                 <!-- Project Card 3: Cloud -->
-                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-top-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="cloud">
+                <div class="project-card relative premium-glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-blue/80 hover:shadow-[0_0_40px_rgba(var(--accent-blue-rgb),0.35)]" data-category="cloud">
                     <div class="h-48 overflow-hidden relative">
-                        <!-- Mock premium UI screenshot -->
-                        <div class="absolute inset-0 project-mockup-bg flex flex-col justify-center items-center p-6 transition-transform duration-500 group-hover:scale-105">
-                            <i data-lucide="network" class="w-12 h-12 text-accent-sky mb-2"></i>
-                            <span class="text-xs font-mono text-sky-400 font-semibold tracking-wider">AuthShield Core</span>
+                        <!-- macOS Window Header & Vector Mockup -->
+                        <div class="flex items-center justify-between px-4 py-2 bg-obsidian-950/80 border-b border-slate-900">
+                            <div class="flex gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                            </div>
+                            <span class="text-[9px] font-mono text-slate-500">authshield.org</span>
                         </div>
-                        <span class="absolute top-4 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold">Cloud/API</span>
+                        <div class="absolute inset-0 top-8 project-mockup-bg flex items-center justify-center p-4 transition-transform duration-500 group-hover:scale-105">
+                            <svg class="w-full max-w-[160px] h-20" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M80,10 C93,10 102,16 106,23 C106,39 93,48 80,54 C67,48 54,39 54,23 C58,16 67,10 80,10 Z" fill="var(--color-accent-blue)" fill-opacity="0.15" stroke="var(--color-accent-blue)" stroke-width="1.5" />
+                                
+                                <rect x="74" y="30" width="12" height="9" rx="1.5" fill="var(--color-accent-sky)" stroke="var(--color-accent-sky)" stroke-width="1" />
+                                <path d="M76,30 V26 A4,4 0 0,1 84,26 V30" fill="none" stroke="var(--color-accent-sky)" stroke-width="1.2" />
+                                
+                                <circle cx="80" cy="32" r="26" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="3 3" />
+                            </svg>
+                        </div>
+                        <span class="absolute top-11 right-4 text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold z-10">Cloud/API</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">AuthShield Middleware</h3>
                         <p class="text-sm text-slate-400 mb-4" data-i18n="project-desc-3">Highly scalable OAuth2.1 federated authorization middleware handling 50k requests/sec latency budget.</p>
                         <!-- Tech Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
+                        <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Golang</span>
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Docker</span>
                             <span class="text-[10px] font-mono bg-slate-950 px-2 py-1 rounded border border-slate-900 text-slate-400">Kubernetes</span>
+                        </div>
+                        <!-- Repository Metadata -->
+                        <div class="flex items-center gap-3 mb-4 text-[10px] font-mono border-t border-slate-900/60 pt-3">
+                            <span class="text-slate-500 flex items-center gap-1">
+                                <i data-lucide="git-branch" class="w-3.5 h-3.5 text-accent-sky"></i> main
+                            </span>
+                            <span class="text-emerald-400/90 flex items-center gap-1">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> passing
+                            </span>
+                            <span class="text-slate-500 flex items-center gap-1">
+                                <i data-lucide="percent" class="w-3.5 h-3.5 text-accent-sky"></i> 99% cov
+                            </span>
                         </div>
                         <!-- Action Links -->
                         <div class="flex items-center justify-between border-t border-slate-900 pt-4">
@@ -945,13 +1417,18 @@
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1" data-i18n="exp-title">Professional Milestones</h2>
             </div>
 
-            <!-- Timeline Main Wrapper with Soft Blue Axis -->
-            <div class="max-w-3xl mx-auto relative before:absolute before:top-0 before:bottom-0 before:left-4 md:before:left-1/2 before:w-[1px] before:bg-slate-800">
+            <!-- Timeline Main Wrapper with Interactive Scroll Progress Axis -->
+            <div id="timelineWrapper" class="max-w-3xl mx-auto relative pb-4">
+                <!-- Axis Line -->
+                <div class="absolute top-0 bottom-0 left-4 md:left-1/2 md:-translate-x-1/2 w-[2px] bg-slate-900">
+                    <!-- Dynamic Colored Scroll Progress Bar -->
+                    <div id="timelineProgress" class="w-full bg-gradient-to-b from-accent-sky to-accent-blue h-0 origin-top"></div>
+                </div>
                 
                 <!-- Timeline Item 1 -->
                 <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 mb-12 group">
                     <!-- Timeline circle dot (Blue Glowing Ring) -->
-                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform group-hover:scale-125 group-hover:bg-accent-sky hover:shadow-glow-sky"></div>
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform"></div>
                     
                     <!-- Left Column (Empty on mobile, content on desktop) -->
                     <div class="hidden md:flex flex-col items-end justify-center text-right">
@@ -960,24 +1437,48 @@
                     </div>
 
                     <!-- Right Column (Content) -->
-                    <div class="premium-glass-card p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 transform">
+                    <div class="premium-glass-card p-6 rounded-2xl border-l-[3px] border-accent-sky/80 transition-all duration-300 hover:-translate-y-1 transform relative overflow-hidden text-left shadow-glass">
+                        <div class="absolute top-4 right-4 flex items-center gap-1 text-[9px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-0.5 rounded-full font-semibold">
+                            <span class="w-1 h-1 rounded-full bg-blue-400 animate-ping"></span> Active
+                        </div>
                         <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2024 - Present</span>
                         <h3 class="text-lg font-bold text-white">Lead Fullstack Architect</h3>
-                        <p class="text-sm text-slate-400 font-medium mb-2">Synthetix Labs Inc.</p>
-                        <p class="text-sm text-slate-500 leading-relaxed" data-i18n="exp-role-1">Leading architectural development for cloud infrastructure migration plans, maintaining web interface optimization standards across 4 production platforms.</p>
+                        <p class="text-xs text-slate-400 font-semibold mb-3">Synthetix Labs Inc. <span class="text-slate-600 font-normal">| SF (Remote)</span></p>
+                        <ul class="text-xs text-slate-500 leading-relaxed space-y-2 list-none">
+                            <li class="flex items-start gap-1.5">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-accent-sky mt-0.5 shrink-0"></i>
+                                <span>Leading architectural development for cloud infrastructure migration plans.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-accent-sky mt-0.5 shrink-0"></i>
+                                <span>Maintaining web interface optimization standards across 4 production platforms.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Timeline Item 2 -->
                 <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 mb-12 group">
-                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform group-hover:scale-125 group-hover:bg-accent-sky hover:shadow-glow-sky"></div>
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform"></div>
                     
                     <!-- Left Column (Content on desktop) -->
-                    <div class="premium-glass-card p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 transform md:text-right">
+                    <div class="premium-glass-card p-6 rounded-2xl border-l-[3px] border-accent-sky/80 transition-all duration-300 hover:-translate-y-1 transform relative overflow-hidden text-left shadow-glass">
+                        <div class="absolute top-4 right-4 text-[9px] font-mono bg-slate-900 text-slate-400 border border-slate-800 px-2 py-0.5 rounded-full font-semibold">
+                            Full-time
+                        </div>
                         <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2022 - 2024</span>
                         <h3 class="text-lg font-bold text-white">Senior Software Engineer</h3>
-                        <p class="text-sm text-slate-400 font-medium mb-2">Quant Technologies</p>
-                        <p class="text-sm text-slate-500 leading-relaxed" data-i18n="exp-role-2">Orchestrated real-time websocket integrations, integrated complex dashboard visual pipelines, reducing API payload latencies by 35% across the board.</p>
+                        <p class="text-xs text-slate-400 font-semibold mb-3">Quant Technologies <span class="text-slate-600 font-normal">| Dhaka, BD</span></p>
+                        <ul class="text-xs text-slate-500 leading-relaxed space-y-2 list-none">
+                            <li class="flex items-start gap-1.5">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-accent-sky mt-0.5 shrink-0"></i>
+                                <span>Orchestrated real-time high-throughput WebSocket API integrations.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-accent-sky mt-0.5 shrink-0"></i>
+                                <span>Integrated complex dashboard visual pipelines, reducing API payload latencies by 35%.</span>
+                            </li>
+                        </ul>
                     </div>
 
                     <!-- Right Column (Empty on mobile, content on desktop) -->
@@ -989,7 +1490,7 @@
 
                 <!-- Timeline Item 3 -->
                 <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 group">
-                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform group-hover:scale-125 group-hover:bg-accent-sky hover:shadow-glow-sky"></div>
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent-blue bg-obsidian-950 z-10 transition-transform"></div>
                     
                     <!-- Left Column -->
                     <div class="hidden md:flex flex-col items-end justify-center text-right">
@@ -998,11 +1499,23 @@
                     </div>
 
                     <!-- Right Column -->
-                    <div class="premium-glass-card p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 transform">
+                    <div class="premium-glass-card p-6 rounded-2xl border-l-[3px] border-accent-sky/80 transition-all duration-300 hover:-translate-y-1 transform relative overflow-hidden text-left shadow-glass">
+                        <div class="absolute top-4 right-4 text-[9px] font-mono bg-slate-900 text-slate-400 border border-slate-800 px-2 py-0.5 rounded-full font-semibold">
+                            Full-time
+                        </div>
                         <span class="inline-block md:hidden text-xs font-mono text-accent-sky font-semibold mb-2">2020 - 2022</span>
                         <h3 class="text-lg font-bold text-white">Associate Frontend Developer</h3>
-                        <p class="text-sm text-slate-400 font-medium mb-2">ByteScale Dynamics</p>
-                        <p class="text-sm text-slate-500 leading-relaxed" data-i18n="exp-role-3">Constructed highly modular responsive components for multiple SaaS clients utilizing tailored vanilla and CSS configurations.</p>
+                        <p class="text-xs text-slate-400 font-semibold mb-3">ByteScale Dynamics <span class="text-slate-600 font-normal">| Dhaka, BD</span></p>
+                        <ul class="text-xs text-slate-500 leading-relaxed space-y-2 list-none">
+                            <li class="flex items-start gap-1.5">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-accent-sky mt-0.5 shrink-0"></i>
+                                <span>Constructed highly modular responsive components for multiple global SaaS clients.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-accent-sky mt-0.5 shrink-0"></i>
+                                <span>Utilized tailored vanilla and CSS configurations for optimized page rendering.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1044,6 +1557,48 @@
                                 <span class="text-sm font-semibold text-white" data-i18n="contact-loc">Dhaka, Bangladesh</span>
                             </div>
                         </div>
+
+                        <!-- System Diagnostics HUD Widget -->
+                        <div class="premium-glass p-4 rounded-xl relative overflow-hidden border border-slate-900 shadow-glass">
+                            <div class="flex items-center justify-between mb-4 border-b border-slate-800/80 pb-2">
+                                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                                    <span class="relative flex h-2 w-2">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-sky opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-blue"></span>
+                                    </span>
+                                    System Diagnostics
+                                </span>
+                                <span class="text-[9px] font-mono text-slate-500">v2.4.1</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-left font-mono">
+                                <div>
+                                    <span class="text-[9px] text-slate-500 block">HQ LATENCY</span>
+                                    <span class="text-xs text-white font-semibold flex items-center gap-1">
+                                        <i data-lucide="cpu" class="w-3 h-3 text-accent-sky"></i> 14ms (Optimum)
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] text-slate-500 block">SECURITY LAYER</span>
+                                    <span class="text-xs text-white font-semibold flex items-center gap-1">
+                                        <i data-lucide="shield-check" class="w-3 h-3 text-accent-sky"></i> TLS 1.3 Active
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] text-slate-500 block">HQ COORDINATES</span>
+                                    <span class="text-xs text-white font-semibold flex items-center gap-1">
+                                        <i data-lucide="navigation" class="w-3 h-3 text-accent-sky"></i> 23.81°N, 90.41°E
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] text-slate-500 block">PULSE HEARTBEAT</span>
+                                    <svg class="w-24 h-4 mt-1" viewBox="0 0 100 20">
+                                        <path d="M0,10 H35 L38,2 L42,18 L45,10 H100" fill="none" stroke="var(--color-accent-sky)" stroke-width="1.5" stroke-dasharray="150" stroke-dashoffset="0">
+                                            <animate attributeName="stroke-dashoffset" values="150;0" dur="2.2s" repeatCount="indefinite" />
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1053,6 +1608,24 @@
                     <div class="absolute top-0 right-0 w-48 h-48 bg-accent-blue/15 rounded-full blur-[60px] pointer-events-none z-0"></div>
                     <!-- Frosted glass overlay -->
                     <div class="premium-glass-overlay absolute inset-0 z-10"></div>
+                    
+                    <div class="relative z-20 mb-6 border-b border-slate-900 pb-4">
+                        <h3 class="text-sm font-mono text-slate-400 uppercase tracking-widest flex items-center gap-1.5 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-accent-sky animate-pulse"></span>
+                            [ SECURE TRANSMISSION CHANNEL ]
+                        </h3>
+                        <div class="flex flex-wrap gap-3 text-[10px] font-mono text-slate-500">
+                            <span class="flex items-center gap-1">
+                                <i data-lucide="shield" class="w-3.5 h-3.5 text-accent-sky"></i> ENCRYPTION: AES-256
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i data-lucide="wifi" class="w-3.5 h-3.5 text-accent-sky"></i> HANDSHAKE: ACTIVE
+                            </span>
+                            <span class="flex items-center gap-1 text-emerald-400/90">
+                                <i data-lucide="check" class="w-3.5 h-3.5"></i> STATUS: READY
+                            </span>
+                        </div>
+                    </div>
                     
                     <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-20">
                         <!-- Honeypot anti-spam field -->
@@ -1095,7 +1668,7 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="border-t border-slate-900 bg-obsidian-950 relative z-10 py-12 mt-12">
+    <footer data-nosnippet class="border-t border-slate-900 bg-obsidian-950 relative z-10 py-12 mt-12">
         <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-2">
                 <!-- BACKUP OF PREVIOUS COMPACT SVG LOGO -->
@@ -1177,7 +1750,7 @@
         // ==========================================
         // LOCALIZATION ENGINE (Bilingual System)
         // ==========================================
-        let currentLang = 'en';
+        let currentLang = localStorage.getItem('lang') || 'en';
 
         const TRANSLATIONS = {
             'en': {
@@ -1286,10 +1859,11 @@
 
         function toggleLanguage() {
             currentLang = (currentLang === 'en') ? 'bn' : 'en';
+            localStorage.setItem('lang', currentLang);
             applyLanguage(currentLang);
         }
 
-        let currentTheme = 'emerald';
+        let currentTheme = localStorage.getItem('theme') || 'emerald';
         const THEME_COLORS = {
             emerald: { primary: '#10b981', secondary: '#a3e635' },
             purple: { primary: '#8b5cf6', secondary: '#ec4899' },
@@ -1331,37 +1905,45 @@
             }
         }
 
-        function toggleTheme() {
+        function applyTheme(theme, showToast = false) {
             const html = document.documentElement;
             const btnLabel = document.getElementById('themeLabel');
-            if (currentTheme === 'emerald') {
-                html.setAttribute('data-theme', 'purple');
-                btnLabel.innerText = 'PURPLE';
-                currentTheme = 'purple';
-                updateFavicon('purple');
-                triggerToast('Theme Updated', 'Switched to Void Purple theme', 'success');
-            } else if (currentTheme === 'purple') {
-                html.setAttribute('data-theme', 'sunset');
-                btnLabel.innerText = 'SUNSET';
-                currentTheme = 'sunset';
-                updateFavicon('sunset');
-                triggerToast('Theme Updated', 'Switched to Sunset Orange theme', 'success');
-            } else if (currentTheme === 'sunset') {
-                html.setAttribute('data-theme', 'blue');
-                btnLabel.innerText = 'BLUE';
-                currentTheme = 'blue';
-                updateFavicon('blue');
-                triggerToast('Theme Updated', 'Switched to Ice Blue theme', 'success');
-            } else {
+            currentTheme = theme;
+            localStorage.setItem('theme', theme);
+            
+            if (theme === 'emerald') {
                 html.removeAttribute('data-theme');
-                btnLabel.innerText = 'EMERALD';
-                currentTheme = 'emerald';
+                if (btnLabel) btnLabel.innerText = 'EMERALD';
                 updateFavicon('emerald');
-                triggerToast('Theme Updated', 'Switched to Cyberpunk Emerald theme', 'success');
+                if (showToast) triggerToast('Theme Updated', 'Switched to Cyberpunk Emerald theme', 'success');
+            } else if (theme === 'purple') {
+                html.setAttribute('data-theme', 'purple');
+                if (btnLabel) btnLabel.innerText = 'PURPLE';
+                updateFavicon('purple');
+                if (showToast) triggerToast('Theme Updated', 'Switched to Void Purple theme', 'success');
+            } else if (theme === 'sunset') {
+                html.setAttribute('data-theme', 'sunset');
+                if (btnLabel) btnLabel.innerText = 'SUNSET';
+                updateFavicon('sunset');
+                if (showToast) triggerToast('Theme Updated', 'Switched to Sunset Orange theme', 'success');
+            } else if (theme === 'blue') {
+                html.setAttribute('data-theme', 'blue');
+                if (btnLabel) btnLabel.innerText = 'BLUE';
+                updateFavicon('blue');
+                if (showToast) triggerToast('Theme Updated', 'Switched to Ice Blue theme', 'success');
             }
         }
 
+        function toggleTheme() {
+            let nextTheme = 'emerald';
+            if (currentTheme === 'emerald') nextTheme = 'purple';
+            else if (currentTheme === 'purple') nextTheme = 'sunset';
+            else if (currentTheme === 'sunset') nextTheme = 'blue';
+            applyTheme(nextTheme, true);
+        }
+
         function applyLanguage(lang) {
+            localStorage.setItem('lang', lang);
             document.body.classList.add('pointer-events-none');
             const transElements = document.querySelectorAll('[data-i18n]');
             
@@ -1424,16 +2006,44 @@
                                       <span class="text-slate-400">Available commands:</span><br>
                                       &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">skills</span> - show key tech stack<br>
                                       &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">experience</span> - professional journey milestones<br>
+                                      &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">neofetch</span> - visual system specifications overview<br>
+                                      &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">contact</span> - direct contact channels<br>
                                       &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">quote</span> - developer engineering philosophy<br>
                                       &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">clear</span> - reset screen console buffer</div>`;
                         } else if (cmd === 'skills') {
                             output = `<div><span class="text-blue-400">&gt;</span> sihab.getSkills()<br>
-                                      <span class="text-sky-300">RESULT:</span> [<span class="text-emerald-400">'NextJS'</span>, <span class="text-emerald-400">'Node'</span>, <span class="text-emerald-400">'TypeScript'</span>, <span class="text-emerald-400">'PostgreSQL'</span>, <span class="text-emerald-400">'AWS'</span>, <span class="text-emerald-400">'Docker'</span>]</div>`;
+                                      <span class="text-sky-300">RESULT:</span> [<span class="theme-accent-text font-bold">'NextJS'</span>, <span class="theme-accent-text font-bold">'Node'</span>, <span class="theme-accent-text font-bold">'TypeScript'</span>, <span class="theme-accent-text font-bold">'PostgreSQL'</span>, <span class="theme-accent-text font-bold">'AWS'</span>, <span class="theme-accent-text font-bold">'Docker'</span>]</div>`;
                         } else if (cmd === 'experience') {
                             output = `<div><span class="text-blue-400">&gt;</span> sihab.getExperience()<br>
                                       <span class="text-sky-300">RESULT:</span> {<br>
-                                      &nbsp;&nbsp;Lead_Architect: <span class="text-emerald-400">'Synthetix Labs'</span> (2024-Pres),<br>
-                                      &nbsp;&nbsp;Senior_Engineer: <span class="text-emerald-400">'Quant Tech'</span> (2022-2024)<br>
+                                      &nbsp;&nbsp;Lead_Architect: <span class="theme-accent-text font-bold">'Synthetix Labs'</span> (2024-Pres),<br>
+                                      &nbsp;&nbsp;Senior_Engineer: <span class="theme-accent-text font-bold">'Quant Tech'</span> (2022-2024)<br>
+                                      }</div>`;
+                        } else if (cmd === 'neofetch' || cmd === 'system') {
+                            output = `<div><span class="text-blue-400">&gt;</span> neofetch<br>
+                                      <div class="flex items-start gap-4 mt-2">
+                                          <pre class="text-accent-sky-solid font-bold leading-tight shrink-0 select-none" style="font-family: monospace; font-size: 11px;">
+  /＼_/＼
+ (  o.o  )
+  &gt;  ^  &lt;
+                                          </pre>
+                                          <div class="text-xs leading-relaxed font-mono">
+                                              <span class="text-accent-sky-solid font-bold">opsihab@tech</span><br>
+                                              <span class="text-slate-600 select-none">-----------------</span><br>
+                                              <span class="text-slate-400">OS:</span> OpSihab Core v1.0<br>
+                                              <span class="text-slate-400">Kernel:</span> React / Node.js Engine<br>
+                                              <span class="text-slate-400">Uptime:</span> 5+ Years in Production<br>
+                                              <span class="text-slate-400">Shell:</span> zsh (Developer Mode)<br>
+                                              <span class="text-slate-400">Skills:</span> NextJS, Node, TS, AWS, Docker<br>
+                                              <span class="text-slate-400">Theme:</span> <span class="theme-accent-text font-bold capitalize">${currentTheme}</span>
+                                          </div>
+                                      </div></div>`;
+                        } else if (cmd === 'contact') {
+                            output = `<div><span class="text-blue-400">&gt;</span> sihab.getContactInfo()<br>
+                                      <span class="text-sky-300">RESULT:</span> {<br>
+                                      &nbsp;&nbsp;Email: <a href="mailto:hello@opsihab.tech" class="theme-accent-text hover:underline font-bold">hello@opsihab.tech</a>,<br>
+                                      &nbsp;&nbsp;GitHub: <a href="https://github.com/aizen877" target="_blank" class="theme-accent-text hover:underline font-bold">github.com/aizen877</a>,<br>
+                                      &nbsp;&nbsp;Location: <span class="theme-accent-text font-bold">'Dhaka, Bangladesh'</span><br>
                                       }</div>`;
                         } else if (cmd === 'quote') {
                             output = `<div><span class="text-blue-400">&gt;</span> sihab.getPhilosophy()<br>
@@ -1520,12 +2130,38 @@
 
             if (cmd === 'skills') {
                 output = `<span class="text-blue-400">&gt;</span> sihab.getSkills()<br>
-                          <span class="text-sky-300">RESULT:</span> [<span class="text-emerald-400">'NextJS'</span>, <span class="text-emerald-400">'Node'</span>, <span class="text-emerald-400">'TypeScript'</span>, <span class="text-emerald-400">'PostgreSQL'</span>, <span class="text-emerald-400">'AWS'</span>, <span class="text-emerald-400">'Docker'</span>]`;
+                          <span class="text-sky-300">RESULT:</span> [<span class="theme-accent-text font-bold">'NextJS'</span>, <span class="theme-accent-text font-bold">'Node'</span>, <span class="theme-accent-text font-bold">'TypeScript'</span>, <span class="theme-accent-text font-bold">'PostgreSQL'</span>, <span class="theme-accent-text font-bold">'AWS'</span>, <span class="theme-accent-text font-bold">'Docker'</span>]`;
             } else if (cmd === 'experience') {
                 output = `<span class="text-blue-400">&gt;</span> sihab.getExperience()<br>
                           <span class="text-sky-300">RESULT:</span> {<br>
-                          &nbsp;&nbsp;Lead_Architect: <span class="text-emerald-400">'Synthetix Labs'</span> (2024-Pres),<br>
-                          &nbsp;&nbsp;Senior_Engineer: <span class="text-emerald-400">'Quant Tech'</span> (2022-2024)<br>
+                          &nbsp;&nbsp;Lead_Architect: <span class="theme-accent-text font-bold">'Synthetix Labs'</span> (2024-Pres),<br>
+                          &nbsp;&nbsp;Senior_Engineer: <span class="theme-accent-text font-bold">'Quant Tech'</span> (2022-2024)<br>
+                          }`;
+            } else if (cmd === 'neofetch' || cmd === 'system') {
+                output = `<span class="text-blue-400">&gt;</span> neofetch<br>
+                          <div class="flex items-start gap-4 mt-2">
+                              <pre class="text-accent-sky-solid font-bold leading-tight shrink-0 select-none" style="font-family: monospace; font-size: 11px;">
+  /＼_/＼
+ (  o.o  )
+  &gt;  ^  &lt;
+                              </pre>
+                              <div class="text-xs leading-relaxed font-mono">
+                                  <span class="text-accent-sky-solid font-bold">opsihab@tech</span><br>
+                                  <span class="text-slate-600 select-none">-----------------</span><br>
+                                  <span class="text-slate-400">OS:</span> OpSihab Core v1.0<br>
+                                  <span class="text-slate-400">Kernel:</span> React / Node.js Engine<br>
+                                  <span class="text-slate-400">Uptime:</span> 5+ Years in Production<br>
+                                  <span class="text-slate-400">Shell:</span> zsh (Developer Mode)<br>
+                                  <span class="text-slate-400">Skills:</span> NextJS, Node, TS, AWS, Docker<br>
+                                  <span class="text-slate-400">Theme:</span> <span class="theme-accent-text font-bold capitalize">${currentTheme}</span>
+                              </div>
+                          </div>`;
+            } else if (cmd === 'contact') {
+                output = `<span class="text-blue-400">&gt;</span> sihab.getContactInfo()<br>
+                          <span class="text-sky-300">RESULT:</span> {<br>
+                          &nbsp;&nbsp;Email: <a href="mailto:hello@opsihab.tech" class="theme-accent-text hover:underline font-bold">hello@opsihab.tech</a>,<br>
+                          &nbsp;&nbsp;GitHub: <a href="https://github.com/aizen877" target="_blank" class="theme-accent-text hover:underline font-bold">github.com/aizen877</a>,<br>
+                          &nbsp;&nbsp;Location: <span class="theme-accent-text font-bold">'Dhaka, Bangladesh'</span><br>
                           }`;
             } else if (cmd === 'quote') {
                 output = `<span class="text-blue-400">&gt;</span> sihab.getPhilosophy()<br>
@@ -1673,11 +2309,9 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
-                header.classList.remove('top-4', 'py-3.5', 'w-[90%]', 'max-w-6xl');
-                header.classList.add('top-2', 'py-2.5', 'w-[85%]', 'max-w-5xl', 'shadow-2xl');
+                header.classList.add('scrolled');
             } else {
-                header.classList.remove('top-2', 'py-2.5', 'w-[85%]', 'max-w-5xl', 'shadow-2xl');
-                header.classList.add('top-4', 'py-3.5', 'w-[90%]', 'max-w-6xl');
+                header.classList.remove('scrolled');
             }
         });
 
@@ -1697,6 +2331,10 @@
             mouseGlow.style.opacity = '1';
             mouseGlow.style.left = e.clientX + 'px';
             mouseGlow.style.top = e.clientY + 'px';
+
+            // Update grid spotlight coordinates variables
+            document.documentElement.style.setProperty('--mouse-grid-x', e.clientX + 'px');
+            document.documentElement.style.setProperty('--mouse-grid-y', e.clientY + 'px');
         });
         window.addEventListener('mouseout', () => {
             mouse.x = null;
@@ -1849,18 +2487,89 @@
         }
 
         // ==========================================
+        // MAGNETIC CTA BUTTONS INTERACTIVE EFFECT
+        // ==========================================
+        function initMagneticButtons() {
+            const magneticButtons = document.querySelectorAll('.premium-btn-primary, .premium-btn-secondary');
+            
+            magneticButtons.forEach(btn => {
+                btn.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left - (rect.width / 2);
+                    const y = e.clientY - rect.top - (rect.height / 2);
+                    
+                    gsap.to(this, {
+                        x: x * 0.35,
+                        y: y * 0.35,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    gsap.to(this, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.6,
+                        ease: 'elastic.out(1.1, 0.4)'
+                    });
+                });
+            });
+        }
+
+        // ==========================================
         // INITIALIZATIONS & TIMELINE INTROS
         // ==========================================
         window.onload = function() {
+            applyTheme(currentTheme, false);
+            applyLanguage(currentLang);
+
             lucide.createIcons();
-            updateFavicon(currentTheme);
-            init3DTilt();
+            // init3DTilt(); // Disabled for clean, premium industry standard (Stripe/Vercel) CSS transitions
             initTerminal();
+            initMagneticButtons();
             
             resizeCanvas();
             animateCanvas();
 
             gsap.registerPlugin(ScrollTrigger);
+
+            // Staggered metrics counters count-up
+            const counters = document.querySelectorAll('.metric-counter');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const isDecimal = target % 1 !== 0;
+                
+                gsap.fromTo(counter, 
+                    { textContent: 0 },
+                    {
+                        textContent: target,
+                        duration: 1.5,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: '#metrics',
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        },
+                        snap: { textContent: isDecimal ? 0.1 : 1 },
+                        onUpdate: function() {
+                            if (isDecimal) {
+                                counter.textContent = parseFloat(counter.textContent).toFixed(1);
+                            }
+                        }
+                    }
+                );
+            });
+
+            const heroBadge = document.getElementById('heroBadge');
+            if (heroBadge) {
+                heroBadge.addEventListener('click', () => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
             
             // Hero Entry Intro Sequence
             const heroTl = gsap.timeline();
@@ -1883,7 +2592,8 @@
                 y: 40,
                 duration: 0.8,
                 stagger: 0.15,
-                ease: "power3.out"
+                ease: "power3.out",
+                clearProps: "transform"
             });
 
             gsap.from('#about .lg:col-span-5, #about .lg:col-span-7', {
@@ -1909,7 +2619,8 @@
                 y: 30,
                 duration: 0.6,
                 stagger: 0.05,
-                ease: "power2.out"
+                ease: "power2.out",
+                clearProps: "transform"
             });
 
             gsap.from('#projects .project-card', {
@@ -1922,20 +2633,60 @@
                 y: 40,
                 duration: 0.8,
                 stagger: 0.12,
-                ease: "power3.out"
+                ease: "power3.out",
+                clearProps: "transform"
             });
 
-            gsap.from('#experience .premium-glass-card', {
-                scrollTrigger: {
-                    trigger: '#experience',
-                    start: "top 80%",
-                    toggleActions: "play none none none"
-                },
-                opacity: 0,
-                y: 40,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power3.out"
+            // Career Timeline Axis scroll-driven progress
+            const timelineProgress = document.getElementById('timelineProgress');
+            const timelineWrapper = document.getElementById('timelineWrapper');
+            if (timelineProgress && timelineWrapper) {
+                gsap.to(timelineProgress, {
+                    height: '100%',
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: timelineWrapper,
+                        start: 'top 70%',
+                        end: 'bottom 60%',
+                        scrub: true
+                    }
+                });
+            }
+
+            // Career Timeline Cards sliding entry and Dot highlighting
+            const timelineItems = document.querySelectorAll('#timelineWrapper > .group');
+            timelineItems.forEach((item, idx) => {
+                const card = item.querySelector('.premium-glass-card');
+                const dot = item.querySelector('.rounded-full');
+                const leftSide = idx % 2 === 0;
+                
+                gsap.fromTo(card, 
+                    { opacity: 0, x: leftSide ? -45 : 45 },
+                    { 
+                        opacity: 1, 
+                        x: 0, 
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: item,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+                
+                gsap.fromTo(dot,
+                    { scale: 1, backgroundColor: '#010409', borderColor: 'var(--color-accent-blue)' },
+                    {
+                        scale: 1.25,
+                        backgroundColor: 'var(--color-accent-sky)',
+                        borderColor: '#ffffff',
+                        scrollTrigger: {
+                            trigger: item,
+                            start: 'top 70%',
+                            toggleActions: 'play none none reverse'
+                        }
+                    }
+                );
             });
         };
     </script>
