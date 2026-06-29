@@ -2009,6 +2009,7 @@
                                       &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">neofetch</span> - visual system specifications overview<br>
                                       &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">contact</span> - direct contact channels<br>
                                       &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">quote</span> - developer engineering philosophy<br>
+                                      &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">monitor</span> - run real-time hardware & service telemetry<br>
                                       &nbsp;&nbsp;<span class="text-accent-sky-solid font-semibold">clear</span> - reset screen console buffer</div>`;
                         } else if (cmd === 'skills') {
                             output = `<div><span class="text-blue-400">&gt;</span> sihab.getSkills()<br>
@@ -2048,6 +2049,20 @@
                         } else if (cmd === 'quote') {
                             output = `<div><span class="text-blue-400">&gt;</span> sihab.getPhilosophy()<br>
                                       <span class="text-sky-300">PHILOSOPHY:</span> <span class="text-slate-300">"Build digital systems that represent aesthetic perfection and robust engineering standard."</span></div>`;
+                        } else if (cmd === 'monitor' || cmd === 'status') {
+                            const latency = Math.floor(Math.random() * (19 - 12 + 1) + 12);
+                            output = `<div><span class="text-blue-400">&gt;</span> monitor --live<br>
+                                      <div class="mt-2 font-mono text-xs leading-relaxed text-left">
+                                          <span class="text-accent-sky-solid font-semibold">[ HARDWARE TELEMETRY CORE ]</span><br>
+                                          &nbsp;&nbsp;CPU Load:&nbsp;&nbsp;&nbsp;&nbsp;[<span class="text-accent-sky">████████░░░░</span>] 68%<br>
+                                          &nbsp;&nbsp;RAM Usage:&nbsp;&nbsp;&nbsp;[<span class="text-accent-sky">████░░░░░░░░</span>] 4.2GB / 16.0GB<br>
+                                          &nbsp;&nbsp;HQ Ping:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-emerald-400 font-bold">${latency}ms (OPTIMUM)</span><br><br>
+                                          <span class="text-accent-sky-solid font-semibold">[ SERVICE RUNTIMES ]</span><br>
+                                          &nbsp;&nbsp;velocepay.io&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;➔ <span class="text-emerald-400 font-bold">ONLINE</span> (2.4.1)<br>
+                                          &nbsp;&nbsp;hyperion.stats&nbsp;&nbsp;&nbsp;&nbsp;➔ <span class="text-emerald-400 font-bold">ONLINE</span> (1.0.8)<br>
+                                          &nbsp;&nbsp;authshield.org&nbsp;&nbsp;&nbsp;&nbsp;➔ <span class="text-emerald-400 font-bold">ONLINE</span> (3.2.0)<br>
+                                          &nbsp;&nbsp;system.status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;➔ <span class="text-emerald-400 font-bold">READY</span>
+                                      </div></div>`;
                         } else if (cmd === 'clear') {
                             terminalText.innerHTML = `<span class="text-slate-500">// Console buffer flushed. Run methods below.</span>`;
                             return;
