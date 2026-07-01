@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sihab Hossen - Full-Stack Software Architect</title>
+    <title>Sihab Hossen - Full-Stack Developer</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="description" content="OpSihab (Sihab Hossen) is a premium full-stack software architect and engineer crafting high-performance, visually stunning web architectures using React, Node.js, and cloud ecosystems.">
     <meta name="keywords" content="Who is OpSihab, OpSihab, Sihab Hossen, Web Developer, Fullstack Architect, Next.js, Node.js, React, Software Engineer, Bangladesh">
     <meta name="author" content="Sihab Hossen (OpSihab)">
@@ -20,20 +21,26 @@
     <meta name="twitter:title" content="Who is OpSihab? | Sihab Hossen - Full-Stack Software Architect">
     <meta name="twitter:description" content="OpSihab (Sihab Hossen) is a premium full-stack software architect and engineer crafting high-performance, visually stunning web architectures using React, Node.js, and cloud ecosystems.">
     
-    <!-- Google Fonts: Outfit & Plus Jakarta Sans for English, Hind Siliguri for Bengali, Anek Bangla -->
+    <!-- Google Fonts: Outfit, Inter & Plus Jakarta Sans for English, Hind Siliguri for Bengali, Anek Bangla -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- GSAP for advanced animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     
     <!-- Lucide Icons for clean, lightweight SVG icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Lenis for smooth momentum scrolling -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+    <!-- Canvas Confetti for interactive celebration burst -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
 
     <!-- Tailwind Custom Configuration for Deep Blue & White premium theme -->
     <script>
@@ -45,6 +52,7 @@
                         bengali: ['Anek Bangla', 'Hind Siliguri', 'sans-serif'],
                         mono: ['Fira Code', 'monospace'],
                         space: ['Plus Jakarta Sans', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
                     },
                     colors: {
                         obsidian: {
@@ -75,6 +83,14 @@
     <!-- Custom Style Overrides -->
     <style>
         :root {
+            --color-bg: #010409;
+            --color-text: #cbd5e1;
+            --color-text-bright: #ffffff;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: rgba(0, 0, 0, 0.5);
+
             --color-accent-blue: #10b981;
             --color-accent-sky: #a3e635; /* High-contrast Neon Lime */
             --accent-blue-rgb: 16, 185, 129;
@@ -82,6 +98,14 @@
             --gradient-mockup: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #10b981 100%);
         }
         [data-theme="blue"] {
+            --color-bg: #010409;
+            --color-text: #cbd5e1;
+            --color-text-bright: #ffffff;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: rgba(0, 0, 0, 0.5);
+
             --color-accent-blue: #2563eb;
             --color-accent-sky: #00f5d4; /* High-contrast Electric Teal */
             --accent-blue-rgb: 37, 99, 235;
@@ -89,6 +113,14 @@
             --gradient-mockup: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
         }
         [data-theme="purple"] {
+            --color-bg: #010409;
+            --color-text: #cbd5e1;
+            --color-text-bright: #ffffff;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: rgba(0, 0, 0, 0.5);
+
             --color-accent-blue: #8b5cf6;
             --color-accent-sky: #ec4899; /* High-contrast Hot Pink */
             --accent-blue-rgb: 139, 92, 246;
@@ -96,11 +128,178 @@
             --gradient-mockup: linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #8b5cf6 100%);
         }
         [data-theme="sunset"] {
+            --color-bg: #010409;
+            --color-text: #cbd5e1;
+            --color-text-bright: #ffffff;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: rgba(0, 0, 0, 0.5);
+
             --color-accent-blue: #f97316; /* Orange-500 */
             --color-accent-sky: #ff5722;  /* Bright Orange/Red-500 */
             --accent-blue-rgb: 249, 115, 22;
             --accent-sky-rgb: 255, 87, 34;
             --gradient-mockup: linear-gradient(135deg, #1a0c02 0%, #431407 50%, #f97316 100%);
+        }
+        [data-theme="light"] {
+            --color-bg: #f8fafc; /* Slate-50 */
+            --color-text: #475569; /* Slate-600 */
+            --color-text-bright: #0f172a; /* Slate-900 */
+            --color-border: rgba(15, 23, 42, 0.08);
+            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.45) 100%), rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(15, 23, 42, 0.1);
+            --glass-shadow: rgba(15, 23, 42, 0.06);
+
+            --color-accent-blue: #059669; /* Emerald-600 */
+            --color-accent-sky: #4d7c0f;  /* Lime-700 */
+            --accent-blue-rgb: 5, 150, 105;
+            --accent-sky-rgb: 77, 124, 15;
+            --gradient-mockup: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+        }
+
+        body {
+            background-color: var(--color-bg) !important;
+            color: var(--color-text) !important;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light Mode Specific Overrides */
+        [data-theme="light"] .text-white,
+        [data-theme="light"] h1,
+        [data-theme="light"] h2,
+        [data-theme="light"] h3,
+        [data-theme="light"] h4,
+        [data-theme="light"] strong {
+            color: var(--color-text-bright) !important;
+        }
+
+        [data-theme="light"] .text-slate-200,
+        [data-theme="light"] .text-slate-300,
+        [data-theme="light"] .text-slate-400 {
+            color: var(--color-text) !important;
+        }
+
+        [data-theme="light"] .text-silver-gradient {
+            background: linear-gradient(180deg, #0f172a 30%, #475569 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        [data-theme="light"] .text-glow-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, var(--color-accent-blue) 60%, var(--color-accent-sky) 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            filter: drop-shadow(0 2px 8px rgba(var(--accent-blue-rgb), 0.15)) !important;
+        }
+
+        [data-theme="light"] header nav a,
+        [data-theme="light"] header #themeLabel,
+        [data-theme="light"] header #currentLangLabel {
+            color: #475569 !important;
+        }
+
+        [data-theme="light"] header nav a:hover,
+        [data-theme="light"] header #themeToggleBtn:hover,
+        [data-theme="light"] header #langToggleBtn:hover {
+            color: #0f172a !important;
+        }
+
+        [data-theme="light"] .border-y {
+            border-color: rgba(15, 23, 42, 0.08) !important;
+        }
+
+        [data-theme="light"] .project-card .bg-obsidian-950\/80 {
+            background-color: rgba(241, 245, 249, 0.9) !important;
+            border-bottom-color: rgba(15, 23, 42, 0.08) !important;
+        }
+
+        [data-theme="light"] footer {
+            background-color: #f1f5f9 !important;
+            border-top-color: rgba(15, 23, 42, 0.08) !important;
+        }
+
+        /* Keep Terminal Section Dark in Light Mode */
+        #terminal-section .premium-glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.7) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5) !important;
+        }
+        #terminal-section .premium-glass-card * {
+            color: #cbd5e1 !important;
+        }
+        #terminal-section .premium-glass-card input {
+            color: #ffffff !important;
+        }
+
+        /* LIGHT MODE SPECIFIC ADJUSTMENTS (POLISH PASS) */
+        [data-theme="light"] .marquee-mask-left {
+            background-image: linear-gradient(to right, #f8fafc, transparent) !important;
+        }
+        [data-theme="light"] .marquee-mask-right {
+            background-image: linear-gradient(to left, #f8fafc, transparent) !important;
+        }
+        [data-theme="light"] .premium-btn-primary {
+            background: #0f172a !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1) !important;
+        }
+        [data-theme="light"] .premium-btn-primary:hover {
+            background: var(--color-accent-blue) !important;
+            color: #ffffff !important;
+            box-shadow: 0 8px 25px rgba(var(--accent-blue-rgb), 0.3) !important;
+        }
+        [data-theme="light"] .premium-btn-secondary {
+            border-color: rgba(15, 23, 42, 0.15) !important;
+            background: rgba(15, 23, 42, 0.02) !important;
+            color: #0f172a !important;
+        }
+        [data-theme="light"] .premium-btn-secondary:hover {
+            background: rgba(var(--accent-blue-rgb), 0.08) !important;
+            border-color: rgba(var(--accent-sky-rgb), 0.3) !important;
+            color: #0f172a !important;
+        }
+        [data-theme="light"] img.invert,
+        [data-theme="light"] .invert {
+            filter: none !important;
+        }
+        [data-theme="light"] a:hover {
+            color: var(--color-accent-blue) !important;
+        }
+        [data-theme="light"] form input,
+        [data-theme="light"] form textarea {
+            background-color: rgba(15, 23, 42, 0.03) !important;
+            border-color: rgba(15, 23, 42, 0.08) !important;
+            color: #0f172a !important;
+        }
+        [data-theme="light"] form input:focus,
+        [data-theme="light"] form textarea:focus {
+            background-color: #ffffff !important;
+            border-color: var(--color-accent-blue) !important;
+            box-shadow: 0 0 15px rgba(var(--accent-blue-rgb), 0.1) !important;
+        }
+        [data-theme="light"] .border-slate-900 {
+            border-color: rgba(15, 23, 42, 0.08) !important;
+        }
+        [data-theme="light"] .skill-card .bg-slate-950\/80 {
+            background-color: rgba(241, 245, 249, 0.8) !important;
+            border-color: rgba(15, 23, 42, 0.08) !important;
+        }
+        [data-theme="light"] .skill-card .text-slate-300 {
+            color: #334155 !important;
+        }
+        [data-theme="light"] .skill-card .bg-slate-950 {
+            background-color: #e2e8f0 !important;
+            border-color: rgba(15, 23, 42, 0.08) !important;
+        }
+        [data-theme="light"] #skills svg text[fill="#ffffff"] {
+            fill: #334155 !important;
+        }
+        [data-theme="light"] #skills svg text[fill="var(--color-accent-sky)"] {
+            fill: var(--color-accent-blue) !important;
+        }
+        [data-theme="light"] #skills svg path[stroke="rgba(255,255,255,0.06)"] {
+            stroke: rgba(15, 23, 42, 0.06) !important;
         }
         
         /* Custom Scrollbar Styles with Theme Adaptation */
@@ -146,12 +345,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            filter: drop-shadow(0 2px 14px rgba(var(--accent-blue-rgb), 0.38));
+            filter: drop-shadow(0 2px 6px rgba(var(--accent-blue-rgb), 0.15));
             animation: text-gradient-sweep 6s linear infinite;
             transition: filter 0.3s ease, transform 0.3s ease;
         }
         .text-glow-gradient:hover {
-            filter: drop-shadow(0 4px 20px rgba(var(--accent-blue-rgb), 0.64));
+            filter: drop-shadow(0 3px 10px rgba(var(--accent-blue-rgb), 0.25));
             transform: scale(1.03);
         }
 
@@ -202,13 +401,48 @@
 
         /* Hero ambient glow animation */
         @keyframes heroGlow {
-            0%, 100% { transform: scale(1); opacity: 0.45; }
-            50% { transform: scale(1.2); opacity: 0.75; }
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.45; }
+            50% { transform: translate(-50%, -50%) scale(1.12); opacity: 0.75; }
         }
 
         .animate-hero-glow {
             animation: heroGlow 8s ease-in-out infinite;
             will-change: transform, opacity;
+        }
+
+        /* Centered background glow */
+        .bg-glow {
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 75vw;
+            height: 35vh;
+            max-width: 650px;
+            max-height: 240px;
+            background: radial-gradient(ellipse, rgba(var(--accent-blue-rgb), 0.45) 0%, rgba(var(--accent-sky-rgb), 0.05) 50%, transparent 80%);
+            filter: blur(50px);
+            z-index: 2;
+            pointer-events: none;
+        }
+        [data-theme="light"] .bg-glow {
+            background: radial-gradient(ellipse, rgba(var(--accent-blue-rgb), 0.15) 0%, transparent 75%) !important;
+            filter: blur(70px) !important;
+        }
+
+        .hero-container {
+            position: relative;
+        }
+        .hero-bg-blur {
+            -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 95%);
+            mask-image: linear-gradient(to bottom, black 65%, transparent 95%);
+            transition: opacity 0.3s ease;
+        }
+        [data-theme="light"] .hero-bg-blur {
+            opacity: 0.12 !important;
+        }
+        [data-theme="light"] .hero-bg-overlay {
+            background-color: rgba(248, 250, 252, 0.88) !important;
         }
 
         /* Section subheading/track glow pop */
@@ -218,19 +452,19 @@
         
         /* Glassmorphism utility */
         .glass-panel {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.35) !important;
+            background: var(--glass-bg) !important;
             backdrop-filter: blur(20px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid var(--glass-border) !important;
+            box-shadow: 0 20px 40px -15px var(--glass-shadow), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
         }
 
         .glass-header {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(1, 4, 9, 0.45) !important;
+            background: var(--glass-bg) !important;
             backdrop-filter: blur(16px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid var(--glass-border) !important;
+            box-shadow: 0 10px 30px -10px var(--glass-shadow), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
         }
 
         /* Subtle grid background pattern with radial mask */
@@ -243,13 +477,19 @@
             height: 100%;
             pointer-events: none;
             z-index: 1; /* Set to 1 to ensure it is above background colors but behind content */
-            background-size: 50px 50px;
+            background-size: 24px 24px;
             background-image: 
-                linear-gradient(to right, rgba(var(--accent-sky-rgb), 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(var(--accent-sky-rgb), 0.05) 1px, transparent 1px);
-            -webkit-mask-image: radial-gradient(circle 240px at var(--mouse-grid-x, 50%) var(--mouse-grid-y, 50%), black 20%, transparent 90%);
-            mask-image: radial-gradient(circle 240px at var(--mouse-grid-x, 50%) var(--mouse-grid-y, 50%), black 20%, transparent 90%);
-            transition: mask-image 0.1s ease-out;
+                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            -webkit-mask-image: radial-gradient(circle 1000px at 50% 50%, black 30%, transparent 95%);
+            mask-image: radial-gradient(circle 1000px at 50% 50%, black 30%, transparent 95%);
+        }
+        [data-theme="light"] .grid-bg-overlay {
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px) !important;
+            -webkit-mask-image: radial-gradient(circle 1000px at 50% 50%, black 30%, transparent 95%) !important;
+            mask-image: radial-gradient(circle 1000px at 50% 50%, black 30%, transparent 95%) !important;
         }
 
         /* High-End Tactile Film Grain / Noise Overlay */
@@ -273,24 +513,24 @@
 
         /* Premium Glass Effects */
         .premium-glass-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%), rgba(3, 7, 18, 0.3) !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            background: var(--glass-bg) !important;
+            border: 1px solid var(--glass-border) !important;
             backdrop-filter: blur(24px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 20px 40px -15px var(--glass-shadow), inset 0 1px 0 0 rgba(255, 255, 255, 0.12) !important;
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .premium-glass-card:hover {
             border-color: rgba(var(--accent-sky-rgb), 0.3) !important;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(var(--accent-blue-rgb), 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 25px 50px var(--glass-shadow), 0 0 20px rgba(var(--accent-blue-rgb), 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
         }
 
         .premium-glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(255, 255, 255, 0.02) !important;
+            background: var(--glass-bg) !important;
             backdrop-filter: blur(16px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
+            border: 1px solid var(--glass-border) !important;
+            box-shadow: 0 8px 32px 0 var(--glass-shadow), inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
         }
 
         .premium-glass-overlay {
@@ -453,6 +693,8 @@
         .animate-float-medium {
             animation: float-medium 6s ease-in-out infinite;
         }
+        .animate-float-fast {
+            animation: float-fast 5s ease-in-out infinite;
         }
         
         /* Isometric Cloud Illustration Styling */
@@ -550,6 +792,8 @@
 
     <!-- Subtle Grid Background Overlay -->
     <div class="grid-bg-overlay"></div>
+    
+
     
     <!-- Glowing background aura shapes (Deep Blue/Sky Neon aura pools) -->
     <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-accent-blue/8 blur-[120px] pointer-events-none z-0"></div>
@@ -650,173 +894,92 @@
         <a href="#contact" onclick="closeMenu()" class="px-8 py-3 rounded-full text-sm premium-btn-primary" data-i18n="nav-cta">Hire Me</a>
     </div>
 
-    <!-- MAIN CONTENT WRAPPER -->
-    <main class="relative z-10 max-w-6xl mx-auto px-4 md:px-8">
+    <!-- Hero Section (Centered & Premium - Full Viewport Width) -->
+    <section id="home" class="hero-container w-full min-h-screen flex flex-col justify-center items-center text-center pt-28 md:pt-36 pb-32 relative overflow-hidden z-10">
 
-        <!-- Hero Section (Centered & Premium) -->
-        <section id="home" class="min-h-screen lg:h-screen flex flex-col justify-center items-center text-center pt-28 md:pt-36 pb-12 relative overflow-hidden">
+        <!-- Blurred Background Image Setup (Full Viewport Width) -->
+        <div class="hero-bg-blur absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none z-0 filter blur-[12px] scale-[1.05] opacity-[0.68]" style="background-image: url('https://wsrv.nl/?url=https://anondrop.net/1521752243907596371/Generated%20Image%20July%2001,%202026%20-%2011_25AM.jpg&output=webp&q=75');"></div>
+        
+        <!-- Dark Overlay Mask for premium text readability -->
+        <div class="hero-bg-overlay absolute inset-0 bg-obsidian-950/65 z-0 pointer-events-none"></div>
 
-            <!-- Glowing Sapphire Aura behind Content -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[500px] max-h-[500px] bg-gradient-to-tr from-accent-blue/20 to-accent-sky/10 blur-[120px] rounded-full pointer-events-none animate-hero-glow"></div>
+        <!-- Grid lines overlay ON TOP of the blurred background image -->
+        <div class="absolute inset-0 pointer-events-none z-[1]" style="background-size: 24px 24px; background-image: linear-gradient(to right, rgba(var(--accent-blue-rgb), 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(var(--accent-blue-rgb), 0.02) 1px, transparent 1px); -webkit-mask-image: radial-gradient(circle 1000px at 50% 50%, black 30%, transparent 95%); mask-image: radial-gradient(circle 1000px at 50% 50%, black 30%, transparent 95%);"></div>
 
+        <!-- Glowing background aura behind Content -->
+        <div class="bg-glow animate-hero-glow"></div>
 
+            <!-- FLOATING DEVELOPER DECORATIVE SVGS (Subtle backdrop elements for premium developer portfolio vibe) -->
+            <!-- Top-Left: Brackets { } -->
+            <div class="hidden sm:block absolute left-[5%] top-[18%] opacity-20 sm:opacity-25 pointer-events-none animate-float-slow z-0">
+                <svg class="w-10 h-10 sm:w-14 sm:h-14 text-accent-sky-solid filter drop-shadow-[0_0_8px_rgba(var(--accent-sky-rgb),0.25)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35 25C35 25 25 30 25 50C25 70 35 75 35 75 M65 25C65 25 75 30 75 50C75 70 65 75 65 75" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <!-- Top-Right: Code Tag < /> -->
+            <div class="hidden sm:block absolute right-[5%] top-[22%] opacity-20 sm:opacity-25 pointer-events-none animate-float-medium z-0">
+                <svg class="w-12 h-12 sm:w-16 sm:h-16 text-accent-blue-solid filter drop-shadow-[0_0_8px_rgba(var(--accent-blue-rgb),0.25)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 35 L10 50 L30 65 M70 35 L90 50 L70 65 M58 25 L42 75" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <!-- Bottom-Left: Terminal Prompt $ -->
+            <div class="hidden sm:block absolute left-[10%] top-[55%] opacity-15 sm:opacity-20 pointer-events-none animate-float-fast z-0">
+                <svg class="w-8 h-8 sm:w-12 sm:h-12 text-accent-blue-solid filter drop-shadow-[0_0_6px_rgba(var(--accent-blue-rgb),0.15)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 30 L45 50 L20 70 M55 70 H80" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <!-- Bottom-Right: Database Cluster -->
+            <div class="hidden sm:block absolute right-[10%] top-[50%] opacity-20 sm:opacity-25 pointer-events-none animate-float-slow z-0">
+                <svg class="w-10 h-10 sm:w-14 sm:h-14 text-accent-sky-solid filter drop-shadow-[0_0_8px_rgba(var(--accent-sky-rgb),0.25)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="50" cy="30" rx="30" ry="12" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+                    <path d="M20 30 V50 C20 57 33 62 50 62 C67 62 80 57 80 50 V30" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+                    <path d="M20 50 V70 C20 77 33 82 50 82 C67 82 80 77 80 70 V50" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+                </svg>
+            </div>
 
-            <!-- GRID WRAPPER (Restructured to 2-Column Grid) -->
-            <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10 relative">
+            <!-- CENTERED CONTENT WRAPPER -->
+            <div class="w-full max-w-4xl mx-auto flex flex-col items-center justify-center z-10 relative text-center">
                 
-                <!-- Left Column: Content (7/12 cols) -->
-                <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    
-                    <!-- Top Active Status Badge (Theme-Responsive Glow Badge) -->
-                    <div id="heroBadge" class="gsap-hero-el opacity-0 translate-y-4 mb-6 inline-flex items-center gap-2.5 px-4 py-2 rounded-full border theme-accent-border theme-accent-bg theme-accent-text text-[10px] font-mono tracking-widest uppercase shadow-glow-blue cursor-pointer hover:scale-105 transition-transform duration-300">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: var(--color-accent-sky);"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: var(--color-accent-blue);"></span>
-                        </span>
-                        <span data-i18n="hero-badge">Open for Full-time Roles & Projects</span>
-                    </div>
-
-                    <!-- Developer Main Title: Deep Blue & White/Silver Gradient -->
-                    <h1 class="gsap-hero-el opacity-0 translate-y-4 text-4xl sm:text-6xl lg:text-7xl tracking-tight max-w-4xl leading-[1.15] lg:leading-[1.1] mb-6">
-                        <span data-i18n="hero-title-prefix"><span class="text-silver-gradient font-light tracking-tight">Crafting</span> <span class="font-sans font-light italic tracking-wide text-accent-sky-solid drop-shadow-[0_0_15px_rgba(var(--accent-sky-rgb),0.25)]">Elegant</span></span> 
-                        <span class="text-glow-gradient whitespace-nowrap font-black tracking-tighter">Full-Stack</span> 
-                        <span data-i18n="hero-title-suffix"><span class="text-silver-gradient font-black tracking-tighter">Web Experiences</span></span>
-                    </h1>
-
-                    <!-- Professional Subheading / Description -->
-                    <p class="gsap-hero-el opacity-0 translate-y-4 text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-10 font-light" data-i18n="hero-desc">
-                        Passionate <span class="text-slate-200 font-medium">software architect</span> building <span class="text-slate-200 font-medium">high-performance, visually stunning</span> web architectures using React, Node.js, and cloud ecosystems.
-                    </p>
-
-                    <!-- Centered Call To Actions (Deep Blue Accent & Sleek Borders) -->
-                    <div data-nosnippet class="gsap-hero-el opacity-0 translate-y-4 flex flex-col sm:flex-row items-center justify-start gap-3 sm:gap-4 mb-8 w-full max-w-xs sm:max-w-none">
-                        <!-- Primary CTA -->
-                        <a href="#projects" class="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm font-bold premium-btn-primary flex items-center justify-center gap-1.5 shrink-0">
-                            <span data-i18n="hero-btn-primary">Explore Works</span>
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-                        </a>
-                        <!-- Secondary CTA -->
-                        <a href="#contact" class="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm premium-btn-secondary flex items-center justify-center gap-1.5 shrink-0">
-                            <span data-i18n="hero-btn-secondary">Get in Touch</span>
-                        </a>
-                    </div>
+                <!-- Top Active Status Badge (Theme-Responsive Glow Badge) -->
+                <div id="heroBadge" class="gsap-hero-el opacity-0 translate-y-4 mb-6 inline-flex items-center gap-2.5 px-4 py-2 rounded-full border theme-accent-border theme-accent-bg theme-accent-text text-[10px] font-mono tracking-widest uppercase shadow-glow-blue cursor-pointer hover:scale-105 transition-transform duration-300">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: var(--color-accent-sky);"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: var(--color-accent-blue);"></span>
+                    </span>
+                    <span data-i18n="hero-badge">Open for Full-time Roles & Projects</span>
                 </div>
 
-                <!-- Right Column: Animated SVG Cloud Server stack Illustration (5/12 cols) -->
-                <div class="lg:col-span-5 hidden lg:flex items-center justify-center illustration-container gsap-hero-el opacity-0 translate-y-4">
-                    <svg class="iso-svg w-full max-w-[400px]" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <!-- Gradients -->
-                            <linearGradient id="server-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="var(--color-accent-blue)" stop-opacity="0.9" />
-                                <stop offset="100%" stop-color="var(--color-accent-sky)" stop-opacity="0.3" />
-                            </linearGradient>
-                            <linearGradient id="server-grad-side" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="var(--color-accent-blue)" stop-opacity="0.75" />
-                                <stop offset="100%" stop-color="var(--color-accent-blue)" stop-opacity="0.2" />
-                            </linearGradient>
-                            <linearGradient id="core-glow" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#ffffff" />
-                                <stop offset="100%" stop-color="var(--color-accent-sky)" />
-                            </linearGradient>
-                            <!-- Drop shadow filter for floating components -->
-                            <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
-                                <feGaussianBlur stdDeviation="6" result="blur" />
-                                <feMerge>
-                                    <feMergeNode in="blur" />
-                                    <feMergeNode in="SourceGraphic" />
-                                </feMerge>
-                            </filter>
-                        </defs>
+                <!-- Developer Main Title: Deep Blue & White/Silver Gradient -->
+                <h1 class="gsap-hero-el opacity-0 translate-y-4 text-4xl sm:text-6xl lg:text-7.5xl tracking-tight max-w-4xl leading-[1.15] lg:leading-[1.1] mb-6 font-bold font-inter">
+                    <span data-i18n="hero-title-prefix"><span class="text-silver-gradient font-normal tracking-tight">Hi, I'm</span> <span class="text-glow-gradient font-extrabold tracking-tighter">OPSIHAB</span></span> 
+                    <br>
+                    <span data-i18n="hero-title-suffix"><span class="text-silver-gradient font-extrabold tracking-tighter">Full-Stack</span> <span id="hero-dynamic-word" class="font-normal tracking-tight text-accent-sky-solid drop-shadow-[0_0_15px_rgba(var(--accent-sky-rgb),0.25)]">Web Developer</span></span>
+                </h1>
 
-                        <!-- Background decorative digital network nodes -->
-                        <g opacity="0.35">
-                            <line x1="200" y1="30" x2="330" y2="90" stroke="var(--color-accent-blue)" stroke-width="1" stroke-dasharray="4 4" />
-                            <line x1="200" y1="30" x2="70" y2="90" stroke="var(--color-accent-blue)" stroke-width="1" stroke-dasharray="4 4" />
-                            <circle cx="200" cy="30" r="3" fill="var(--color-accent-sky)" />
-                            <circle cx="330" cy="90" r="2.5" fill="var(--color-accent-blue)" />
-                            <circle cx="70" cy="90" r="2.5" fill="var(--color-accent-blue)" />
-                        </g>
+                <!-- Professional Subheading / Description -->
+                <p class="gsap-hero-el opacity-0 translate-y-4 text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-10 font-normal font-inter" data-i18n="hero-desc">
+                    Passionate full-stack developer building high-performance, visually stunning web architectures using React, Node.js, and cloud ecosystems.
+                </p>
 
-                        <!-- Vertical Data pipeline backbones (connecting plates) -->
-                        <path d="M120,170 V370" stroke="var(--color-accent-sky)" stroke-width="2" class="data-pipe" opacity="0.8" />
-                        <path d="M280,170 V370" stroke="var(--color-accent-sky)" stroke-width="2" class="data-pipe-reverse" opacity="0.8" />
-                        <path d="M200,120 V320" stroke="var(--color-accent-blue)" stroke-width="2.5" class="data-pipe" opacity="0.9" />
-
-                        <!-- ================= LAYER 3 (BOTTOM SERVER PLATE) ================= -->
-                        <g transform="translate(0, 240)">
-                            <!-- Thickness/3D Extrusion Side Left -->
-                            <polygon points="80,70 80,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
-                            <!-- Thickness/3D Extrusion Side Right -->
-                            <polygon points="320,70 320,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
-                            <!-- Top Surface Rhombus -->
-                            <polygon points="200,10 320,70 200,130 80,70" fill="url(#server-grad-primary)" stroke="var(--color-accent-sky)" stroke-width="1.8" />
-                            
-                            <!-- Inside details: server circuit elements -->
-                            <polygon points="120,65 170,40 220,65 170,90" fill="none" stroke="var(--color-accent-blue)" stroke-width="1" opacity="0.5" />
-                            <!-- Glowing server nodes -->
-                            <circle cx="140" cy="60" r="3" fill="#ffffff" class="pulse-light" />
-                            <circle cx="160" cy="70" r="3" fill="var(--color-accent-sky)" class="pulse-light" style="animation-delay: 0.5s;" />
-                            <circle cx="240" cy="60" r="3" fill="var(--color-accent-sky)" class="pulse-light" style="animation-delay: 1s;" />
-                            <circle cx="260" cy="70" r="3" fill="#ffffff" class="pulse-light" style="animation-delay: 1.5s;" />
-                        </g>
-
-                        <!-- ================= LAYER 2 (MIDDLE SERVER PLATE) ================= -->
-                        <g transform="translate(0, 140)">
-                            <!-- Thickness/3D Extrusion Side Left -->
-                            <polygon points="80,70 80,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
-                            <!-- Thickness/3D Extrusion Side Right -->
-                            <polygon points="320,70 320,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
-                            <!-- Top Surface Rhombus -->
-                            <polygon points="200,10 320,70 200,130 80,70" fill="url(#server-grad-primary)" stroke="var(--color-accent-sky)" stroke-width="1.8" />
-
-                            <!-- Database Capsules (3D Cylinders floating on plate) -->
-                            <!-- Database Left -->
-                            <g transform="translate(130, 45)">
-                                <ellipse cx="15" cy="5" rx="8" ry="4" fill="var(--color-accent-sky)" stroke="var(--color-accent-sky)" stroke-width="1" />
-                                <path d="M7,5 V20 A8,4 0 0,0 23,20 V5" fill="var(--color-accent-blue)" fill-opacity="0.7" stroke="var(--color-accent-sky)" stroke-width="1" />
-                                <ellipse cx="15" cy="12" rx="8" ry="4" fill="none" stroke="var(--color-accent-sky)" stroke-width="1" stroke-dasharray="2 2" />
-                            </g>
-                            <!-- Database Right -->
-                            <g transform="translate(225, 45)">
-                                <ellipse cx="15" cy="5" rx="8" ry="4" fill="var(--color-accent-sky)" stroke="var(--color-accent-sky)" stroke-width="1" />
-                                <path d="M7,5 V20 A8,4 0 0,0 23,20 V5" fill="var(--color-accent-blue)" fill-opacity="0.7" stroke="var(--color-accent-sky)" stroke-width="1" />
-                                <ellipse cx="15" cy="12" rx="8" ry="4" fill="none" stroke="var(--color-accent-sky)" stroke-width="1" stroke-dasharray="2 2" />
-                            </g>
-                        </g>
-
-                        <!-- ================= LAYER 1 (TOP SERVER / PROCESSOR PLATE) ================= -->
-                        <g transform="translate(0, 40)">
-                            <!-- Thickness/3D Extrusion Side Left -->
-                            <polygon points="80,70 80,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
-                            <!-- Thickness/3D Extrusion Side Right -->
-                            <polygon points="320,70 320,82 200,142 200,130" fill="url(#server-grad-side)" stroke="var(--color-accent-blue)" stroke-width="1" />
-                            <!-- Top Surface Rhombus -->
-                            <polygon points="200,10 320,70 200,130 80,70" fill="url(#server-grad-primary)" stroke="var(--color-accent-sky)" stroke-width="1.8" />
-
-                            <!-- Floating Core Processor Reactor Unit (Central Glow) -->
-                            <g filter="url(#glow-filter)" transform="translate(0,-5)">
-                                <!-- Floating Platform -->
-                                <polygon points="200,52 236,70 200,88 164,70" fill="var(--color-accent-sky)" fill-opacity="0.35" stroke="var(--color-accent-sky)" stroke-width="1.5" />
-                                <!-- Floating Glowing Core Ball -->
-                                <circle cx="200" cy="65" r="11" fill="url(#core-glow)" />
-                                <!-- Rotating/Orbit Ring -->
-                                <ellipse cx="200" cy="65" rx="22" ry="7" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="20 10" />
-                            </g>
-                            
-                            <!-- Connections emanating from core processor -->
-                            <line x1="200" y1="83" x2="140" y2="102" stroke="#ffffff" stroke-width="1.5" opacity="0.8" />
-                            <line x1="200" y1="83" x2="260" y2="102" stroke="#ffffff" stroke-width="1.5" opacity="0.8" />
-                        </g>
-                    </svg>
+                <!-- Centered Call To Actions (Deep Blue Accent & Sleek Borders) -->
+                <div data-nosnippet class="gsap-hero-el opacity-0 translate-y-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 w-full max-w-xs sm:max-w-none font-inter">
+                    <!-- Primary CTA -->
+                    <a href="#projects" class="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm font-semibold premium-btn-primary flex items-center justify-center gap-1.5 shrink-0">
+                        <span data-i18n="hero-btn-primary">Explore Works</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+                    </a>
+                    <!-- Secondary CTA -->
+                    <a href="#contact" class="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-sm font-semibold premium-btn-secondary flex items-center justify-center gap-1.5 shrink-0">
+                        <span data-i18n="hero-btn-secondary">Get in Touch</span>
+                    </a>
                 </div>
-            </div> <!-- Closes Grid Wrapper -->
+            </div>
 
             <!-- Infinite Tech Marquee (Stripe/Vercel style) -->
-            <div data-nosnippet class="w-full overflow-hidden mt-12 lg:mt-16 py-4 border-y border-slate-900/60 relative z-20 backdrop-blur-sm select-none">
+            <div data-nosnippet class="absolute bottom-24 left-0 w-full overflow-hidden py-4 border-y border-white/5 z-20 backdrop-blur-sm select-none">
                 <!-- Left/Right soft fading masks -->
-                <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-obsidian-950 to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-obsidian-950 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-obsidian-950 to-transparent z-10 pointer-events-none marquee-mask-left"></div>
+                <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-obsidian-950 to-transparent z-10 pointer-events-none marquee-mask-right"></div>
                 
                 <div class="animate-marquee flex gap-12 items-center">
                     <div class="flex gap-12 shrink-0 items-center">
@@ -875,7 +1038,7 @@
             </div>
 
             <!-- Scroll Indicator Mouse Graphic -->
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer opacity-100 transition-opacity">
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer opacity-100 transition-opacity z-20">
                 <a href="#about" class="flex flex-col items-center">
                     <span class="text-[10px] text-slate-300 uppercase tracking-widest mb-2 font-medium" data-i18n="scroll-down">Scroll Down</span>
                     <div class="w-5 h-9 border-2 border-slate-500 rounded-full flex justify-center p-1 scroll-icon-bounce">
@@ -885,8 +1048,11 @@
             </div>
         </section>
 
-        <!-- Metrics / Infographics Section (Premium Glass & Glow Effects) -->
-        <section id="metrics" class="py-12 border-t border-slate-900/60 scroll-mt-24">
+        <!-- MAIN CONTENT WRAPPER -->
+        <main class="relative z-10 max-w-6xl mx-auto px-4 md:px-8">
+
+            <!-- Metrics / Infographics Section (Premium Glass & Glow Effects) -->
+            <section id="metrics" class="py-12 border-t border-slate-900/60 scroll-mt-24">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1: 50K+ (Frosted Glass & Glowing Background) -->
                 <div class="premium-glass-card relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl min-h-[220px] sm:min-h-[260px] transition-transform duration-300 hover:-translate-y-1">
@@ -987,7 +1153,7 @@
                         <!-- Main Card -->
                         <div class="relative w-full h-full premium-glass-card rounded-3xl overflow-hidden flex flex-col justify-end p-6 z-10 shadow-glass">
                             <!-- Background Image with mix-blend hover effect -->
-                            <img src="https://anondrop.net/1518672983357522010/61fcfc5531a80ab6bc46f4e997c9714f.jpg" class="absolute inset-0 w-full h-full object-cover opacity-65 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500 mix-blend-luminosity group-hover:mix-blend-normal pointer-events-none" alt="Sihab Hossen" />
+                            <img src="https://wsrv.nl/?url=https://anondrop.net/1518672983357522010/61fcfc5531a80ab6bc46f4e997c9714f.jpg&output=webp&q=80" class="absolute inset-0 w-full h-full object-cover opacity-65 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500 mix-blend-luminosity group-hover:mix-blend-normal pointer-events-none" alt="OpSihab" />
                             <!-- Gradient Overlay for readability -->
                             <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/50 to-obsidian-950/20 pointer-events-none"></div>
 
@@ -1865,9 +2031,9 @@
                 'nav-contact': 'Contact',
                 'nav-cta': 'Hire Me',
                 'hero-badge': 'Open for Full-time Roles & Projects',
-                'hero-title-prefix': '<span class="text-silver-gradient font-light tracking-tight">Crafting</span> <span class="font-sans font-light italic tracking-wide text-accent-sky-solid drop-shadow-[0_0_15px_rgba(var(--accent-sky-rgb),0.25)]">Elegant</span>',
-                'hero-title-suffix': '<span class="text-silver-gradient font-black tracking-tighter">Web Experiences</span>',
-                'hero-desc': 'Passionate <span class="text-slate-200 font-medium">software architect</span> building <span class="text-slate-200 font-medium">high-performance, visually stunning</span> web architectures using React, Node.js, and cloud ecosystems.',
+                'hero-title-prefix': '<span class="text-silver-gradient font-normal tracking-tight">Hi, I\'m</span> <span class="text-glow-gradient font-extrabold tracking-tighter">OPSIHAB</span>',
+                'hero-title-suffix': '<span class="text-silver-gradient font-extrabold tracking-tighter">Full-Stack</span> <span id="hero-dynamic-word" class="font-normal tracking-tight text-accent-sky-solid drop-shadow-[0_0_15px_rgba(var(--accent-sky-rgb),0.25)]">Web Developer</span>',
+                'hero-desc': 'Passionate full-stack developer building high-performance, visually stunning web architectures using React, Node.js, and cloud ecosystems.',
                 'hero-btn-primary': 'Explore Works',
                 'hero-btn-secondary': 'Get in Touch',
                 'hero-tech-title': 'TRUSTED TECH STACK',
@@ -1916,9 +2082,9 @@
                 'nav-contact': 'যোগাযোগ',
                 'nav-cta': 'হায়ার করুন',
                 'hero-badge': 'ফুল-টাইম রোল এবং দূরবর্তী প্রজেক্টের জন্য উন্মুক্ত',
-                'hero-title-prefix': '<span class="font-bengali font-light italic tracking-wide text-accent-sky-solid drop-shadow-[0_0_15px_rgba(var(--accent-sky-rgb),0.25)]">অভিজাত</span> <span class="font-bengali font-extrabold tracking-tight text-silver-gradient">ডিজিটাল</span>',
-                'hero-title-suffix': '<span class="font-bengali font-black tracking-tighter text-silver-gradient">ওয়েব আর্কিটেকচার</span> <span class="font-bengali font-light text-slate-400">তৈরি করছি</span>',
-                'hero-desc': 'আমি রিয়্যাক্ট, নোড এবং ক্লাউড ইকোসিস্টেম ব্যবহার করে <span class="text-slate-200 font-medium">হাই-পারফরম্যান্স এবং দৃষ্টিনন্দন</span> ডিজিটাল ওয়েব আর্কিটেকচার তৈরিতে নিয়োজিত একজন সফটওয়্যার ইঞ্জিনিয়ার।',
+                'hero-title-prefix': '<span class="font-bengali font-light tracking-tight text-slate-400">হ্যালো, আমি</span> <span class="font-bengali font-extrabold text-glow-gradient">ওপশিহাব (OPSIHAB)</span>',
+                'hero-title-suffix': '<span class="font-bengali font-extrabold tracking-tight text-silver-gradient">ফুল-স্ট্যাক</span> <span id="hero-dynamic-word" class="font-bengali font-normal tracking-tight text-accent-sky-solid drop-shadow-[0_0_15px_rgba(var(--accent-sky-rgb),0.25)]">ওয়েব ডেভেলপার</span>',
+                'hero-desc': 'আমি রিয়্যাক্ট, নোড এবং ক্লাউড ইকোসিস্টেম ব্যবহার করে <span class="text-slate-200 font-medium">হাই-পারফরম্যান্স এবং দৃষ্টিনন্দন</span> ডিজিটাল ওয়ের আর্কিটেকচার তৈরিতে নিয়োজিত একজন সফটওয়্যার ইঞ্জিনিয়ার।',
                 'hero-btn-primary': 'কাজগুলো দেখুন',
                 'hero-btn-secondary': 'আলোচনা শুরু করুন',
                 'hero-tech-title': 'বিশ্বস্ত প্রযুক্তিসমূহ',
@@ -1966,7 +2132,11 @@
             applyLanguage(currentLang);
         }
 
-        let currentTheme = localStorage.getItem('theme') || 'emerald';
+        let currentTheme = localStorage.getItem('theme');
+        if (!currentTheme) {
+            const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            currentTheme = prefersLight ? 'light' : 'emerald';
+        }
         const THEME_COLORS = {
             emerald: { primary: '#10b981', secondary: '#a3e635' },
             purple: { primary: '#8b5cf6', secondary: '#ec4899' },
@@ -2034,6 +2204,11 @@
                 if (btnLabel) btnLabel.innerText = 'BLUE';
                 updateFavicon('blue');
                 if (showToast) triggerToast('Theme Updated', 'Switched to Ice Blue theme', 'success');
+            } else if (theme === 'light') {
+                html.setAttribute('data-theme', 'light');
+                if (btnLabel) btnLabel.innerText = 'LIGHT';
+                updateFavicon('emerald');
+                if (showToast) triggerToast('Theme Updated', 'Switched to Premium Light theme', 'success');
             }
         }
 
@@ -2042,6 +2217,8 @@
             if (currentTheme === 'emerald') nextTheme = 'purple';
             else if (currentTheme === 'purple') nextTheme = 'sunset';
             else if (currentTheme === 'sunset') nextTheme = 'blue';
+            else if (currentTheme === 'blue') nextTheme = 'light';
+            else if (currentTheme === 'light') nextTheme = 'emerald';
             applyTheme(nextTheme, true);
         }
 
@@ -2189,6 +2366,42 @@
                 terminalInput.parentElement.parentElement.addEventListener('click', () => {
                     terminalInput.focus();
                 });
+
+                // Live Auto-typing Scroll Guide Easter Egg for new visitors
+                const terminalSection = document.getElementById('terminal-section');
+                if (terminalSection) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                observer.disconnect(); // Run once
+                                setTimeout(() => {
+                                    const command = 'neofetch';
+                                    let i = 0;
+                                    terminalInput.placeholder = '';
+                                    const typingInterval = setInterval(() => {
+                                        if (i < command.length) {
+                                            terminalInput.value += command.charAt(i);
+                                            i++;
+                                        } else {
+                                            clearInterval(typingInterval);
+                                            setTimeout(() => {
+                                                const event = new KeyboardEvent('keydown', {
+                                                    key: 'Enter',
+                                                    code: 'Enter',
+                                                    keyCode: 13,
+                                                    which: 13,
+                                                    bubbles: true
+                                                });
+                                                terminalInput.dispatchEvent(event);
+                                            }, 400);
+                                        }
+                                    }, 120);
+                                }, 1200);
+                            }
+                        });
+                    }, { threshold: 0.15 });
+                    observer.observe(terminalSection);
+                }
             }
         }
 
@@ -2381,6 +2594,17 @@
                     const successTitle = currentLang === 'en' ? 'Message Transmitted!' : 'বার্তা সফলভাবে পাঠানো হয়েছে!';
                     const successDesc = currentLang === 'en' ? 'Our secure endpoint dispatched your request.' : 'আপনার সিকিউর রিকোয়েস্টটি সফলভাবে সিস্টেমে জমা হয়েছে।';
                     triggerToast(successTitle, successDesc, 'success');
+                    
+                    // Trigger dynamic theme-responsive confetti burst
+                    if (window.confetti) {
+                        confetti({
+                            particleCount: 120,
+                            spread: 70,
+                            origin: { y: 0.6 },
+                            colors: ['#10b981', '#a3e635', '#2563eb', '#00f5d4', '#8b5cf6', '#ec4899', '#f97316', '#ff5722']
+                        });
+                    }
+                    
                     form.reset();
                 } else {
                     const errorTitle = currentLang === 'en' ? 'Transmission Failed' : 'বার্তা পাঠানো ব্যর্থ হয়েছে';
@@ -2636,6 +2860,120 @@
         }
 
         // ==========================================
+        // LENIS SMOOTH MOMENTUM SCROLL SYSTEM
+        // ==========================================
+        let lenisInstance;
+        function initLenisScroll() {
+            if (typeof Lenis === 'undefined') return;
+            
+            lenisInstance = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                mouseMultiplier: 1.0,
+                smoothTouch: false,
+                touchMultiplier: 2.0,
+                infinite: false,
+            });
+
+            // Bind Lenis scroll to GSAP ScrollTrigger
+            lenisInstance.on('scroll', ScrollTrigger.update);
+
+            gsap.ticker.add((time) => {
+                lenisInstance.raf(time * 1000);
+            });
+
+            gsap.ticker.lagSmoothing(0);
+
+            // Connect anchor clicks to Lenis smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        lenisInstance.scrollTo(target, {
+                            offset: -90,
+                            duration: 1.5,
+                            immediate: false
+                        });
+                    }
+                });
+            });
+        }
+
+        // ==========================================
+        // DYNAMIC HERO TYPOGRAPHY SWAPPER
+        // ==========================================
+        function initHeroWordSwap() {
+            const words = ['Web Developer', 'Software Architect', 'System Designer', 'Engineer'];
+            let index = 0;
+            
+            setInterval(() => {
+                const wordEl = document.getElementById('hero-dynamic-word');
+                if (!wordEl || currentLang !== 'en') return;
+                
+                index = (index + 1) % words.length;
+                
+                gsap.to(wordEl, {
+                    opacity: 0,
+                    y: -12,
+                    filter: "blur(6px)",
+                    duration: 0.35,
+                    ease: "power3.in",
+                    onComplete: () => {
+                        wordEl.textContent = words[index];
+                        gsap.fromTo(wordEl, 
+                            { opacity: 0, y: 12, filter: "blur(6px)" }, 
+                            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }
+                        );
+                    }
+                });
+            }, 3000);
+        }
+
+        // ==========================================
+        // HERO ILLUSTRATION PARALLAX SYSTEM
+        // ==========================================
+        function initHeroParallax() {
+            const heroSection = document.getElementById('home');
+            if (!heroSection) return;
+            
+            const panels = document.querySelectorAll('.illustration-container > div');
+            if (panels.length === 0) return;
+            
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const xVal = (e.clientX - rect.left) / rect.width - 0.5;
+                const yVal = (e.clientY - rect.top) / rect.height - 0.5;
+                
+                panels.forEach((panel, idx) => {
+                    const factor = (idx + 1) * 15; 
+                    gsap.to(panel, {
+                        x: xVal * factor,
+                        y: yVal * factor,
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+            
+            heroSection.addEventListener('mouseleave', () => {
+                panels.forEach((panel) => {
+                    gsap.to(panel, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+        }
+
+        // ==========================================
         // INITIALIZATIONS & TIMELINE INTROS
         // ==========================================
         window.onload = function() {
@@ -2651,6 +2989,9 @@
             animateCanvas();
 
             gsap.registerPlugin(ScrollTrigger);
+            initLenisScroll();
+            initHeroWordSwap();
+            initHeroParallax();
 
             // Staggered metrics counters count-up
             const counters = document.querySelectorAll('.metric-counter');
